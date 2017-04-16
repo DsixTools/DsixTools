@@ -1,0 +1,33 @@
+Block WC1
+1 1	# G
+2 1 	# Gtilde
+3 1 	# W
+4 1 	# Wtilde
+Block WC2
+1 1	# phi
+Block WC3
+1 1	# phiBox
+2 1 	# phiD
+Block WC4
+1 1	# phiG
+2 1 	# phiB
+3 1	# phiW
+4 0.5 	# phiWB
+5 1	# phiGtilde
+6 1 	# phiBtilde
+7 1	# phiWtilde
+8 1 	# phiWtildeB
+Block WCEPHI
+1 1 0.1		# ephi(1,1)
+1 2 0.2		# ephi(1,2)
+1 3 0.3		# ephi(1,3)
+2 1 0.1		# ephi(2,1)
+2 2 0.2		# ephi(2,2)
+2 3 0.3		# ephi(2,3)
+3 1 0.4		# ephi(3,1)
+3 2 0.5		# ephi(3,2)
+3 3 0.6		# ephi(3,3)
+Block WCPHIL1
+1 2 1		# phil1(1,2)
+Block WCLL
+1 1 1 3 1	# ll(1,1,1,3)

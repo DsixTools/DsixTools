@@ -6,9 +6,9 @@ DsixTools is a Mathematica Package for the matching and renormalization-group ev
 
 The project currently presents three modules: 
 
-- SMEFTrunner: one-loop RGE in the SMEFT
-- EWmatcher: Tree-level matching of the SMEFT to the WET
-- WETrunner: WET QCD and QED running down to the mB scale
+- **SMEFTrunner:** one-loop RGE in the SMEFT
+- **EWmatcher:** Tree-level matching of the SMEFT to the WET
+- **WETrunner:** WET QCD and QED running down to the mB scale
 
 More modules are expected to be added soon. Stay tunned!
 

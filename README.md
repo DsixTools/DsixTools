@@ -8,7 +8,7 @@ The project currently presents three modules:
 
 - **SMEFTrunner:** one-loop RGE in the SMEFT
 - **EWmatcher:** Tree-level matching of the SMEFT to the WET
-- **WETrunner:** WET QCD and QED running down to the mB scale
+- **WETrunner:** WET QCD and QED running down to the b-quark mass scale
 
 More modules are expected to be added soon. Stay tunned!
 

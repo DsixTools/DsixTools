@@ -217,7 +217,7 @@ DsixToolsVersion="1.0";
 
 Print[StyleForm["DsixTools ","Title",FontSize->26,Bold],StyleForm[DsixToolsVersion,"Title",FontSize->26,Bold]];
 Print[StyleForm["by Alejandro Celis, Javier Fuentes-Martin, Avelino Vicente and Javier Virto",FontSize->16]];
-Print[StyleForm["Reference: arXiv:1704.XXXXX",FontSize->16]];
+Print[StyleForm["Reference: arXiv:1704.04504",FontSize->16]];
 Print[StyleForm["Website: https://dsixtools.github.io/",FontSize->16]];
 Print[StyleForm["This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.",FontSize->16]];
 

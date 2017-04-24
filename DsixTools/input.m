@@ -1084,7 +1084,15 @@ inputEWmatcher[x_]:=If[SMEFTrunner,If[RGEsMethod==1,x/.insertt/.SubRedundant/.ru
 
 InitializeWETrunnerInput:=Block[{},
 
-If[!EWmatcher,
+If[EWmatcher, (* EWmatcher module already used *)
+
+BS1unprimed=Join[BS1Hunprimed,BS1GB[[1;;2]],BS1SLunprimed];
+BS1primed=Join[BS1Hprimed,BS1GB[[3;;4]],BS1SLprimed];
+
+,  (* EWmatcher module not used *)
+
+If[ValueQ[input], (* Input already generated *)
+
 BS2=BS2/.input;
 BC1=BC1/.input;
 BS1Hunprimed=BS1Hunprimed/.input;
@@ -1092,9 +1100,15 @@ BS1Hprimed=BS1Hprimed/.input;
 BS1GB=BS1GB/.input;
 BS1SLunprimed=BS1SLunprimed/.input;
 BS1SLprimed=BS1SLprimed/.input;
-];
 
 BS1unprimed=Join[BS1Hunprimed,BS1GB[[1;;2]],BS1SLunprimed];
 BS1primed=Join[BS1Hprimed,BS1GB[[3;;4]],BS1SLprimed];
+
+,
+
+Print["Input for the WETrunner not initialized. Use InitializeWETrunnerInput when the input is defined."];
+
+];
+];
 
 ];

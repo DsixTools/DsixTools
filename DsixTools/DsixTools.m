@@ -21,26 +21,26 @@
 
 (* ::Input:: *)
  (*********************************************************************************************************************************)
- (* Code: DsixTools                                                                                                              *)
+ (* Code: DsixTools                                                                                                               *)
  (*                                                                                                                               *)
- (* Authors: Alejandro Celis, Javier Fuentes-Martin, Avelino Vicente and Javier Virto                                         *)
+ (* Authors: Alejandro Celis, Javier Fuentes-Martin, Avelino Vicente and Javier Virto                                             *)
  (*                                                                                                                               *)
- (* Contact: Alejandro.Celis@physik.uni-muenchen.de, javier.fuentes@ific.uv.es, avelino.vicente@ific.uv.es, jvirto@mit.edu  *)
+ (* Contact: Alejandro.Celis@physik.uni-muenchen.de, javier.fuentes@ific.uv.es, avelino.vicente@ific.uv.es, jvirto@mit.edu        *)
  (*                                                                                                                               *)
- (* Copyright (C) 2017                                                                                                           *)
+ (* Copyright (C) 2017                                                                                                            *)
  (*                                                                                                                               *)
- (* Summary: DsixTools is a Mathematica package for the handling of the dimension six Standard Model Effective Field        *)
- (* Theory. Among other features, DsixTools allows the user to perform the full 1-loop                                        *)
- (* Renormalization Group Equations (RGEs) evolution of the Wilson coefficients in the Warsaw basis.                          *)
+ (* Summary: DsixTools is a Mathematica package for the handling of the dimension six Standard Model Effective Field              *)
+ (* Theory. Among other features, DsixTools allows the user to perform the full one-loop                                          *)
+ (* Renormalization Group Equations (RGEs) evolution of the Wilson coefficients in the Warsaw basis.                              *)
  (*                                                                                                                               *)
  (*                                                                                                                               *)
- (* This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public       *)
- (* License as published by the Free Software Foundation, either version 3 of the License, or any later version.            *)
+ (* This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public             *)
+ (* License as published by the Free Software Foundation, either version 3 of the License, or any later version.                  *)
  (*                                                                                                                               *)
- (* This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied     *)
- (* warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  *)
+ (* This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied            *)
+ (* warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.        *)
  (*                                                                                                                               *)
- (* You should have received a copy of the GNU General Public License along with this program.                               *)
+ (* You should have received a copy of the GNU General Public License along with this program.                                    *)
 
 
 BeginPackage["DsixTools`"]
@@ -212,7 +212,7 @@ Init[CBS1[u][1]],Init[CBS1[u][2]],Init[CBS1[u][3]],Init[CBS1[u][4]],Init[CBS1[u]
 {outSMEFTrunner,dataOutput,outname,ToMassBasis,WCsMB,PrintMessages};
 
 
-DsixToolsVersion="1.0";
+DsixToolsVersion="1.0.1";
 
 
 Print[StyleForm["DsixTools ","Title",FontSize->26,Bold],StyleForm[DsixToolsVersion,"Title",FontSize->26,Bold]];
@@ -240,12 +240,15 @@ sWsq=0.2312;
 \[Alpha]EM=1/137.036;
 e=Sqrt[4Pi \[Alpha]EM]; (* Electromagnetic coupling *)
 \[Alpha]S=0.1181; (* Strong coupling *)
-mb=4.18; (* b-quark mass [GeV] *)
+m\[Tau]=1.77682; (* tau-lepton mass [GeV] -- PDG value *)
+mc=1.275; (* c-quark MSbar mass [GeV] -- PDG value *)
+mb=4.18; (* b-quark MSbar mass [GeV] -- PDG value *)
 mh=125.0; (* Higgs boson mass [GeV] *)
 mW=80.385; (* W-boson mass [GeV] *)
 mZ=91.1876; (* Z-boson mass [GeV] *)
 GF=1.16638*10^(-5); (* Fermi constant [GeV^(-2)] *)
 v=(Sqrt[2]GF)^(-1/2); (* Higgs VEV *)
+
 
 
 inputcreated=False;

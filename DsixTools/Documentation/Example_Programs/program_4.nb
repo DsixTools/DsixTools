@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21027,        574]
-NotebookOptionsPosition[     18494,        476]
-NotebookOutlinePosition[     18828,        491]
-CellTagsIndexPosition[     18785,        488]
+NotebookDataLength[     13957,        369]
+NotebookOptionsPosition[     12341,        307]
+NotebookOutlinePosition[     12675,        322]
+CellTagsIndexPosition[     12632,        319]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -56,8 +56,6 @@ Cell["Start DsixTools", "Chapter",
    3.6990824216357803`*^9, 3.699082443019319*^9}, {3.699085905044036*^9, 
    3.6990859076625643`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DsixTools`\>\"", "]"}]], "Input",
  CellChangeTimes->{{3.699693283977923*^9, 3.699693296507635*^9}, {
@@ -67,67 +65,7 @@ Cell[BoxData[
   3.699695808649268*^9}, {3.6997056047442503`*^9, 3.699705604831457*^9}, {
   3.699706045784521*^9, 3.699706046184491*^9}, {3.700295401430848*^9, 
   3.7002954015450487`*^9}, {3.700904880960361*^9, 3.70090488291053*^9}, {
-  3.701286162225318*^9, 3.701286162340179*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{
-   TagBox[
-    StyleBox["\<\"DsixTools \"\>", "Title",
-     FontSize->26,
-     FontWeight->Bold],
-    StyleForm[#, "Title", FontSize -> 26, Bold]& ], "\[InvisibleSpace]", 
-   TagBox[
-    StyleBox["\<\"1.0\"\>", "Title",
-     FontSize->26,
-     FontWeight->Bold],
-    StyleForm[#, "Title", FontSize -> 26, Bold]& ]}],
-  SequenceForm[
-   StyleForm["DsixTools ", "Title", FontSize -> 26, Bold], 
-   StyleForm["1.0", "Title", FontSize -> 26, Bold]],
-  Editable->False]], "Print",
- CellChangeTimes->{3.70099527717671*^9, 3.700995327995564*^9, 
-  3.700995366610476*^9, 3.701280489467074*^9, 3.701286169880872*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"by Alejandro Celis, Javier Fuentes-Martin, Avelino Vicente \
-and Javier Virto\"\>",
-   FontSize->16],
-  StyleForm[#, FontSize -> 16]& ]], "Print",
- CellChangeTimes->{3.70099527717671*^9, 3.700995327995564*^9, 
-  3.700995366610476*^9, 3.701280489467074*^9, 3.701286169881699*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"Reference: arXiv:1704.XXXXX\"\>",
-   FontSize->16],
-  StyleForm[#, FontSize -> 16]& ]], "Print",
- CellChangeTimes->{3.70099527717671*^9, 3.700995327995564*^9, 
-  3.700995366610476*^9, 3.701280489467074*^9, 3.7012861698823633`*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"Website: https://dsixtools.github.io/\"\>",
-   FontSize->16],
-  StyleForm[#, FontSize -> 16]& ]], "Print",
- CellChangeTimes->{3.70099527717671*^9, 3.700995327995564*^9, 
-  3.700995366610476*^9, 3.701280489467074*^9, 3.7012861698828897`*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"This program is free software: you can redistribute it and/or \
-modify it under the terms of the GNU General Public License as published by \
-the Free Software Foundation, either version 3 of the License, or any later \
-version.\"\>",
-   FontSize->16],
-  StyleForm[#, FontSize -> 16]& ]], "Print",
- CellChangeTimes->{3.70099527717671*^9, 3.700995327995564*^9, 
-  3.700995366610476*^9, 3.701280489467074*^9, 3.701286169883471*^9}]
-}, Open  ]]
-}, Open  ]]
+  3.701286162225318*^9, 3.701286162340179*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -240,8 +178,6 @@ Cell[BoxData[
    " ", "in", " ", "input", " ", "files"}], " ", "*)"}]], "Input",
  CellChangeTimes->{{3.6998696113076477`*^9, 3.699869621048601*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{
   RowBox[{"WriteAndReadInputFiles", "[", 
@@ -250,12 +186,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.699868940640684*^9, 3.699868947000701*^9}, 
    3.699869119364538*^9, 3.699869202513817*^9, {3.70021612783412*^9, 
    3.700216132643053*^9}, {3.70021700003027*^9, 3.700217001922513*^9}, 
-   3.7009208059499493`*^9}],
-
-Cell[BoxData["\<\"Input: WET Wilson coefficients\"\>"], "Print",
- CellChangeTimes->{3.7009952774955072`*^9, 3.7009953283620367`*^9, 
-  3.700995366972478*^9, 3.7012804897968082`*^9, 3.701286170207727*^9}]
-}, Open  ]]
+   3.7009208059499493`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,34 +199,10 @@ Cell["Load WETrunner module", "Chapter",
    3.699080254939619*^9}, {3.6997941817230873`*^9, 3.699794182090706*^9}, {
    3.700214784692507*^9, 3.7002147848145943`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"LoadModule", "[", "\"\<WETrunner\>\"", "]"}]], "Input",
  CellChangeTimes->{{3.699794341601313*^9, 3.69979434832265*^9}, {
-  3.7002147876925592`*^9, 3.700214787880733*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"WETrunner\"\>", "Section",
-   FontSize->22,
-   FontWeight->Bold],
-  StyleForm[#, "Section", FontSize -> 22, Bold]& ]], "Print",
- CellChangeTimes->{3.700995277560608*^9, 3.700995328384803*^9, 
-  3.700995366995955*^9, 3.701280489818104*^9, 3.701286170229496*^9}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox["\<\"DsixTools module for the RGE running of the Weak Effective \
-Theory\"\>",
-   FontSize->16],
-  StyleForm[#, FontSize -> 16]& ]], "Print",
- CellChangeTimes->{3.700995277560608*^9, 3.700995328384803*^9, 
-  3.700995366995955*^9, 3.701280489818104*^9, 3.701286170229917*^9}]
-}, Open  ]]
-}, Open  ]]
+  3.7002147876925592`*^9, 3.700214787880733*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -309,24 +216,10 @@ Cell["Use WETrunner module", "Chapter",
    3.699795942208439*^9, 3.699795942494566*^9}, 3.69985205075883*^9, 
    3.699852873932379*^9}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"RunRGEsWET", ";"}]], "Input",
  CellChangeTimes->{{3.6997955548598633`*^9, 3.6997955944845057`*^9}, 
-   3.699795991693153*^9, {3.69986536610472*^9, 3.699865366158821*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"Running\"\>"], "Print",
- CellChangeTimes->{3.700995277593511*^9, 3.700995328404346*^9, 
-  3.7009953670150146`*^9, 3.7012804898381433`*^9, 3.701286170249653*^9}],
-
-Cell[BoxData["\<\"Running finished!\"\>"], "Print",
- CellChangeTimes->{3.700995277593511*^9, 3.700995328404346*^9, 
-  3.7009953670150146`*^9, 3.7012804898381433`*^9, 3.701286170351389*^9}]
-}, Open  ]]
-}, Open  ]]
+   3.699795991693153*^9, {3.69986536610472*^9, 3.699865366158821*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -351,8 +244,6 @@ Cell[BoxData[
  CellChangeTimes->{{3.6992641680350657`*^9, 3.699264194937025*^9}, 
    3.69985266114568*^9}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"BS2Low", "/.", 
   RowBox[{"t", "\[Rule]", 
@@ -362,35 +253,12 @@ Cell[BoxData[
   3.6984102715814657`*^9, 3.6984102850721693`*^9}}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "0.`", ",", "0.`", ",", "0.`", ",", "1.9488686261457535`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`"}], "}"}]], "Output",
- CellChangeTimes->{3.7009952777793922`*^9, 3.700995328572276*^9, 
-  3.700995367184977*^9, 3.701280489964837*^9, 3.701286170378585*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"BC1Low", "/.", 
   RowBox[{"t", "\[Rule]", 
    RowBox[{"Log", "[", 
     RowBox[{"10", ",", "mb"}], "]"}]}]}]], "Input",
  CellChangeTimes->{{3.698409179490953*^9, 3.6984091799974613`*^9}, 
    3.698410289956088*^9}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "0.`", ",", "0.41174731703509054`", ",", "0.`", ",", "0.`", ",", "0.`", ",",
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}]], "Output",
- CellChangeTimes->{3.700995277783663*^9, 3.7009953285757113`*^9, 
-  3.7009953671887083`*^9, 3.701280489969034*^9, 3.701286170416401*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"BS1unprimedLow", "/.", 
@@ -403,25 +271,6 @@ Cell[BoxData[
    3.699598654333805*^9}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.3267373426806037`", ",",
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}]], "Output",
- CellChangeTimes->{3.70099527851059*^9, 3.7009953292717447`*^9, 
-  3.70099536793302*^9, 3.701280489990302*^9, 3.701286170440352*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"BS1primedLow", "/.", 
   RowBox[{"t", "\[Rule]", 
    RowBox[{"Log", "[", 
@@ -429,24 +278,6 @@ Cell[BoxData[
  CellChangeTimes->{{3.697961676192175*^9, 3.697961713155484*^9}, 
    3.6984083627042637`*^9, 3.6990784386248217`*^9, 3.6992642263465033`*^9, 
    3.699598656580083*^9}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-   "0.`", ",", 
-   RowBox[{"-", "0.0899098332234717`"}], ",", "0.`"}], "}"}]], "Output",
- CellChangeTimes->{3.700995278517671*^9, 3.700995329291417*^9, 
-  3.700995367952441*^9, 3.7012804900163403`*^9, 3.701286170463615*^9}]
-}, Open  ]],
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
@@ -496,85 +327,49 @@ Cell[1733, 43, 189, 4, 32, "Input"],
 Cell[CellGroupData[{
 Cell[1947, 51, 299, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[CellGroupData[{
-Cell[2271, 60, 623, 9, 32, "Input"],
-Cell[CellGroupData[{
-Cell[2919, 73, 652, 18, 32, "Print"],
-Cell[3574, 93, 317, 7, 27, "Print"],
-Cell[3894, 102, 269, 6, 27, "Print"],
-Cell[4166, 110, 279, 6, 27, "Print"],
-Cell[4448, 118, 468, 9, 46, "Print"]
-}, Open  ]]
-}, Open  ]]
+Cell[2249, 58, 623, 9, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4977, 134, 301, 5, 66, "Chapter",
+Cell[2909, 72, 301, 5, 66, "Chapter",
  Evaluatable->False],
 Cell[CellGroupData[{
-Cell[5303, 143, 390, 7, 57, "Section",
+Cell[3235, 81, 390, 7, 57, "Section",
  Evaluatable->False],
-Cell[5696, 152, 716, 11, 32, "Input"],
-Cell[6415, 165, 355, 6, 32, "Input"]
+Cell[3628, 90, 716, 11, 32, "Input"],
+Cell[4347, 103, 355, 6, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6807, 176, 518, 9, 55, "Section",
+Cell[4739, 114, 518, 9, 55, "Section",
  Evaluatable->False],
-Cell[7328, 187, 1111, 34, 121, "Input"]
+Cell[5260, 125, 1111, 34, 121, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8488, 227, 396, 6, 66, "Chapter",
+Cell[6420, 165, 396, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[8887, 235, 256, 5, 32, "Input"],
-Cell[CellGroupData[{
-Cell[9168, 244, 393, 8, 32, "Input"],
-Cell[9564, 254, 203, 2, 23, "Print"]
-}, Open  ]]
+Cell[6819, 173, 256, 5, 32, "Input"],
+Cell[7078, 180, 393, 8, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9816, 262, 401, 6, 66, "Chapter",
+Cell[7508, 193, 401, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[CellGroupData[{
-Cell[10242, 272, 195, 3, 32, "Input"],
-Cell[CellGroupData[{
-Cell[10462, 279, 299, 7, 35, "Print"],
-Cell[10764, 288, 308, 7, 27, "Print"]
-}, Open  ]]
-}, Open  ]]
+Cell[7912, 201, 195, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11133, 302, 445, 7, 66, "Chapter",
+Cell[8144, 209, 445, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[CellGroupData[{
-Cell[11603, 313, 194, 3, 32, "Input"],
-Cell[CellGroupData[{
-Cell[11822, 320, 178, 2, 23, "Print"],
-Cell[12003, 324, 188, 2, 23, "Print"]
-}, Open  ]]
-}, Open  ]]
+Cell[8592, 218, 194, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12252, 333, 547, 8, 66, "Chapter",
+Cell[8823, 226, 547, 8, 66, "Chapter",
  Evaluatable->False],
-Cell[12802, 343, 402, 8, 32, "Input"],
-Cell[CellGroupData[{
-Cell[13229, 355, 260, 6, 32, "Input"],
-Cell[13492, 363, 307, 6, 32, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13836, 374, 236, 6, 32, "Input"],
-Cell[14075, 382, 398, 7, 32, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[14510, 394, 394, 8, 32, "Input"],
-Cell[14907, 404, 925, 14, 55, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[15869, 423, 316, 7, 32, "Input"],
-Cell[16188, 432, 946, 15, 55, "Output"]
-}, Open  ]],
-Cell[17149, 450, 341, 7, 32, "Input"],
-Cell[17493, 459, 985, 14, 65, "Input"]
+Cell[9373, 236, 402, 8, 32, "Input"],
+Cell[9778, 246, 260, 6, 32, "Input"],
+Cell[10041, 254, 236, 6, 32, "Input"],
+Cell[10280, 262, 394, 8, 32, "Input"],
+Cell[10677, 272, 316, 7, 32, "Input"],
+Cell[10996, 281, 341, 7, 32, "Input"],
+Cell[11340, 290, 985, 14, 65, "Input"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26539,        719]
-NotebookOptionsPosition[     24565,        647]
-NotebookOutlinePosition[     24899,        662]
-CellTagsIndexPosition[     24856,        659]
+NotebookDataLength[     26363,        713]
+NotebookOptionsPosition[     24426,        642]
+NotebookOutlinePosition[     24760,        657]
+CellTagsIndexPosition[     24717,        654]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,11 +40,6 @@ Cell[BoxData[{
   3.699081055009986*^9}, {3.699088212990273*^9, 3.699088216962241*^9}, {
   3.6996934535247087`*^9, 3.6996934538425694`*^9}, {3.699947902658321*^9, 
   3.69994793026322*^9}, {3.700218318693428*^9, 3.700218319369121*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Quit", "[", "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.708173600438243*^9, 3.708173602192616*^9}}],
 
 Cell[CellGroupData[{
 
@@ -663,63 +658,62 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 1176, 21, 92, "Input",
  Evaluatable->False],
-Cell[1737, 43, 136, 3, 32, "Input"],
 Cell[CellGroupData[{
-Cell[1898, 50, 299, 5, 66, "Chapter",
+Cell[1759, 45, 299, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[2200, 57, 909, 17, 77, "Input"]
+Cell[2061, 52, 909, 17, 77, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3146, 79, 301, 5, 66, "Chapter",
+Cell[3007, 74, 301, 5, 66, "Chapter",
  Evaluatable->False],
 Cell[CellGroupData[{
-Cell[3472, 88, 390, 7, 57, "Section",
+Cell[3333, 83, 390, 7, 57, "Section",
  Evaluatable->False],
-Cell[3865, 97, 862, 14, 55, "Input"],
-Cell[4730, 113, 1121, 24, 209, "Input"]
+Cell[3726, 92, 862, 14, 55, "Input"],
+Cell[4591, 108, 1121, 24, 209, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5888, 142, 463, 8, 57, "Section",
+Cell[5749, 137, 463, 8, 57, "Section",
  Evaluatable->False],
-Cell[6354, 152, 1363, 29, 77, "Input"],
-Cell[7720, 183, 720, 17, 55, "Input"],
-Cell[8443, 202, 2566, 79, 209, "Input"],
-Cell[11012, 283, 1781, 62, 209, "Input"],
-Cell[12796, 347, 1780, 62, 209, "Input"],
-Cell[14579, 411, 688, 16, 77, "Input"]
+Cell[6215, 147, 1363, 29, 77, "Input"],
+Cell[7581, 178, 720, 17, 55, "Input"],
+Cell[8304, 197, 2566, 79, 209, "Input"],
+Cell[10873, 278, 1781, 62, 209, "Input"],
+Cell[12657, 342, 1780, 62, 209, "Input"],
+Cell[14440, 406, 688, 16, 77, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15304, 432, 518, 9, 55, "Section",
+Cell[15165, 427, 518, 9, 55, "Section",
  Evaluatable->False],
-Cell[15825, 443, 321, 7, 32, "Input"],
-Cell[16149, 452, 394, 9, 32, "Input"]
+Cell[15686, 438, 321, 7, 32, "Input"],
+Cell[16010, 447, 394, 9, 32, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16592, 467, 396, 6, 66, "Chapter",
+Cell[16453, 462, 396, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[16991, 475, 256, 5, 32, "Input"],
-Cell[17250, 482, 814, 17, 77, "Input"]
+Cell[16852, 470, 256, 5, 32, "Input"],
+Cell[17111, 477, 814, 17, 77, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18101, 504, 351, 5, 66, "Chapter",
+Cell[17962, 499, 351, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[18455, 511, 146, 2, 32, "Input"]
+Cell[18316, 506, 146, 2, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18638, 518, 400, 6, 66, "Chapter",
+Cell[18499, 513, 400, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[19041, 526, 1272, 18, 32, "Input"],
-Cell[20316, 546, 197, 3, 32, "Input"]
+Cell[18902, 521, 1272, 18, 32, "Input"],
+Cell[20177, 541, 197, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20550, 554, 502, 7, 66, "Chapter",
+Cell[20411, 549, 502, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[21055, 563, 508, 12, 55, "Input"],
-Cell[21566, 577, 468, 11, 55, "Input"],
-Cell[22037, 590, 1273, 30, 77, "Input"],
-Cell[23313, 622, 341, 7, 32, "Input"],
-Cell[23657, 631, 892, 13, 65, "Input"]
+Cell[20916, 558, 508, 12, 55, "Input"],
+Cell[21427, 572, 468, 11, 55, "Input"],
+Cell[21898, 585, 1273, 30, 77, "Input"],
+Cell[23174, 617, 341, 7, 32, "Input"],
+Cell[23518, 626, 892, 13, 65, "Input"]
 }, Open  ]]
 }
 ]

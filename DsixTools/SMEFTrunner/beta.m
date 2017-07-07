@@ -272,3 +272,6 @@
 
 
 \[Beta][duue]=-(2gp^2+4gs^2)Cduue[prst]-20/3gp^2Cduue[psrt]+4GuGeCduql[ws,vt,prwv]-8GdGuCqque[vp,wr,vwst]+GdhGdCduue[vp,vrst]+GuhGuCduue[vr,pvst]+GuhGuCduue[vs,prvt]+GehGeCduue[vt,prsv];
+
+
+\[Beta][ll\[CurlyPhi]\[CurlyPhi]]=(2\[Lambda]-3g^2+2\[Gamma]H)WC[ll\[CurlyPhi]\[CurlyPhi]]-3/2(Cll\[CurlyPhi]\[CurlyPhi]GeGeh+GecGeTCll\[CurlyPhi]\[CurlyPhi]);

@@ -82,7 +82,9 @@ subMatrices4F={
 \[Beta][MatrixListWCs4F[[28,2]][m_,n_,r_,s_][t]]:>(\[Beta][MatrixListWCs4F[[28,3]]][[m,n,r,s]]/.insertt),
 \[Beta][MatrixListWCs4F[[29,2]][m_,n_,r_,s_][t]]:>(\[Beta][MatrixListWCs4F[[29,3]]][[m,n,r,s]]/.insertt)};
 
-subMatrices=Join[subMatricesSM,subMatrices0F,subMatrices2F,subMatrices4F];
+subMatricesdim5={\[Beta][MatrixListWCsdim5[[1,2]][m_,n_][t]]:>(\[Beta][MatrixListWCsdim5[[1,3]]][[m,n]]/.insertt)};
+
+subMatrices=Join[subMatricesSM,subMatrices0F,subMatrices2F,subMatrices4F,subMatricesdim5];
 
 RGEs=Table[
 Derivative[1][Parameters[[i]]][t]==Log[10](\[Beta][Parameters[[i]]]/.insertt)/(16 Pi^2)/.subMatrices/.SubRedundant
@@ -142,7 +144,9 @@ subMatricesNot4F={
 \[Beta][MatrixListWCs4F[[28,2]][m_,n_,r_,s_]]:>\[Beta][MatrixListWCs4F[[28,3]]][[m,n,r,s]],
 \[Beta][MatrixListWCs4F[[29,2]][m_,n_,r_,s_]]:>\[Beta][MatrixListWCs4F[[29,3]]][[m,n,r,s]]};
 
-subMatricesNot=Join[subMatricesNotSM,subMatricesNot0F,subMatricesNot2F,subMatricesNot4F];
+subMatricesNotdim5={\[Beta][MatrixListWCsdim5[[1,2]][m_,n_]]:>\[Beta][MatrixListWCsdim5[[1,3]]][[m,n]]};
+
+subMatricesNot=Join[subMatricesNotSM,subMatricesNot0F,subMatricesNot2F,subMatricesNot4F,subMatricesNotdim5];
 
 RGEs=Table[\[Beta][Parameters[[i]]]/.subMatricesNot,{i,1,Length[Parameters]}];
 

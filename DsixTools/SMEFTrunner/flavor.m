@@ -29,6 +29,11 @@ Gdc=CC[Gd];
 Gec=CC[Ge];
 
 
+(* TRANSPOSED MATRICES *)
+
+GeT=Transpose[Ge];
+
+
 (* MATRIX PRODUCTS *)
 
 (* 2 Matrices *)
@@ -195,6 +200,9 @@ C\[CurlyPhi]uGuhGd=WC[\[CurlyPhi]u].Guh.Gd;
 C\[CurlyPhi]udGdhGd=WC[\[CurlyPhi]ud].Gdh.Gd;
 C\[CurlyPhi]udGdhGu=WC[\[CurlyPhi]ud].Gdh.Gu;
 C\[CurlyPhi]udhGuhGd=H[WC[\[CurlyPhi]ud]].Guh.Gd;
+
+Cll\[CurlyPhi]\[CurlyPhi]GeGeh=WC[ll\[CurlyPhi]\[CurlyPhi]].Ge.Geh;
+GecGeTCll\[CurlyPhi]\[CurlyPhi]=Gec.GeT.WC[ll\[CurlyPhi]\[CurlyPhi]];
 
 (* 4 Matrices *)
 

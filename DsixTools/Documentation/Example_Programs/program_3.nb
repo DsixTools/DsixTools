@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19648,        472]
-NotebookOptionsPosition[     18495,        427]
-NotebookOutlinePosition[     18829,        442]
-CellTagsIndexPosition[     18786,        439]
+NotebookDataLength[     19861,        482]
+NotebookOptionsPosition[     18707,        437]
+NotebookOutlinePosition[     19041,        452]
+CellTagsIndexPosition[     18998,        449]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,9 +45,8 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"SetDirectory", "[", 
-   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.700904782257318*^9, 3.700904791156786*^9}}],
+  RowBox[{"Quit", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.708173600438243*^9, 3.708173602192616*^9}}],
 
 Cell[CellGroupData[{
 
@@ -58,8 +57,15 @@ Cell["Start DsixTools", "Chapter",
    3.6990824216357803`*^9, 3.699082443019319*^9}, {3.699085905044036*^9, 
    3.6990859076625643`*^9}}],
 
-Cell[BoxData[
- RowBox[{"Needs", "[", "\"\<DsixTools`\>\"", "]"}]], "Input",
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<../../\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<DsixTools`\>\"", "]"}]}], "Input",
  CellChangeTimes->{{3.699693283977923*^9, 3.699693296507635*^9}, {
    3.699693367270563*^9, 3.699693378529723*^9}, {3.699693421668963*^9, 
    3.6996934412593*^9}, {3.699693583161203*^9, 3.699693650426964*^9}, {
@@ -67,7 +73,8 @@ Cell[BoxData[
    3.699695808649268*^9}, {3.6997056047442503`*^9, 3.699705604831457*^9}, {
    3.699706045784521*^9, 3.699706046184491*^9}, 3.700295065301358*^9, {
    3.7009048642807617`*^9, 3.700904865896372*^9}, {3.7012857078636436`*^9, 
-   3.701285707994801*^9}}]
+   3.701285707994801*^9}, {3.708173794264772*^9, 3.7081737949258347`*^9}, 
+   3.708251048670218*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -79,22 +86,25 @@ Cell["Read input files", "Chapter",
    3.6990824216357803`*^9, 3.699082461881974*^9}, {3.6997941186932573`*^9, 
    3.699794132999278*^9}}],
 
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<../Example_IO\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ReadInputFiles", "[", 
    RowBox[{
-   "\"\<Options.dat\>\"", ",", "\"\<WCsInput.dat\>\"", ",", 
-    "\"\<SMInput.dat\>\""}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.693640100415698*^9, 3.693640107162403*^9}, {
-   3.69364051972866*^9, 3.69364052010907*^9}, 3.69364153506293*^9, {
-   3.6936499546744957`*^9, 3.69364997537176*^9}, 3.694168124791935*^9, {
-   3.698485634618132*^9, 3.698485655964306*^9}, {3.69908244975*^9, 
-   3.699082466100069*^9}, {3.699167013195609*^9, 3.699167023342505*^9}, {
-   3.6991672659252357`*^9, 3.699167267401713*^9}, {3.699167297558958*^9, 
-   3.699167298571916*^9}, {3.6991675033029337`*^9, 3.6991675038692627`*^9}, {
-   3.6991682203063707`*^9, 3.699168220515545*^9}, {3.699181181748423*^9, 
-   3.6991811822652884`*^9}, 3.6991816041160727`*^9, {3.7009150624211187`*^9, 
-   3.700915065455673*^9}}]
+   "\"\<Options.dat\>\"", ",", "\"\<WCsInput-CPV-SMEFT.dat\>\"", ",", 
+    "\"\<SMInput-CPV.dat\>\""}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7082380705912724`*^9, 3.7082380775539837`*^9}, {
+   3.708238120483227*^9, 3.708238125406097*^9}, 3.708239854943119*^9, 
+   3.7082436101693697`*^9, {3.708248150142355*^9, 3.708248154620117*^9}, 
+   3.7082483075188704`*^9, {3.7082505631331787`*^9, 3.708250572785966*^9}, {
+   3.708250714418003*^9, 3.708250714686729*^9}, {3.7083352704242477`*^9, 
+   3.708335270478104*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -425,7 +435,7 @@ Cell[BoxData[
    3.699951392197715*^9, 3.699951401443609*^9}}]
 }, Open  ]]
 },
-WindowSize->{1598, 823},
+WindowSize->{1600, 824},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
@@ -443,36 +453,36 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 1342, 23, 92, "Input",
  Evaluatable->False],
-Cell[1903, 45, 189, 4, 32, "Input"],
+Cell[1903, 45, 136, 3, 32, "Input"],
 Cell[CellGroupData[{
-Cell[2117, 53, 299, 5, 66, "Chapter",
+Cell[2064, 52, 299, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[2419, 60, 609, 9, 32, "Input"]
+Cell[2366, 59, 912, 17, 77, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3065, 74, 300, 5, 66, "Chapter",
+Cell[3315, 81, 300, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[3368, 81, 865, 15, 32, "Input"]
+Cell[3618, 88, 827, 18, 77, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4270, 101, 351, 5, 66, "Chapter",
+Cell[4482, 111, 351, 5, 66, "Chapter",
  Evaluatable->False],
-Cell[4624, 108, 146, 2, 32, "Input"]
+Cell[4836, 118, 146, 2, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4807, 115, 462, 7, 66, "Chapter",
+Cell[5019, 125, 462, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[5272, 124, 295, 7, 55, "Input"],
-Cell[5570, 133, 316, 8, 55, "Input"],
-Cell[5889, 143, 4591, 101, 439, "Input"],
-Cell[10483, 246, 462, 12, 55, "Input"],
-Cell[10948, 260, 4505, 92, 430, "Input"]
+Cell[5484, 134, 295, 7, 55, "Input"],
+Cell[5782, 143, 316, 8, 55, "Input"],
+Cell[6101, 153, 4591, 101, 439, "Input"],
+Cell[10695, 256, 462, 12, 55, "Input"],
+Cell[11160, 270, 4505, 92, 430, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15490, 357, 534, 8, 66, "Chapter",
+Cell[15702, 367, 534, 8, 66, "Chapter",
  Evaluatable->False],
-Cell[16027, 367, 1198, 26, 60, "Input"],
-Cell[17228, 395, 1251, 29, 56, "Input"]
+Cell[16239, 377, 1198, 26, 60, "Input"],
+Cell[17440, 405, 1251, 29, 56, "Input"]
 }, Open  ]]
 }
 ]

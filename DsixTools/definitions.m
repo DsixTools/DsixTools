@@ -63,6 +63,7 @@ CreateWETParameters;
 6 4F two identical XX currents special case Cee (class 8 E-F)
 7 4F B-violating special case qque
 8 4F B-violating special case qqql
+9 2F symmetric matrix (dim-5)
 *)
 
 CreateMatrixList:=Block[{},
@@ -71,7 +72,8 @@ MatrixListSM={{"Gu",GU,GuX,1},{"Gd",GD,GdX,1},{"Ge",GE,GeX,1}};
 MatrixListWCs0F={{"WC[G]",G,G,0},{"WC[Gtilde]",Gtilde,Gtilde,0},{"WC[W]",W,W,0},{"WC[Wtilde]",Wtilde,Wtilde,0},{"WC[\[CurlyPhi]]",\[CurlyPhi],\[CurlyPhi],0},{"WC[\[CurlyPhi]\[EmptySquare]]",\[CurlyPhi]\[EmptySquare],\[CurlyPhi]\[EmptySquare],0},{"WC[\[CurlyPhi]D]",\[CurlyPhi]DD,\[CurlyPhi]D,0},{"WC[\[CurlyPhi]G]",\[CurlyPhi]G,\[CurlyPhi]G,0},{"WC[\[CurlyPhi]B]",\[CurlyPhi]B,\[CurlyPhi]B,0},{"WC[\[CurlyPhi]W]",\[CurlyPhi]W,\[CurlyPhi]W,0},{"WC[\[CurlyPhi]WB]",\[CurlyPhi]WB,\[CurlyPhi]WB,0},{"WC[\[CurlyPhi]Gtilde]",\[CurlyPhi]Gtilde,\[CurlyPhi]Gtilde,0},{"WC[\[CurlyPhi]Btilde]",\[CurlyPhi]Btilde,\[CurlyPhi]Btilde,0},{"WC[\[CurlyPhi]Wtilde]",\[CurlyPhi]Wtilde,\[CurlyPhi]Wtilde,0},{"WC[\[CurlyPhi]WtildeB]",\[CurlyPhi]WtildeB,\[CurlyPhi]WtildeB,0}};
 MatrixListWCs2F={{"WC[u\[CurlyPhi]]",U\[CurlyPhi],u\[CurlyPhi],1},{"WC[d\[CurlyPhi]]",D\[CurlyPhi],d\[CurlyPhi],1},{"WC[e\[CurlyPhi]]",E\[CurlyPhi],e\[CurlyPhi],1},{"WC[eW]",EW,eW,1},{"WC[eB]",EB,eB,1},{"WC[uG]",UG,uG,1},{"WC[uW]",UW,uW,1},{"WC[uB]",UB,uB,1},{"WC[dG]",DG,dG,1},{"WC[dW]",DW,dW,1},{"WC[dB]",DB,dB,1},{"WC[\[CurlyPhi]l1]",\[CurlyPhi]L1,\[CurlyPhi]l1,2},{"WC[\[CurlyPhi]l3]",\[CurlyPhi]L3,\[CurlyPhi]l3,2},{"WC[\[CurlyPhi]e]",\[CurlyPhi]E,\[CurlyPhi]e,2},{"WC[\[CurlyPhi]q1]",\[CurlyPhi]Q1,\[CurlyPhi]q1,2},{"WC[\[CurlyPhi]q3]",\[CurlyPhi]Q3,\[CurlyPhi]q3,2},{"WC[\[CurlyPhi]u]",\[CurlyPhi]U,\[CurlyPhi]u,2},{"WC[\[CurlyPhi]d]",\[CurlyPhi]D,\[CurlyPhi]d,2},{"WC[\[CurlyPhi]ud]",\[CurlyPhi]UD,\[CurlyPhi]ud,1}};
 MatrixListWCs4F={{"WC[ll]",LL,ll,4},{"WC[qq1]",QQ1,qq1,4},{"WC[qq3]",QQ3,qq3,4},{"WC[lq1]",LQ1,lq1,5},{"WC[lq3]",LQ3,lq3,5},{"WC[ee]",EE,ee,6},{"WC[uu]",UU,uu,4},{"WC[dd]",DD,dd,4},{"WC[eu]",EU,eu,5},{"WC[ed]",ED,ed,5},{"WC[ud1]",UD1,ud1,5},{"WC[ud8]",UD8,ud8,5},{"WC[le]",LE,le,5},{"WC[lu]",LU,lu,5},{"WC[ld]",LD,ld,5},{"WC[qe]",QE,qe,5},{"WC[qu1]",QU1,qu1,5},{"WC[qu8]",QU8,qu8,5},{"WC[qd1]",QD1,qd1,5},{"WC[qd8]",QD8,qd8,5},{"WC[ledq]",LEDQ,ledq,3},{"WC[quqd1]",QUQD1,quqd1,3},{"WC[quqd8]",QUQD8,quqd8,3},{"WC[lequ1]",LEQU1,lequ1,3},{"WC[lequ3]",LEQU3,lequ3,3},{"WC[duql]",DUQL,duql,3},{"WC[qque]",QQUE,qque,7},{"WC[qqql]",QQQL,qqql,8},{"WC[duue]",DUUE,duue,3}};
-MatrixList=Join[MatrixListSM,MatrixListWCs0F,MatrixListWCs2F,MatrixListWCs4F];
+MatrixListWCsdim5={{"WC[ll\[CurlyPhi]\[CurlyPhi]]",LL\[CurlyPhi]\[CurlyPhi],ll\[CurlyPhi]\[CurlyPhi],9}};
+MatrixList=Join[MatrixListSM,MatrixListWCs0F,MatrixListWCs2F,MatrixListWCs4F,MatrixListWCsdim5];
 
 (* Define 0-fermion WCs *)
 Do[
@@ -87,6 +89,11 @@ WC[MatrixListWCs2F[[k,3]]]=Table[MatrixListWCs2F[[k,2]][i,j],{i,1,3},{j,1,3}];
 Do[
 WC[MatrixListWCs4F[[k,3]]]=Table[MatrixListWCs4F[[k,2]][p,r,s,t],{p,1,3},{r,1,3},{s,1,3},{t,1,3}];
 ,{k,1,Length[MatrixListWCs4F]}];
+
+(* Define 2-fermion WCs - dim-5 *)
+Do[
+WC[MatrixListWCsdim5[[k,3]]]=Table[MatrixListWCsdim5[[k,2]][i,j],{i,1,3},{j,1,3}];
+,{k,1,Length[MatrixListWCsdim5]}];
 
 ];
 
@@ -104,7 +111,8 @@ SMParam={g,gp,gs,\[Lambda],m2,GU[1,1],GU[1,2],GU[1,3],GU[2,1],GU[2,2],GU[2,3],GU
 WCs0F=Table[MatrixListWCs0F[[i,2]],{i,1,Length[MatrixListWCs0F]}];
 WCs2F=Flatten[Table[MatrixListWCs2F[[i,2]][r,s],{i,1,Length[MatrixListWCs2F]},{r,1,3},{s,1,3}]];
 WCs4F=Flatten[Table[MatrixListWCs4F[[i,2]][p,r,s,t],{i,1,Length[MatrixListWCs4F]},{p,1,3},{r,1,3},{s,1,3},{t,1,3}]];
-WCs=Join[WCs0F,WCs2F,WCs4F];
+WCsdim5=Flatten[Table[MatrixListWCsdim5[[i,2]][r,s],{i,1,Length[MatrixListWCsdim5]},{r,1,3},{s,1,3}]];
+WCs=Join[WCs0F,WCs2F,WCs4F,WCsdim5];
 ParametersTotal=Join[SMParam,WCs];
 
 ];
@@ -145,6 +153,11 @@ AppendTo[RedundantPre,{MatrixListWCs4F[[i,2]][2,1,1,1],MatrixListWCs4F[[i,2]][2,
 AppendTo[SubRedundantPre,{MatrixListWCs4F[[i,2]][2,1,1,1]->MatrixListWCs4F[[i,2]][1,2,1,1][t],MatrixListWCs4F[[i,2]][2,1,1,2]->MatrixListWCs4F[[i,2]][1,1,2,2][t],MatrixListWCs4F[[i,2]][2,1,1,3]->MatrixListWCs4F[[i,2]][1,1,2,3][t],MatrixListWCs4F[[i,2]][2,2,1,1]->MatrixListWCs4F[[i,2]][1,2,2,1][t],MatrixListWCs4F[[i,2]][2,2,1,2]->MatrixListWCs4F[[i,2]][1,2,2,2][t],MatrixListWCs4F[[i,2]][2,2,1,3]->MatrixListWCs4F[[i,2]][1,2,2,3][t],MatrixListWCs4F[[i,2]][3,1,1,1]->MatrixListWCs4F[[i,2]][1,1,3,1][t],MatrixListWCs4F[[i,2]][3,1,1,2]->MatrixListWCs4F[[i,2]][1,1,3,2][t],MatrixListWCs4F[[i,2]][3,1,1,3]->MatrixListWCs4F[[i,2]][1,1,3,3][t],MatrixListWCs4F[[i,2]][3,1,2,1]->MatrixListWCs4F[[i,2]][2,3,1,1][t]+MatrixListWCs4F[[i,2]][2,1,3,1][t]-MatrixListWCs4F[[i,2]][1,3,2,1][t],MatrixListWCs4F[[i,2]][3,1,2,2]->MatrixListWCs4F[[i,2]][2,3,1,2][t]+MatrixListWCs4F[[i,2]][2,1,3,2][t]-MatrixListWCs4F[[i,2]][1,3,2,2][t],MatrixListWCs4F[[i,2]][3,1,2,3]->MatrixListWCs4F[[i,2]][2,3,1,3][t]+MatrixListWCs4F[[i,2]][2,1,3,3][t]-MatrixListWCs4F[[i,2]][1,3,2,3][t],MatrixListWCs4F[[i,2]][3,2,1,1]->MatrixListWCs4F[[i,2]][1,3,2,1][t]+MatrixListWCs4F[[i,2]][1,2,3,1][t]-MatrixListWCs4F[[i,2]][2,3,1,1][t],MatrixListWCs4F[[i,2]][3,2,1,2]->MatrixListWCs4F[[i,2]][1,3,2,2][t]+MatrixListWCs4F[[i,2]][1,2,3,2][t]-MatrixListWCs4F[[i,2]][2,3,1,2][t],MatrixListWCs4F[[i,2]][3,2,1,3]->MatrixListWCs4F[[i,2]][1,3,2,3][t]+MatrixListWCs4F[[i,2]][1,2,3,3][t]-MatrixListWCs4F[[i,2]][2,3,1,3][t],MatrixListWCs4F[[i,2]][3,2,2,1]->MatrixListWCs4F[[i,2]][2,2,3,1][t],MatrixListWCs4F[[i,2]][3,2,2,2]->MatrixListWCs4F[[i,2]][2,2,3,2][t],MatrixListWCs4F[[i,2]][3,2,2,3]->MatrixListWCs4F[[i,2]][2,2,3,3][t],MatrixListWCs4F[[i,2]][3,3,1,1]->MatrixListWCs4F[[i,2]][1,3,3,1][t],MatrixListWCs4F[[i,2]][3,3,1,2]->MatrixListWCs4F[[i,2]][1,3,3,2][t],MatrixListWCs4F[[i,2]][3,3,1,3]->MatrixListWCs4F[[i,2]][1,3,3,3][t],MatrixListWCs4F[[i,2]][3,3,2,1]->MatrixListWCs4F[[i,2]][2,3,3,1][t],MatrixListWCs4F[[i,2]][3,3,2,2]->MatrixListWCs4F[[i,2]][2,3,3,2][t],MatrixListWCs4F[[i,2]][3,3,2,3]->MatrixListWCs4F[[i,2]][2,3,3,3][t]}];
 AppendTo[SubRedundantNotPre,{MatrixListWCs4F[[i,2]][2,1,1,1]->MatrixListWCs4F[[i,2]][1,2,1,1],MatrixListWCs4F[[i,2]][2,1,1,2]->MatrixListWCs4F[[i,2]][1,1,2,2],MatrixListWCs4F[[i,2]][2,1,1,3]->MatrixListWCs4F[[i,2]][1,1,2,3],MatrixListWCs4F[[i,2]][2,2,1,1]->MatrixListWCs4F[[i,2]][1,2,2,1],MatrixListWCs4F[[i,2]][2,2,1,2]->MatrixListWCs4F[[i,2]][1,2,2,2],MatrixListWCs4F[[i,2]][2,2,1,3]->MatrixListWCs4F[[i,2]][1,2,2,3],MatrixListWCs4F[[i,2]][3,1,1,1]->MatrixListWCs4F[[i,2]][1,1,3,1],MatrixListWCs4F[[i,2]][3,1,1,2]->MatrixListWCs4F[[i,2]][1,1,3,2],MatrixListWCs4F[[i,2]][3,1,1,3]->MatrixListWCs4F[[i,2]][1,1,3,3],MatrixListWCs4F[[i,2]][3,1,2,1]->MatrixListWCs4F[[i,2]][2,3,1,1]+MatrixListWCs4F[[i,2]][2,1,3,1]-MatrixListWCs4F[[i,2]][1,3,2,1],MatrixListWCs4F[[i,2]][3,1,2,2]->MatrixListWCs4F[[i,2]][2,3,1,2]+MatrixListWCs4F[[i,2]][2,1,3,2]-MatrixListWCs4F[[i,2]][1,3,2,2],MatrixListWCs4F[[i,2]][3,1,2,3]->MatrixListWCs4F[[i,2]][2,3,1,3]+MatrixListWCs4F[[i,2]][2,1,3,3]-MatrixListWCs4F[[i,2]][1,3,2,3],MatrixListWCs4F[[i,2]][3,2,1,1]->MatrixListWCs4F[[i,2]][1,3,2,1]+MatrixListWCs4F[[i,2]][1,2,3,1]-MatrixListWCs4F[[i,2]][2,3,1,1],MatrixListWCs4F[[i,2]][3,2,1,2]->MatrixListWCs4F[[i,2]][1,3,2,2]+MatrixListWCs4F[[i,2]][1,2,3,2]-MatrixListWCs4F[[i,2]][2,3,1,2],MatrixListWCs4F[[i,2]][3,2,1,3]->MatrixListWCs4F[[i,2]][1,3,2,3]+MatrixListWCs4F[[i,2]][1,2,3,3]-MatrixListWCs4F[[i,2]][2,3,1,3],MatrixListWCs4F[[i,2]][3,2,2,1]->MatrixListWCs4F[[i,2]][2,2,3,1],MatrixListWCs4F[[i,2]][3,2,2,2]->MatrixListWCs4F[[i,2]][2,2,3,2],MatrixListWCs4F[[i,2]][3,2,2,3]->MatrixListWCs4F[[i,2]][2,2,3,3],MatrixListWCs4F[[i,2]][3,3,1,1]->MatrixListWCs4F[[i,2]][1,3,3,1],MatrixListWCs4F[[i,2]][3,3,1,2]->MatrixListWCs4F[[i,2]][1,3,3,2],MatrixListWCs4F[[i,2]][3,3,1,3]->MatrixListWCs4F[[i,2]][1,3,3,3],MatrixListWCs4F[[i,2]][3,3,2,1]->MatrixListWCs4F[[i,2]][2,3,3,1],MatrixListWCs4F[[i,2]][3,3,2,2]->MatrixListWCs4F[[i,2]][2,3,3,2],MatrixListWCs4F[[i,2]][3,3,2,3]->MatrixListWCs4F[[i,2]][2,3,3,3]}];
 ];
+If[k==9, (* 2F symmetric matrix (dim-5) *)
+AppendTo[RedundantPre,{MatrixListWCsdim5[[i,2]][2,1],MatrixListWCsdim5[[i,2]][3,1],MatrixListWCsdim5[[i,2]][3,2]}];
+AppendTo[SubRedundantPre,{MatrixListWCsdim5[[i,2]][2,1]->MatrixListWCsdim5[[i,2]][1,2][t],MatrixListWCsdim5[[i,2]][3,1]->MatrixListWCsdim5[[i,2]][1,3][t],MatrixListWCsdim5[[i,2]][3,2]->MatrixListWCsdim5[[i,2]][2,3][t]}];
+AppendTo[SubRedundantNotPre,{MatrixListWCsdim5[[i,2]][2,1]->MatrixListWCsdim5[[i,2]][1,2],MatrixListWCsdim5[[i,2]][3,1]->MatrixListWCsdim5[[i,2]][1,3],MatrixListWCsdim5[[i,2]][3,2]->MatrixListWCsdim5[[i,2]][2,3]}];
+];
 ];
 
 
@@ -156,13 +169,18 @@ SubRedundantNotPre={};
 
 (* 2F WCs *)
 Do[
-If[MatrixListWCs2F[[i,4]]==2, RedundantAction[2]];
+If[MatrixListWCs2F[[i,4]]==2,RedundantAction[2]];
 ,{i,1,Length[MatrixListWCs2F]}];
 
 (* 4F WCs *)
 Do[
 Switch[MatrixListWCs4F[[i,4]],4,RedundantAction[4],5,RedundantAction[5],6,RedundantAction[6],7,RedundantAction[7],8,RedundantAction[8]];
 ,{i,1,Length[MatrixListWCs4F]}];
+
+(* 2F WCs - dim-5 *)
+Do[
+If[MatrixListWCsdim5[[i,4]]==9,RedundantAction[9]];
+,{i,1,Length[MatrixListWCsdim5]}];
 
 Redundant=Flatten[RedundantPre];
 SubRedundant=Flatten[SubRedundantPre];

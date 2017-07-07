@@ -69,6 +69,7 @@ Do[ReWC[10,i]=rspt0;ImWC[10,i]=rspt0;,{i,1,8}]; (* LL RR *)
 ReWC[11,1]=rspt0;ImWC[11,1]=rspt0; (* LR RL *)
 Do[ReWC[12,i]=rspt0;ImWC[12,i]=rspt0;,{i,1,4}]; (* LR LR *)
 Do[ReWC[13,i]=rspt0;ImWC[13,i]=rspt0;,{i,1,4}]; (* B-violating *)
+ReWC[14,1]=rs0;ImWC[14,1]=rs0; (* dim-5 *)
 (* WET *)
 Do[ReWCWET[1,i]=0;ImWCWET[1,i]=0;,{i,1,8}]; (* BS2 *)
 Do[ReWCWET[2,i]=0;ImWCWET[2,i]=0;,{i,1,15}]; (* BC1 *)
@@ -218,6 +219,11 @@ WC2F[[3,1]]=-WC2F[[1,3]];
 WC2F[[3,2]]=-WC2F[[2,3]];
 WC2F[[3,3]]=0;
 ];
+];
+If[cat==3,(* symmetric 3x3 matrix *)
+WC2F[[2,1]]=WC2F[[1,2]];
+WC2F[[3,1]]=WC2F[[1,3]];
+WC2F[[3,2]]=WC2F[[2,3]];
 ];
 Return[WC2F];
 ];
@@ -749,6 +755,8 @@ If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="WCQQQL",ReWC[13,3]=
 If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="IMWCQQQL",ImWC[13,3]=ReadWC4F[i,8,1];];
 If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="WCDUUE",ReWC[13,4]=ReadWC4F[i,3,0];];
 If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="IMWCDUUE",ImWC[13,4]=ReadWC4F[i,3,1];];
+If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="WCLLPHIPHI",ReWC[14,1]=ReadWC2F[i,3,0];]; (* dim-5 *)
+If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="IMWCLLPHIPHI",ImWC[14,1]=ReadWC2F[i,3,1];];
 ,{i,1,Length[inputWCs]}];
 ];
 
@@ -777,7 +785,8 @@ SMInput={g->Init[g],gp->Init[gp],gs->Init[gs],\[Lambda]->Init[\[Lambda]],m2->Ini
 WCsInput0F={WC[G]->Init[G],WC[Gtilde]->Init[Gtilde],WC[W]->Init[W],WC[Wtilde]->Init[Wtilde],WC[\[CurlyPhi]]->Init[\[CurlyPhi]],WC[\[CurlyPhi]\[EmptySquare]]->Init[\[CurlyPhi]\[EmptySquare]],WC[\[CurlyPhi]D]->Init[\[CurlyPhi]D],WC[\[CurlyPhi]G]->Init[\[CurlyPhi]G],WC[\[CurlyPhi]B]->Init[\[CurlyPhi]B],WC[\[CurlyPhi]W]->Init[\[CurlyPhi]W],WC[\[CurlyPhi]WB]->Init[\[CurlyPhi]WB],WC[\[CurlyPhi]Gtilde]->Init[\[CurlyPhi]Gtilde],WC[\[CurlyPhi]Btilde]->Init[\[CurlyPhi]Btilde],WC[\[CurlyPhi]Wtilde]->Init[\[CurlyPhi]Wtilde],WC[\[CurlyPhi]WtildeB]->Init[\[CurlyPhi]WtildeB]};
 WCsInput2F=Flatten[Table[MatrixListWCs2F[[i,2]][r,s]->Init[MatrixListWCs2F[[i,3]]][[r,s]],{i,1,Length[MatrixListWCs2F]},{r,1,3},{s,1,3}]];
 WCsInput4F=Flatten[Table[MatrixListWCs4F[[i,2]][p,r,s,t]->Init[MatrixListWCs4F[[i,3]]][[p,r,s,t]],{i,1,Length[MatrixListWCs4F]},{p,1,3},{r,1,3},{s,1,3},{t,1,3}]];
-WCsInput=Join[WCsInput0F,WCsInput2F,WCsInput4F];
+WCsInputdim5=Flatten[Table[MatrixListWCsdim5[[i,2]][r,s]->Init[MatrixListWCsdim5[[i,3]]][[r,s]],{i,1,Length[MatrixListWCsdim5]},{r,1,3},{s,1,3}]];
+WCsInput=Join[WCsInput0F,WCsInput2F,WCsInput4F,WCsInputdim5];
 inputPre=Join[SMInput,WCsInput];
 input=Dispatch[inputPre];
 inputcreated=True;
@@ -787,7 +796,8 @@ SMInput={g->Init[g],gp->Init[gp],gs->Init[gs],\[Lambda]->Init[\[Lambda]],m2->Ini
 WCsInput0F={WC[G]->Init[G],WC[Gtilde]->Init[Gtilde],WC[W]->Init[W],WC[Wtilde]->Init[Wtilde],WC[\[CurlyPhi]]->Init[\[CurlyPhi]],WC[\[CurlyPhi]\[EmptySquare]]->Init[\[CurlyPhi]\[EmptySquare]],WC[\[CurlyPhi]D]->Init[\[CurlyPhi]D],WC[\[CurlyPhi]G]->Init[\[CurlyPhi]G],WC[\[CurlyPhi]B]->Init[\[CurlyPhi]B],WC[\[CurlyPhi]W]->Init[\[CurlyPhi]W],WC[\[CurlyPhi]WB]->Init[\[CurlyPhi]WB],WC[\[CurlyPhi]Gtilde]->Init[\[CurlyPhi]Gtilde],WC[\[CurlyPhi]Btilde]->Init[\[CurlyPhi]Btilde],WC[\[CurlyPhi]Wtilde]->Init[\[CurlyPhi]Wtilde],WC[\[CurlyPhi]WtildeB]->Init[\[CurlyPhi]WtildeB]};
 WCsInput2F=Flatten[Table[MatrixListWCs2F[[i,2]][r,s]->Init[MatrixListWCs2F[[i,3]]][[r,s]],{i,1,Length[MatrixListWCs2F]},{r,1,3},{s,1,3}]];
 WCsInput4F=Flatten[Table[MatrixListWCs4F[[i,2]][p,r,s,t]->Init[MatrixListWCs4F[[i,3]]][[p,r,s,t]],{i,1,Length[MatrixListWCs4F]},{p,1,3},{r,1,3},{s,1,3},{t,1,3}]];
-WCsInput=Join[WCsInput0F,WCsInput2F,WCsInput4F];
+WCsInputdim5=Flatten[Table[MatrixListWCsdim5[[i,2]][r,s]->Init[MatrixListWCsdim5[[i,3]]][[r,s]],{i,1,Length[MatrixListWCsdim5]},{r,1,3},{s,1,3}]];
+WCsInput=Join[WCsInput0F,WCsInput2F,WCsInput4F,WCsInputdim5];
 inputPre=Join[SMInput,WCsInput];
 input=Dispatch[inputPre];
 inputcreated=True;
@@ -979,6 +989,12 @@ Init[qqql]=ReWC[13,3]+I ImWC[13,3];
 Init[duue]=ReWC[13,4]+I ImWC[13,4];
 ];
 
+If[CPV==0,
+Init[ll\[CurlyPhi]\[CurlyPhi]]=ReWC[14,1];
+,
+Init[ll\[CurlyPhi]\[CurlyPhi]]=ReWC[14,1]+I ImWC[14,1];
+];
+
 CreateInputSubSMEFT;
 
 ];
@@ -1020,9 +1036,9 @@ ReadInputFiles[optionsFile_,WCsFile_,SMFile_]:=Block[{},
 
 Initialize;
 
-inputOptions=Import[optionsFile];
-inputWCs=Import[WCsFile];
-inputSM=Import[SMFile];
+inputOptions=Import[optionsFile,"Table"];
+inputWCs=Import[WCsFile,"Table"];
+inputSM=Import[SMFile,"Table"];
 
 ReadOptionsFile;
 ReadSMFile;
@@ -1039,8 +1055,8 @@ ReadInputFiles[optionsFile_,WCsFile_]:=Block[{},
 
 Initialize;
 
-inputOptions=Import[optionsFile];
-inputWCs=Import[WCsFile];
+inputOptions=Import[optionsFile,"Table"];
+inputWCs=Import[WCsFile,"Table"];
 
 ReadOptionsFile;
 

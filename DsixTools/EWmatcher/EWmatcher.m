@@ -51,6 +51,17 @@ phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
 RotRPre[[i,All]]=CC[phase] RotRPre[[i,All]];
 ,{i,1,dim}];
 
+(* Special for symmetric matrices *)
+(* Absorbe phases in R eigenvectors again *)
+If[Abs[RotLPre]==Abs[RotRPre],
+MatrixPhase=RotRPre.mat.Transpose[RotRPre];
+Do[
+phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
+RotRPre[[i,All]]=Sqrt[CC[phase]] RotRPre[[i,All]];
+,{i,1,dim}];
+RotLPre=RotRPre;
+];
+
 (* Transpose *)
 RotL=Transpose[RotLPre];
 RotR=Transpose[RotRPre];

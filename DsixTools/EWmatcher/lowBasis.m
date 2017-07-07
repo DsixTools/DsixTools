@@ -61,6 +61,30 @@ EL=Biunitary[me,3][[2]];
 ER=Biunitary[me,3][[3]];
 
 
+(* Neutrinos *)
+
+Cll\[CurlyPhi]\[CurlyPhi]EW=Table[LL\[CurlyPhi]\[CurlyPhi][i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
+
+m\[Nu]=v^2/(2HIGHSCALE)Cll\[CurlyPhi]\[CurlyPhi]EW;
+
+m\[Nu]=SetPrecision[m\[Nu],10];
+
+m\[Nu]diag=Biunitary[m\[Nu],3][[1]];
+NL=Biunitary[m\[Nu],3][[3]];
+NR=NL;
+
+
+(* Useful definitions *)
+ULh=H[UL];
+URh=H[UR];
+DLh=H[DL];
+DRh=H[DR];
+ELh=H[EL];
+ERh=H[ER];
+NLh=H[NL];
+NRh=H[NR];
+
+
 (* CKM matrix *)
 CKM=ULh.DL;
 gen[u]=1;
@@ -71,6 +95,18 @@ gen[s]=2;
 gen[b]=3;
 VCKM[a_,b_]:=CKM[[gen[a],gen[b]]];
 VV[a_,b_,c_,d_]:=CC[VCKM[a,b]] VCKM[c,d];
+
+
+(* PMNS matrix *)
+PMNS=NLh.EL;
+gen[\[Nu]1]=1;
+gen[\[Nu]2]=2;
+gen[\[Nu]3]=3;
+gen[e]=1;
+gen[\[Mu]]=2;
+gen[\[Tau]]=3;
+VPMNS[a_,b_]:=PMNS[[gen[a],gen[b]]];
+VVPMNS[a_,b_,c_,d_]:=CC[PMNS[a,b]] PMNS[c,d];
 
 
 (* \[Psi]^2\[CurlyPhi]^3 *)
@@ -139,25 +175,20 @@ CqqqlEW=Table[QQQL[i,j,k,l],{i,1,3},{j,1,3},{k,1,3},{l,1,3}]//inputEWmatcher;
 CduueEW=Table[DUUE[i,j,k,l],{i,1,3},{j,1,3},{k,1,3},{l,1,3}]//inputEWmatcher;
 
 
-(* Useful definitions *)
-ULh=H[UL];
-URh=H[UR];
-DLh=H[DL];
-DRh=H[DR];
-ELh=H[EL];
-ERh=H[ER];
+(* dim-5 *)
+(* Already fixed above *)
 
 
 (* WCs *)
 
 (* \[Psi]^2\[CurlyPhi]^3 *)
-Ce\[CurlyPhi]tilde=Ce\[CurlyPhi]EW;
 Cu\[CurlyPhi]tilde=Sum[Table[Cu\[CurlyPhi]EW[[m,n]]ULh[[i,m]]UR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 Cd\[CurlyPhi]tilde=Sum[Table[Cd\[CurlyPhi]EW[[m,n]]DLh[[i,m]]DR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
+Ce\[CurlyPhi]tilde=Sum[Table[Ce\[CurlyPhi]EW[[m,n]]ELh[[i,m]]ER[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 
 (* \[Psi]^2X \[CurlyPhi] *)
-CeWtilde=CeWEW;
-CeBtilde=CeBEW;
+CeWtilde=Sum[Table[CeWEW[[m,n]]ELh[[i,m]]ER[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
+CeBtilde=Sum[Table[CeBEW[[m,n]]ELh[[i,m]]ER[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 CuGtilde=Sum[Table[CuGEW[[m,n]]ULh[[i,m]]UR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 CuWtilde=Sum[Table[CuWEW[[m,n]]ULh[[i,m]]UR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 CuBtilde=Sum[Table[CuBEW[[m,n]]ULh[[i,m]]UR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
@@ -166,9 +197,9 @@ CdWtilde=Sum[Table[CdWEW[[m,n]]DLh[[i,m]]DR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1
 CdBtilde=Sum[Table[CdBEW[[m,n]]DLh[[i,m]]DR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 
 (* \[Psi]^2\[CurlyPhi]^2D *)
-C\[CurlyPhi]l1tilde=C\[CurlyPhi]l1EW;
-C\[CurlyPhi]l3tilde=C\[CurlyPhi]l3EW;
-C\[CurlyPhi]etilde=C\[CurlyPhi]eEW;
+C\[CurlyPhi]l1tilde=Sum[Table[C\[CurlyPhi]l1EW[[m,n]]ELh[[i,m]]EL[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
+C\[CurlyPhi]l3tilde=Sum[Table[C\[CurlyPhi]l3EW[[m,n]]ELh[[i,m]]EL[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
+C\[CurlyPhi]etilde=Sum[Table[C\[CurlyPhi]eEW[[m,n]]ERh[[i,m]]ER[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 C\[CurlyPhi]q1tilde=Sum[Table[C\[CurlyPhi]q1EW[[m,n]]DLh[[i,m]]DL[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 C\[CurlyPhi]q3tilde=Sum[Table[C\[CurlyPhi]q3EW[[m,n]]DLh[[i,m]]DL[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 C\[CurlyPhi]utilde=Sum[Table[C\[CurlyPhi]uEW[[m,n]]URh[[i,m]]UR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
@@ -176,47 +207,51 @@ C\[CurlyPhi]dtilde=Sum[Table[C\[CurlyPhi]dEW[[m,n]]DRh[[i,m]]DR[[n,j]],{i,1,3},{
 C\[CurlyPhi]udtilde=Sum[Table[C\[CurlyPhi]udEW[[m,n]]URh[[i,m]]DR[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 
 (* LL LL *)
-Clltilde=CllEW;
+Clltilde=Sum[Table[CllEW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]ELh[[k,r]]EL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqq1tilde=Sum[Table[Cqq1EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]DLh[[k,r]]DL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqq3tilde=Sum[Table[Cqq3EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]DLh[[k,r]]DL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
-Clq1tilde=Sum[Table[Clq1EW[[i,j,m,n]]DLh[[k,m]]DL[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
-Clq3tilde=Sum[Table[Clq3EW[[i,j,m,n]]DLh[[k,m]]DL[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
+Clq1tilde=Sum[Table[Clq1EW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]DLh[[k,r]]DL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Clq3tilde=Sum[Table[Clq3EW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]DLh[[k,r]]DL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 
 (* RR RR *)
-Ceetilde=CeeEW;
+Ceetilde=Sum[Table[CeeEW[[p,q,r,s]]ERh[[i,p]]ER[[q,j]]ERh[[k,r]]ER[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cuutilde=Sum[Table[CuuEW[[p,q,r,s]]URh[[i,p]]UR[[q,j]]URh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cddtilde=Sum[Table[CddEW[[p,q,r,s]]DRh[[i,p]]DR[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
-Ceutilde=Sum[Table[CeuEW[[i,j,m,n]]URh[[k,m]]UR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
-Cedtilde=Sum[Table[CedEW[[i,j,m,n]]DRh[[k,m]]DR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
+Ceutilde=Sum[Table[CeuEW[[p,q,r,s]]ERh[[i,p]]ER[[q,j]]URh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cedtilde=Sum[Table[CedEW[[p,q,r,s]]ERh[[i,p]]ER[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cud1tilde=Sum[Table[Cud1EW[[p,q,r,s]]URh[[i,p]]UR[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cud8tilde=Sum[Table[Cud8EW[[p,q,r,s]]URh[[i,p]]UR[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 
 (* LL RR *)
-Cletilde=CleEW;
-Clutilde=Sum[Table[CluEW[[i,j,m,n]]URh[[k,m]]UR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
-Cldtilde=Sum[Table[CldEW[[i,j,m,n]]DRh[[k,m]]DR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
-Cqetilde=Sum[Table[CqeEW[[m,n,k,l]]DLh[[i,m]]DL[[n,j]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
+Cletilde=Sum[Table[CleEW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]ERh[[k,r]]ER[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Clutilde=Sum[Table[CluEW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]URh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cldtilde=Sum[Table[CldEW[[p,q,r,s]]ELh[[i,p]]EL[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cqetilde=Sum[Table[CqeEW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]ERh[[k,r]]ER[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqu1tilde=Sum[Table[Cqu1EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]URh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqu8tilde=Sum[Table[Cqu8EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]URh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqd1tilde=Sum[Table[Cqd1EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cqd8tilde=Sum[Table[Cqd8EW[[p,q,r,s]]DLh[[i,p]]DL[[q,j]]DRh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 
 (* LR RL *)
-Cledqtilde=Sum[Table[CledqEW[[i,j,m,n]]DRh[[k,m]]DL[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
+Cledqtilde=Sum[Table[CledqEW[[p,q,r,s]]ELh[[i,p]]ER[[q,j]]DRh[[k,r]]DL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 
 (* LR LR *)
 Cquqd1tilde=Sum[Table[Cquqd1EW[[p,q,r,s]]ULh[[i,p]]UR[[q,j]]DLh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 Cquqd8tilde=Sum[Table[Cquqd8EW[[p,q,r,s]]ULh[[i,p]]UR[[q,j]]DLh[[k,r]]DR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
-Clequ1tilde=Sum[Table[Clequ1EW[[i,j,m,n]]ULh[[k,m]]UR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
-Clequ3tilde=Sum[Table[Clequ3EW[[i,j,m,n]]ULh[[k,m]]UR[[n,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{m,1,3},{n,1,3}];
+Clequ1tilde=Sum[Table[Clequ1EW[[p,q,r,s]]ELh[[i,p]]ER[[q,j]]ULh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Clequ3tilde=Sum[Table[Clequ3EW[[p,q,r,s]]ELh[[i,p]]ER[[q,j]]ULh[[k,r]]UR[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
 
 (* B-violating *)
-Cduqltilde=Sum[Table[CduqlEW[[p,q,r,l]]DR[[p,i]]UR[[q,j]]DL[[r,k]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3}];
-Cqquetilde=Sum[Table[CqqueEW[[p,q,r,l]]DL[[p,i]]UL[[q,j]]UR[[r,k]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3}];
-Cqqqltilde=Sum[Table[CqqqlEW[[p,q,r,l]]DL[[p,i]]DL[[q,j]]UL[[r,k]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3}];
-Cduuetilde=Sum[Table[CduueEW[[p,q,r,l]]DR[[p,i]]UR[[q,j]]UR[[r,k]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3}];
+Cduqltilde=Sum[Table[CduqlEW[[p,q,r,s]]DR[[p,i]]UR[[q,j]]DL[[r,k]]NL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cqquetilde=Sum[Table[CqqueEW[[p,q,r,s]]DL[[p,i]]UL[[q,j]]UR[[r,k]]ER[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cqqqltilde=Sum[Table[CqqqlEW[[p,q,r,s]]DL[[p,i]]DL[[q,j]]UL[[r,k]]EL[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+Cduuetilde=Sum[Table[CduueEW[[p,q,r,s]]DR[[p,i]]UR[[q,j]]UR[[r,k]]ER[[s,l]],{i,1,3},{j,1,3},{k,1,3},{l,1,3}],{p,1,3},{q,1,3},{r,1,3},{s,1,3}];
+
+
+(* dim-5 *)
+Cll\[CurlyPhi]\[CurlyPhi]tilde=Sum[Table[Cll\[CurlyPhi]\[CurlyPhi]EW[[m,n]]EL[[m,i]]EL[[n,j]],{i,1,3},{j,1,3}],{m,1,3},{n,1,3}];
 
 
 (* Array for output *)
-ToMassBasis={U\[CurlyPhi][r_,s_]:>Cu\[CurlyPhi]tilde[[r,s]],D\[CurlyPhi][r_,s_]:>Cd\[CurlyPhi]tilde[[r,s]],E\[CurlyPhi][r_,s_]:>Ce\[CurlyPhi]tilde[[r,s]],EW[r_,s_]:>CeWtilde[[r,s]],EB[r_,s_]:>CeBtilde[[r,s]],UG[r_,s_]:>CuGtilde[[r,s]],UW[r_,s_]:>CuWtilde[[r,s]],UB[r_,s_]:>CuBtilde[[r,s]],DG[r_,s_]:>CdGtilde[[r,s]],DW[r_,s_]:>CdWtilde[[r,s]],DB[r_,s_]:>CdBtilde[[r,s]],\[CurlyPhi]L1[r_,s_]:>C\[CurlyPhi]l1tilde[[r,s]],\[CurlyPhi]L3[r_,s_]:>C\[CurlyPhi]l3tilde[[r,s]],\[CurlyPhi]E[r_,s_]:>C\[CurlyPhi]etilde[[r,s]],\[CurlyPhi]Q1[r_,s_]:>C\[CurlyPhi]q1tilde[[r,s]],\[CurlyPhi]Q3[r_,s_]:>C\[CurlyPhi]q3tilde[[r,s]],\[CurlyPhi]U[r_,s_]:>C\[CurlyPhi]utilde[[r,s]],\[CurlyPhi]D[r_,s_]:>C\[CurlyPhi]dtilde[[r,s]],\[CurlyPhi]UD[r_,s_]:>C\[CurlyPhi]udtilde[[r,s]],LL[p_,r_,s_,t_]:>Clltilde[[p,r,s,t]],QQ1[p_,r_,s_,t_]:>Cqq1tilde[[p,r,s,t]],QQ3[p_,r_,s_,t_]:>Cqq3tilde[[p,r,s,t]],LQ1[p_,r_,s_,t_]:>Clq1tilde[[p,r,s,t]],LQ3[p_,r_,s_,t_]:>Clq3tilde[[p,r,s,t]],EE[p_,r_,s_,t_]:>Ceetilde[[p,r,s,t]],UU[p_,r_,s_,t_]:>Cuutilde[[p,r,s,t]],DD[p_,r_,s_,t_]:>Cddtilde[[p,r,s,t]],EU[p_,r_,s_,t_]:>Ceutilde[[p,r,s,t]],ED[p_,r_,s_,t_]:>Cedtilde[[p,r,s,t]],UD1[p_,r_,s_,t_]:>Cud1tilde[[p,r,s,t]],UD8[p_,r_,s_,t_]:>Cud8tilde[[p,r,s,t]],LE[p_,r_,s_,t_]:>Cletilde[[p,r,s,t]],LU[p_,r_,s_,t_]:>Clutilde[[p,r,s,t]],LD[p_,r_,s_,t_]:>Cldtilde[[p,r,s,t]],QE[p_,r_,s_,t_]:>Cqetilde[[p,r,s,t]],QU1[p_,r_,s_,t_]:>Cqu1tilde[[p,r,s,t]],QU8[p_,r_,s_,t_]:>Cqu8tilde[[p,r,s,t]],QD1[p_,r_,s_,t_]:>Cqd1tilde[[p,r,s,t]],QD8[p_,r_,s_,t_]:>Cqd8tilde[[p,r,s,t]],LEDQ[p_,r_,s_,t_]:>Cledqtilde[[p,r,s,t]],QUQD1[p_,r_,s_,t_]:>Cquqd1tilde[[p,r,s,t]],QUQD8[p_,r_,s_,t_]:>Cquqd8tilde[[p,r,s,t]],LEQU1[p_,r_,s_,t_]:>Clequ1tilde[[p,r,s,t]],LEQU3[p_,r_,s_,t_]:>Clequ3tilde[[p,r,s,t]],DUQL[p_,r_,s_,t_]:>Cduqltilde[[p,r,s,t]],QQUE[p_,r_,s_,t_]:>Cqquetilde[[p,r,s,t]],QQQL[p_,r_,s_,t_]:>Cqqqltilde[[p,r,s,t]],DUUE[p_,r_,s_,t_]:>Cduuetilde[[p,r,s,t]]};
+ToMassBasis={U\[CurlyPhi][r_,s_]:>Cu\[CurlyPhi]tilde[[r,s]],D\[CurlyPhi][r_,s_]:>Cd\[CurlyPhi]tilde[[r,s]],E\[CurlyPhi][r_,s_]:>Ce\[CurlyPhi]tilde[[r,s]],EW[r_,s_]:>CeWtilde[[r,s]],EB[r_,s_]:>CeBtilde[[r,s]],UG[r_,s_]:>CuGtilde[[r,s]],UW[r_,s_]:>CuWtilde[[r,s]],UB[r_,s_]:>CuBtilde[[r,s]],DG[r_,s_]:>CdGtilde[[r,s]],DW[r_,s_]:>CdWtilde[[r,s]],DB[r_,s_]:>CdBtilde[[r,s]],\[CurlyPhi]L1[r_,s_]:>C\[CurlyPhi]l1tilde[[r,s]],\[CurlyPhi]L3[r_,s_]:>C\[CurlyPhi]l3tilde[[r,s]],\[CurlyPhi]E[r_,s_]:>C\[CurlyPhi]etilde[[r,s]],\[CurlyPhi]Q1[r_,s_]:>C\[CurlyPhi]q1tilde[[r,s]],\[CurlyPhi]Q3[r_,s_]:>C\[CurlyPhi]q3tilde[[r,s]],\[CurlyPhi]U[r_,s_]:>C\[CurlyPhi]utilde[[r,s]],\[CurlyPhi]D[r_,s_]:>C\[CurlyPhi]dtilde[[r,s]],\[CurlyPhi]UD[r_,s_]:>C\[CurlyPhi]udtilde[[r,s]],LL[p_,r_,s_,t_]:>Clltilde[[p,r,s,t]],QQ1[p_,r_,s_,t_]:>Cqq1tilde[[p,r,s,t]],QQ3[p_,r_,s_,t_]:>Cqq3tilde[[p,r,s,t]],LQ1[p_,r_,s_,t_]:>Clq1tilde[[p,r,s,t]],LQ3[p_,r_,s_,t_]:>Clq3tilde[[p,r,s,t]],EE[p_,r_,s_,t_]:>Ceetilde[[p,r,s,t]],UU[p_,r_,s_,t_]:>Cuutilde[[p,r,s,t]],DD[p_,r_,s_,t_]:>Cddtilde[[p,r,s,t]],EU[p_,r_,s_,t_]:>Ceutilde[[p,r,s,t]],ED[p_,r_,s_,t_]:>Cedtilde[[p,r,s,t]],UD1[p_,r_,s_,t_]:>Cud1tilde[[p,r,s,t]],UD8[p_,r_,s_,t_]:>Cud8tilde[[p,r,s,t]],LE[p_,r_,s_,t_]:>Cletilde[[p,r,s,t]],LU[p_,r_,s_,t_]:>Clutilde[[p,r,s,t]],LD[p_,r_,s_,t_]:>Cldtilde[[p,r,s,t]],QE[p_,r_,s_,t_]:>Cqetilde[[p,r,s,t]],QU1[p_,r_,s_,t_]:>Cqu1tilde[[p,r,s,t]],QU8[p_,r_,s_,t_]:>Cqu8tilde[[p,r,s,t]],QD1[p_,r_,s_,t_]:>Cqd1tilde[[p,r,s,t]],QD8[p_,r_,s_,t_]:>Cqd8tilde[[p,r,s,t]],LEDQ[p_,r_,s_,t_]:>Cledqtilde[[p,r,s,t]],QUQD1[p_,r_,s_,t_]:>Cquqd1tilde[[p,r,s,t]],QUQD8[p_,r_,s_,t_]:>Cquqd8tilde[[p,r,s,t]],LEQU1[p_,r_,s_,t_]:>Clequ1tilde[[p,r,s,t]],LEQU3[p_,r_,s_,t_]:>Clequ3tilde[[p,r,s,t]],DUQL[p_,r_,s_,t_]:>Cduqltilde[[p,r,s,t]],QQUE[p_,r_,s_,t_]:>Cqquetilde[[p,r,s,t]],QQQL[p_,r_,s_,t_]:>Cqqqltilde[[p,r,s,t]],DUUE[p_,r_,s_,t_]:>Cduuetilde[[p,r,s,t]],LL\[CurlyPhi]\[CurlyPhi][r_,s_]:>Cll\[CurlyPhi]\[CurlyPhi]tilde[[r,s]]};
 WCsMB=Parameters/.ToMassBasis;

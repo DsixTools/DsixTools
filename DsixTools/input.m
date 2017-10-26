@@ -81,7 +81,7 @@ Do[ReWCWET[5,i]=0;ImWCWET[5,i]=0;,{i,1,30}]; (* BS1SL *)
 
 
 (* Global initialization *)
-Initialize:=Block[{},
+InitializeInput:=Block[{},
 
 InitializeOptions;
 InitializeSM;
@@ -104,7 +104,7 @@ tLOW=Log[10,LOWSCALE];
 ];
 ReadOptions[i_]:=Block[{k},
 k=1;
-While[i+k<=Length[inputOptions]&&inputOptions[[i+k,1]]!="Block",
+While[i+k<=Length[inputOptions]&&inputOptions[[i+k,1]]!="Block"&&inputOptions[[i+k,1]]!="BLOCK",
 If[inputOptions[[i+k,1]]==1,CPV=inputOptions[[i+k,2]]];
 If[inputOptions[[i+k,1]]==2,ReadRGEs=inputOptions[[i+k,2]]];
 If[inputOptions[[i+k,1]]==3,RGEsMethod=inputOptions[[i+k,2]]];
@@ -133,7 +133,7 @@ If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="OPTIONS",ReadOption
 
 ReadGauge[i_]:=Block[{k},
 k=1;
-While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block",
+While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block"&&inputSM[[i+k,1]]!="BLOCK",
 If[inputSM[[i+k,1]]==1,GAUGE[1]=inputSM[[i+k,2]]];
 If[inputSM[[i+k,1]]==2,GAUGE[2]=inputSM[[i+k,2]]];
 If[inputSM[[i+k,1]]==3,GAUGE[3]=inputSM[[i+k,2]]];
@@ -142,7 +142,7 @@ k++;
 ];
 ReadScalar[i_]:=Block[{k},
 k=1;
-While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block",
+While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block"&&inputSM[[i+k,1]]!="BLOCK",
 If[inputSM[[i+k,1]]==1,SCALAR[1]=inputSM[[i+k,2]]];
 If[inputSM[[i+k,1]]==2,SCALAR[2]=inputSM[[i+k,2]]];
 k++;
@@ -151,7 +151,7 @@ k++;
 ReadYukawa[i_]:=Block[{k,yukawa},
 yukawa=Table[0,{m,1,3},{n,1,3}];
 k=1;
-While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block",
+While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block"&&inputSM[[i+k,1]]!="BLOCK",
 Do[If[inputSM[[i+k,1]]==r&&inputSM[[i+k,2]]==s,yukawa[[r,s]]=inputSM[[i+k,3]]];,{r,1,3},{s,1,3}];
 k++;
 ];
@@ -159,7 +159,7 @@ Return[yukawa];
 ];
 ReadTheta[i_]:=Block[{k},
 k=1;
-While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block",
+While[i+k<=Length[inputSM]&&inputSM[[i+k,1]]!="Block"&&inputSM[[i+k,1]]!="BLOCK",
 If[inputSM[[i+k,1]]==1,THETA[1]=inputSM[[i+k,2]]];
 If[inputSM[[i+k,1]]==2,THETA[2]=inputSM[[i+k,2]]];
 If[inputSM[[i+k,1]]==3,THETA[3]=inputSM[[i+k,2]]];
@@ -193,7 +193,7 @@ nOp[2]=1;
 nOp[3]=2;
 nOp[4]=8;
 k=1;
-While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block",
+While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block"&&inputWCs[[i+k,1]]!="BLOCK",
 Do[If[inputWCs[[i+k,1]]==r,WC[cat,r]=inputWCs[[i+k,2]]];,{r,1,nOp[cat]}];
 k++;
 ];
@@ -202,7 +202,7 @@ k++;
 ReadWC2F[i_,cat_,ReIm_]:=Block[{k,WC2F},
 WC2F=Table[0,{m,1,3},{n,1,3}];
 k=1;
-While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block",
+While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block"&&inputWCs[[i+k,1]]!="BLOCK",
 Do[If[inputWCs[[i+k,1]]==r&&inputWCs[[i+k,2]]==s,WC2F[[r,s]]=inputWCs[[i+k,3]]];,{r,1,3},{s,1,3}];
 k++;
 ];
@@ -231,7 +231,7 @@ Return[WC2F];
 ReadWC4F[i_,cat_,ReIm_]:=Block[{k,WC4F},
 WC4F=Table[0,{p,1,3},{r,1,3},{s,1,3},{t,1,3}];
 k=1;
-While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block",
+While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block"&&inputWCs[[i+k,1]]!="BLOCK",
 Do[If[inputWCs[[i+k,1]]==p&&inputWCs[[i+k,2]]==r&&inputWCs[[i+k,3]]==s&&inputWCs[[i+k,4]]==t,WC4F[[p,r,s,t]]=inputWCs[[i+k,5]]];,{p,1,3},{r,1,3},{s,1,3},{t,1,3}];
 k++;
 ];
@@ -639,7 +639,7 @@ nOpWET[3]=80;
 nOpWET[4]=4;
 nOpWET[5]=30;
 k=1;
-While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block",
+While[i+k<=Length[inputWCs]&&inputWCs[[i+k,1]]!="Block"&&inputWCs[[i+k,1]]!="BLOCK",
 Do[If[inputWCs[[i+k,1]]==r,
 If[ReIm==0, (* Real part *)
 ReWCWET[cat,r]=inputWCs[[i+k,2]];
@@ -1034,7 +1034,7 @@ CreateInputSubWET;
 
 ReadInputFiles[optionsFile_,WCsFile_,SMFile_]:=Block[{},
 
-Initialize;
+InitializeInput;
 
 inputOptions=Import[optionsFile,"Table"];
 inputWCs=Import[WCsFile,"Table"];
@@ -1053,7 +1053,7 @@ GenerateInputSMEFT;
 
 ReadInputFiles[optionsFile_,WCsFile_]:=Block[{},
 
-Initialize;
+InitializeInput;
 
 inputOptions=Import[optionsFile,"Table"];
 inputWCs=Import[WCsFile,"Table"];
@@ -1064,6 +1064,17 @@ WCsType="WET";
 MyPrint["Input: "<>WCsType<>" Wilson coefficients"];
 ReadWETWCsFile;
 GenerateInputWET;
+
+];
+
+
+ReadInputFiles[optionsFile_]:=Block[{},
+
+InitializeInput;
+
+inputOptions=Import[optionsFile,"Table"];
+
+ReadOptionsFile;
 
 ];
 

@@ -58,7 +58,7 @@ TurnOnMessages::usage="TurnOnMessages turns on the messages written by DsixTools
 TurnOffMessages::usage="TurnOffMessages turns off the messages written by DsixTools";
 
 
-ReadInputFiles::usage="ReadInputFiles[options_file,WCsInput_file,{SMInput_file}] reads all input files";
+ReadInputFiles::usage="ReadInputFiles[options_file,{WCsInput_file},{SMInput_file}] reads all input files";
 
 
 WriteInputFiles ::usage="WriteInputFiles[options_file,WCsInput_file,{SMInput_file},data] creates input files with the parameter values in data";
@@ -92,6 +92,9 @@ LoadBetaFunctions::usage="LoadBetaFunctions constructs the SMEFT \[Beta] functio
 
 
 RunRGEsSMEFT::usage="RunRGEsSMEFT runs the SMEFT RGEs";
+
+
+RunRGEsSMEFTpython::usage="RunRGEsSMEFT[WCsInput_file,SMInput_file] runs the SMEFT RGEs using the python-smeftrunner package";
 
 
 ExportSMEFTrunner::usage="ExportSMEFTrunner exports the SMEFTrunner results to an output file";
@@ -212,7 +215,7 @@ Init[CBS1[u][1]],Init[CBS1[u][2]],Init[CBS1[u][3]],Init[CBS1[u][4]],Init[CBS1[u]
 {outSMEFTrunner,dataOutput,outname,ToMassBasis,WCsMB,PrintMessages};
 
 
-DsixToolsVersion="1.0.1";
+DsixToolsVersion="1.1.1";
 
 
 Print[StyleForm["DsixTools ","Title",FontSize->26,Bold],StyleForm[DsixToolsVersion,"Title",FontSize->26,Bold]];

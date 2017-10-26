@@ -122,6 +122,32 @@ outSMEFTrunner=Var/.run;
 ];
 
 
+(* We use the python-smeftrunner package for the resolution of the RGEs *)
+
+
+RunRGEsSMEFTpython[optionsFile_,WCsFile_,SMFile_]:=Block[{},
+
+SMEFTrunner=False;
+
+(* We read the options file to get the values for HIGHSCALE and LOWSCALE *)
+ReadInputFiles[optionsFile];
+
+(* Mac users might need to import the terminal PATH to be able to run smeftrunner-cli *)
+If[$OperatingSystem=="MacOSX",SetEnvironment["PATH"->Import["!source ~/.bash_profile; echo $PATH"<>":/usr/local/bin","Text"]];];
+
+MyPrint["Running"];
+Print[StyleForm["Using the python-smeftrunner package by Xuanyou Pan and David Straub",FontSize->16]];
+Print[StyleForm["Website: https://github.com/DsixTools/python-smeftrunner",FontSize->16]];
+Run["smeftrunner-cli "<>ToString[HIGHSCALE]<>" "<>ToString[LOWSCALE]<>" "<>SMFile<>" "<>WCsFile<>" --output Output_SMEFTrunner.dat"];
+MyPrint["Running finished!"];
+
+(* The results must be imported back to Mathematica *)
+ReadInputFiles[optionsFile,"Output_SMEFTrunner.dat","Output_SMEFTrunner.dat"];
+outSMEFTrunner=Parameters/.input;
+
+];
+
+
 ExportSMEFTrunner:=Block[{},
 
 If[exportSMEFTrunner==1,

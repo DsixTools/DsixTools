@@ -38,7 +38,7 @@ Please submit bugs and feature request using Github's issue system, or send us a
 ## Contributors
 
 - Alejandro Celis (Alejandro.Celis@physik.uni-muenchen.de)
-- Javier Fuentes-Martin (Javier.Fuentes@ific.uv.es)
+- Javier Fuentes-Martin (fuentes@physik.uzh.ch)
 - Avelino Vicente (Avelino.Vicente@ific.uv.es)
 - Javier Virto (jvirto@mit.edu)
 

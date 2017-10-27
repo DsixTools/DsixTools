@@ -64,7 +64,7 @@ ReadInputFiles::usage="ReadInputFiles[options_file,{WCsInput_file},{SMInput_file
 WriteInputFiles ::usage="WriteInputFiles[options_file,WCsInput_file,{SMInput_file},data] creates input files with the parameter values in data";
 
 
-WriteAndReadInputFiles::usage="WriteAndReadInputFilesSMEFT[options_file,WCsInput_file,{SMInput_file}] writes data into the input files and then reads them";
+WriteAndReadInputFiles::usage="WriteAndReadInputFiles[options_file,WCsInput_file,{SMInput_file}] writes data into the input files and then reads them";
 
 
 NewInput::usage="NewInput[parameter,newvalue,dispatch] replaces the current input dispatch by a new one in which parameter \[Rule] newvalue";

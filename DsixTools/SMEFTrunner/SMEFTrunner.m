@@ -133,7 +133,11 @@ SMEFTrunner=False;
 ReadInputFiles[optionsFile];
 
 (* Mac users might need to import the terminal PATH to be able to run smeftrunner-cli *)
-If[$OperatingSystem=="MacOSX",SetEnvironment["PATH"->Import["!source ~/.bash_profile; echo $PATH"<>":/usr/local/bin","Text"]];];
+If[$OperatingSystem=="MacOSX",If[StringQ[newPATH],
+SetEnvironment["PATH"->newPATH];
+,
+SetEnvironment["PATH"->Import["!source ~/.bash_profile; echo $PATH"<>":/usr/local/bin","Text"]];];
+];
 
 MyPrint["Running"];
 Print[StyleForm["Using the python-smeftrunner package by Xuanyou Pan and David Straub",FontSize->16]];

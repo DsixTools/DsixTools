@@ -145,7 +145,7 @@
 \[Beta][eB]=1/4(151/3gp^2-9g^2)WC[eB]-3/2g gp WC[eW]-(3/2g(WC[\[CurlyPhi]WB]+I iCPV WC[\[CurlyPhi]WtildeB])-3gp(WC[\[CurlyPhi]B]+I iCPV WC[\[CurlyPhi]Btilde]))Ge+10gp Clequ3Guc[rspt,pt]+CeBGehGe+2GeGehCeB+\[Gamma]H WC[eB]+\[Gamma]lCeB+CeB\[Gamma]e;
 
 
-\[Beta][uG]=-1/36(81g^2+19gp^2+204gs^2)WC[uG]+6g gs WC[uW]+10/3gp gs WC[uB]-gs(4(WC[\[CurlyPhi]G]+I iCPV WC[\[CurlyPhi]Gtilde])+9gs(WC[G]+I iCPV WC[Gtilde]))Gu-gs(Cquqd1Gdc[psrt,pt]-1/6Cquqd8Gdc[psrt,pt])+2GuGuhCuG-2GdGdhCuG-CdGGdhGu+CuGGuhGu+\[Gamma]H WC[uG]+\[Gamma]qCuG+CuG\[Gamma]u;
+\[Beta][uG]=-1/36(81g^2+19gp^2+204gs^2)WC[uG]+6g gs WC[uW]+10/3gp gs WC[uB]-gs(4(WC[\[CurlyPhi]G]+I iCPV WC[\[CurlyPhi]Gtilde])-9gs(WC[G]+I iCPV WC[Gtilde]))Gu-gs(Cquqd1Gdc[psrt,pt]-1/6Cquqd8Gdc[psrt,pt])+2GuGuhCuG-2GdGdhCuG-CdGGdhGu+CuGGuhGu+\[Gamma]H WC[uG]+\[Gamma]qCuG+CuG\[Gamma]u;
 
 
 \[Beta][uW]=-1/36(33g^2+19gp^2-96gs^2)WC[uW]+8/3g gs WC[uG]-1/6g gp WC[uB]-(g(WC[\[CurlyPhi]W]+I iCPV WC[\[CurlyPhi]Wtilde])-5/6gp(WC[\[CurlyPhi]WB]+I iCPV WC[\[CurlyPhi]WtildeB]))Gu+g/4(Cquqd1Gdc[psrt,pt]+4/3Cquqd8Gdc[psrt,pt])-2g Clequ3Gec[ptrs,tp]+2GdGdhCuW-CdWGdhGu+CuWGuhGu+\[Gamma]H WC[uW]+\[Gamma]qCuW+CuW\[Gamma]u;
@@ -154,7 +154,7 @@
 \[Beta][uB]=-1/36(81g^2-313gp^2-96gs^2)WC[uB]+40/9gp gs WC[uG]-1/2g gp WC[uW]-(-3/2g(WC[\[CurlyPhi]WB]+I iCPV WC[\[CurlyPhi]WtildeB])+5/3gp(WC[\[CurlyPhi]B]+I iCPV WC[\[CurlyPhi]Btilde]))Gu+gp/12(Cquqd1Gdc[psrt,pt]+4/3Cquqd8Gdc[psrt,pt])-6gp Clequ3Gec[ptrs,tp]+2GuGuhCuB-2GdGdhCuB-CdBGdhGu+CuBGuhGu+\[Gamma]H WC[uB]+\[Gamma]qCuB+CuB\[Gamma]u;
 
 
-\[Beta][dG]=-1/36(81g^2+31gp^2+204gs^2)WC[dG]+6g gs WC[dW]-2/3gp gs WC[dB]-gs(4(WC[\[CurlyPhi]G]+I iCPV WC[\[CurlyPhi]Gtilde])+9gs(WC[G]+I iCPV WC[Gtilde]))Gd-gs(Cquqd1Guc[rtps,pt]-1/6Cquqd8Guc[rtps,pt])-2GuGuhCdG+2GdGdhCdG-CuGGuhGd+CdGGdhGd+\[Gamma]H WC[dG]+\[Gamma]qCdG+CdG\[Gamma]d;
+\[Beta][dG]=-1/36(81g^2+31gp^2+204gs^2)WC[dG]+6g gs WC[dW]-2/3gp gs WC[dB]-gs(4(WC[\[CurlyPhi]G]+I iCPV WC[\[CurlyPhi]Gtilde])-9gs(WC[G]+I iCPV WC[Gtilde]))Gd-gs(Cquqd1Guc[rtps,pt]-1/6Cquqd8Guc[rtps,pt])-2GuGuhCdG+2GdGdhCdG-CuGGuhGd+CdGGdhGd+\[Gamma]H WC[dG]+\[Gamma]qCdG+CdG\[Gamma]d;
 
 
 \[Beta][dW]=-1/36(33g^2+31gp^2-96gs^2)WC[dW]+8/3g gs WC[dG]+5/6g gp WC[dB]-(g(WC[\[CurlyPhi]W]+I iCPV WC[\[CurlyPhi]Wtilde])-gp/6(WC[\[CurlyPhi]WB]+I iCPV WC[\[CurlyPhi]WtildeB]))Gd+g/4(Cquqd1Guc[rtps,pt]+4/3Cquqd8Guc[rtps,pt])+2GuGuhCdW-CuWGuhGd+CdWGdhGd+\[Gamma]H WC[dW]+\[Gamma]qCdW+CdW\[Gamma]d;

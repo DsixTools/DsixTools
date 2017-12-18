@@ -41,6 +41,7 @@ CreateMatrixList;
 DefineYukawas;
 CreateParameters;
 DropRedundant;
+CreateWCsWCXF;
 CreateWETParameters;
 
 ];
@@ -219,3 +220,15 @@ WETParameters=Join[WCsBS2,WCsBC1,WCsBS1,WCsBS1p];
 
 
 FindParameterWET[x_]:=Position[WETParameters,x][[All,1]];
+
+
+(* Function to rewrite the SMEFT WCs as strings following the WCXF conventions *)
+WCXFString[sym_]:=Block[{},
+res=StringReplace[ToString[sym],{"\[CurlyPhi]DD"->"phiD","Q"->"q","U"->"u","D"->"d","L"->"l","E"->"e","\[CurlyPhi]"->"phi","\[EmptySquare]"->"Box",StringExpression["[",a_,",",Whitespace,b_,"]"]:>"_"<>StringJoin[a,b],StringExpression["[",a_,",",Whitespace,b_,",",Whitespace,c_,",",Whitespace,d_,"]"]:>"_"<>StringJoin[a,b,c,d]}];
+Return[res];
+];
+
+
+CreateWCsWCXF:=Block[{},
+WCsWCXF=WCXFString/@Parameters[[36;;Length[Parameters]]];
+];

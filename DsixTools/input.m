@@ -761,6 +761,21 @@ If[ToUpperCase[line[[1]]]=="BLOCK"&&ToUpperCase[line[[2]]]=="IMWCLLPHIPHI",ImWC[
 ];
 
 
+ReadSMEFTWCsFileWCXF:=Block[{WCsNumPre},
+
+(* Function to replace real and imaginary parts by their values *)
+SubReIm[x_]:=Block[{},
+If[Length[x]==2,Return["Re"+I "Im"/.x],Return[x]];
+];
+
+WCsNumPre=WCsWCXF/.wcxfdata;
+WCsNumD6=HIGHSCALE^2SubReIm/@WCsNumPre[[1;;1629]]; (* dim-6 WCs *)
+WCsNumD5=HIGHSCALE SubReIm/@WCsNumPre[[1630;;1635]]; (* dim-5 WCs *)
+WCsNum=Join[WCsNumD6,WCsNumD5];
+
+];
+
+
 ReadWETWCsFile:=Block[{},
 Do[
 line=inputWCs[[i]];
@@ -1037,16 +1052,27 @@ ReadInputFiles[optionsFile_,WCsFile_,SMFile_]:=Block[{},
 InitializeInput;
 
 inputOptions=Import[optionsFile,"Table"];
-inputWCs=Import[WCsFile,"Table"];
 inputSM=Import[SMFile,"Table"];
 
 ReadOptionsFile;
 ReadSMFile;
 
+If[FileExtension[WCsFile]=="dat", (* WCs input in SLHA format *)
+
+inputWCs=Import[WCsFile,"Table"];
 WCsType="SMEFT";
-MyPrint["Input: "<>WCsType<>" Wilson coefficients"];
+MyPrint["Input : "<>WCsType<>" Wilson coefficients"];
 ReadSMEFTWCsFile;
 GenerateInputSMEFT;
+,
+
+If[FileExtension[WCsFile]=="json"||FileExtension[WCsFile]=="yaml"||FileExtension[WCsFile]=="yml",  (* WCs input in WCXF format *)
+
+WCXFtoSLHA[WCsFile,"WCsInput-SMEFT.dat",HIGHSCALE];
+ReadInputFiles[optionsFile,"WCsInput-SMEFT.dat",SMFile];
+
+];
+];
 
 ];
 
@@ -1061,7 +1087,7 @@ inputWCs=Import[WCsFile,"Table"];
 ReadOptionsFile;
 
 WCsType="WET";
-MyPrint["Input: "<>WCsType<>" Wilson coefficients"];
+MyPrint["Input : "<>WCsType<>" Wilson coefficients"];
 ReadWETWCsFile;
 GenerateInputWET;
 
@@ -1075,6 +1101,65 @@ InitializeInput;
 inputOptions=Import[optionsFile,"Table"];
 
 ReadOptionsFile;
+
+];
+
+
+WriteInputFileSLHA[SLHAFile_]:=Block[{},
+
+Array35Zeros=Table[0,{i,1,35}];
+dataOutput=Flatten[PrependTo[WCsNum,Array35Zeros]];
+WriteWCsFile[SLHAFile,dataOutput];
+
+];
+
+
+WCXFtoSLHA[WCXFFile_,SLHAFile_,HIGHSCALEvalue_]:=Block[{format},
+
+MyPrint["Translating WCXF to SLHA"];
+
+If[FileExtension[WCXFFile]=="json",
+format="JSON";
+,
+If[FileExtension[WCXFFile]=="yaml"||FileExtension[WCXFFile]=="yml",
+format="YAML";
+];
+];
+
+HIGHSCALE=HIGHSCALEvalue;
+inputWCsWCXF=Import[WCXFFile,format];
+wcxfdata=Join["values"/.inputWCsWCXF[[4]],Table[WCsWCXF[[i]]->0,{i,1,Length[WCsWCXF]}]];
+ReadSMEFTWCsFileWCXF;
+WriteInputFileSLHA[SLHAFile];
+
+];
+
+
+SLHAtoWCXF[SLHAFile_,WCXFFile_,CPVvalue_,LOWSCALEvalue_,HIGHSCALEvalue_]:=Block[{},
+
+MyPrint["Translating SLHA to WCXF"];
+
+InitializeInput;
+CPV=CPVvalue;
+LOWSCALE=LOWSCALEvalue;
+HIGHSCALE=HIGHSCALEvalue;
+inputWCs=Import[SLHAFile,"Table"];
+WCsType="SMEFT";
+ReadSMEFTWCsFile;
+GenerateInputSMEFT;
+
+dataOutput=Join[Chop[(Parameters[[1;;1664]]/.input)/HIGHSCALE^2,$MachineEpsilon],Chop[(Parameters[[1665;;1670]]/.input)/HIGHSCALE,$MachineEpsilon]];
+
+(* Open file *)
+outfile=OpenWrite[WCXFFile,FormatType->StandardForm];
+
+If[FileExtension[WCXFFile]=="json",
+WriteWCsJSON;
+,
+If[FileExtension[WCXFFile]=="yaml"||FileExtension[WCXFFile]=="yml",
+WriteWCsYAML;
+];
+];
 
 ];
 

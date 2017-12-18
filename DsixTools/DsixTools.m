@@ -67,6 +67,12 @@ WriteInputFiles ::usage="WriteInputFiles[options_file,WCsInput_file,{SMInput_fil
 WriteAndReadInputFiles::usage="WriteAndReadInputFiles[options_file,WCsInput_file,{SMInput_file}] writes data into the input files and then reads them";
 
 
+WCXFtoSLHA::usage="WCXFtoSLHA[WCXF_file,SLHA_file,HIGHSCALE_] translates a SMEFT WCs file in WCXF format into SLHA format";
+
+
+SLHAtoWCXF::usage="SLHAtoWCXF[SLHA_file,WCXF_file,CPV_,SCALE_,HIGHSCALE_] translates a SMEFT WCs file in SLHA format into WCXF format";
+
+
 NewInput::usage="NewInput[parameter,newvalue,dispatch] replaces the current input dispatch by a new one in which parameter \[Rule] newvalue";
 
 
@@ -115,6 +121,9 @@ Biunitary::usage="Biunitary[mat,dim] applies a biunitary transformation to the d
 RotateToMassBasis::usage="RotateToMassBasis transforms the SMEFT WCs to the fermion mass basis";
 
 
+RotateToWCXFBasis::usage="RotateToWCXFBasis transforms the SMEFT WCs to the fermion WCxf basis";
+
+
 ApplyEWmatching::usage="ApplyEWmatching matches the SMEFT WCs onto the WET WCs";
 
 
@@ -124,7 +133,7 @@ Match::usage="Match[WC] returns the value of a WET WC after matching it to the S
 MatchAnalytical::usage="MatchAnalytical[WC] returns the analytical expression of a WET WC after matching it to the SMEFT";
 
 
-WriteWCsMassBasisOutputFile::usage="WriteWCsMassBasisOutputFile[Output_file] exports the SMEFT 2- and 4-fermion WCs in the fermion mass basis to Output_file";
+WriteWCsOutputFile::usage="WriteWCsOutputFile[Output_file,basis,format] exports the SMEFT WCs in the specified fermion basis and format to Output_file";
 
 
 ExportEWmatcher::usage="ExportEWmatcher exports the EWmatcher results to an output file";
@@ -208,14 +217,14 @@ Init[CBS1[u][1]],Init[CBS1[u][2]],Init[CBS1[u][3]],Init[CBS1[u][4]],Init[CBS1[u]
 
 
 (* Parameters lists *)
-{MatrixList,MatrixListSM,MatrixListWCs0F,MatrixListWCs2F,MatrixListWCs4F,MatrixListWCsdim5,Parameters,ParametersTotal,SMParam,Redundant,SubRedundant,SubRedundantNot,insertt,WCsBS2,WCsBC1,WCsBS1,WCsBS1p,WETParameters};
+{MatrixList,MatrixListSM,MatrixListWCs0F,MatrixListWCs2F,MatrixListWCs4F,MatrixListWCsdim5,Parameters,ParametersTotal,SMParam,Redundant,SubRedundant,SubRedundantNot,insertt,WCsBS2,WCsBC1,WCsBS1,WCsBS1p,WETParameters,WCsWCXF};
 
 
 (* Output useful variables *)
-{outSMEFTrunner,dataOutput,outname,ToMassBasis,WCsMB,PrintMessages};
+{outSMEFTrunner,dataOutput,outname,ToMassBasis,WCsInMB,ToWCXFBasis,WCsInWCXF,PrintMessages};
 
 
-DsixToolsVersion="1.1.1";
+DsixToolsVersion="1.1.2";
 
 
 Print[StyleForm["DsixTools ","Title",FontSize->26,Bold],StyleForm[DsixToolsVersion,"Title",FontSize->26,Bold]];

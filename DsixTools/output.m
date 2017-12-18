@@ -109,36 +109,36 @@ WriteTheta;
 
 WriteWC1:=Block[{},
 Write[outfile,"Block WC1"];
-Write[outfile,1," ",outR[dataOutput[[36]]],"\t","# G"];
-Write[outfile,2," ",outR[dataOutput[[37]]],"\t","# G tilde"];
-Write[outfile,3," ",outR[dataOutput[[38]]],"\t","# W"];
-Write[outfile,4," ",outR[dataOutput[[39]]],"\t","# W tilde"];
+Write[outfile,1," ",outR[Re[dataOutput[[36]]]],"\t","# G"];
+Write[outfile,2," ",outR[Re[dataOutput[[37]]]],"\t","# G tilde"];
+Write[outfile,3," ",outR[Re[dataOutput[[38]]]],"\t","# W"];
+Write[outfile,4," ",outR[Re[dataOutput[[39]]]],"\t","# W tilde"];
 ];
 
 
 WriteWC2:=Block[{},
 Write[outfile,"Block WC2"];
-Write[outfile,1," ",outR[dataOutput[[40]]],"\t","# phi"];
+Write[outfile,1," ",outR[Re[dataOutput[[40]]]],"\t","# phi"];
 ];
 
 
 WriteWC3:=Block[{},
 Write[outfile,"Block WC3"];
-Write[outfile,1," ",outR[dataOutput[[41]]],"\t","# phiBox"];
-Write[outfile,2," ",outR[dataOutput[[42]]],"\t","# phiD"];
+Write[outfile,1," ",outR[Re[dataOutput[[41]]]],"\t","# phiBox"];
+Write[outfile,2," ",outR[Re[dataOutput[[42]]]],"\t","# phiD"];
 ];
 
 
 WriteWC4:=Block[{},
 Write[outfile,"Block WC4"];
-Write[outfile,1," ",outR[dataOutput[[43]]],"\t","# phiG"];
-Write[outfile,2," ",outR[dataOutput[[44]]],"\t","# phiB"];
-Write[outfile,3," ",outR[dataOutput[[45]]],"\t","# phiW"];
-Write[outfile,4," ",outR[dataOutput[[46]]],"\t","# phiWB"];
-Write[outfile,5," ",outR[dataOutput[[47]]],"\t","# phiGtilde"];
-Write[outfile,6," ",outR[dataOutput[[48]]],"\t","# phiBtilde"];
-Write[outfile,7," ",outR[dataOutput[[49]]],"\t","# phiWtilde"];
-Write[outfile,8," ",outR[dataOutput[[50]]],"\t","# phiWtildeB"];
+Write[outfile,1," ",outR[Re[dataOutput[[43]]]],"\t","# phiG"];
+Write[outfile,2," ",outR[Re[dataOutput[[44]]]],"\t","# phiB"];
+Write[outfile,3," ",outR[Re[dataOutput[[45]]]],"\t","# phiW"];
+Write[outfile,4," ",outR[Re[dataOutput[[46]]]],"\t","# phiWB"];
+Write[outfile,5," ",outR[Re[dataOutput[[47]]]],"\t","# phiGtilde"];
+Write[outfile,6," ",outR[Re[dataOutput[[48]]]],"\t","# phiBtilde"];
+Write[outfile,7," ",outR[Re[dataOutput[[49]]]],"\t","# phiWtilde"];
+Write[outfile,8," ",outR[Re[dataOutput[[50]]]],"\t","# phiWtildeB"];
 ];
 
 
@@ -336,6 +336,52 @@ Write0F;
 Write2F;
 Write4F;
 Writedim5;
+];
+
+
+WriteWCsJSON:=Block[{},
+
+Write[outfile,"{"];
+Write[outfile,"  \"eft\": \"SMEFT\","];
+Write[outfile,"  \"basis\": \"Warsaw\","];
+Write[outfile,"  \"scale\": ",outR[LOWSCALE],","];
+Write[outfile,"  \"values\": {"];
+Do[
+If[Element[dataOutput[[i+35]],Reals],
+If[i<Length[WCsWCXF],
+Write[outfile,"    \""<>ToString[WCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+35]]],","];
+,
+Write[outfile,"    \""<>ToString[WCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+35]]]];
+];
+,
+Write[outfile,"    \""<>ToString[WCsWCXF[[i]]]<>"\": {"];
+Write[outfile,"      \"Re\": ",outR[Re[dataOutput[[i+35]]]],","];
+Write[outfile,"      \"Im\": ",outR[Im[dataOutput[[i+35]]]]];
+If[i<Length[WCsWCXF],Write[outfile,"    },"];,Write[outfile,"    }"];];
+];
+,{i,1,Length[WCsWCXF]}];
+Write[outfile,"  }"];
+Write[outfile,"}"];
+
+];
+
+
+WriteWCsYAML:=Block[{},
+
+Write[outfile,"eft: SMEFT"];
+Write[outfile,"basis: Warsaw"];
+Write[outfile,"scale: ",outR[LOWSCALE]];
+Write[outfile,"values:"];
+Do[
+If[Element[dataOutput[[i+35]],Reals],
+Write[outfile,"  "<>ToString[WCsWCXF[[i]]]<>": ",outR[dataOutput[[i+35]]]];
+,
+Write[outfile,"  "<>ToString[WCsWCXF[[i]]]<>":"];
+Write[outfile,"    Re: ",outR[Re[dataOutput[[i+35]]]]];
+Write[outfile,"    Im: ",outR[Im[dataOutput[[i+35]]]]];
+];
+,{i,1,Length[WCsWCXF]}];
+
 ];
 
 
@@ -608,18 +654,35 @@ Close[outfile];
 ];
 
 
-WriteWCsMassBasisOutputFile[outname_]:=Block[{outfile},
+WriteWCsOutputFile[outname_,basis_,format_]:=Block[{outfile},
 
 (* Open file *)
 outfile=OpenWrite[outname,FormatType->StandardForm];
 
 (* Data to export *)
-dataOutput=WCsMB;
+If[basis=="MassBasis",dataOutput=WCsInMB;,
+If[basis=="WCXF",dataOutput=WCsInWCXF;];];
 
-(* Write 2- and 4-fermion WCs output blocks *)
-Write2F;
-Write4F;
-Writedim5;
+(* Add 0F WCs *)
+dataOutput[[36;;50]]=inputEWmatcher/@Parameters[[36;;50]];
+
+If[format=="SLHA",
+dataOutput=Chop[dataOutput,$MachineEpsilon];
+(* Write the WCs output blocks *)
+WriteWCs;
+,
+If[format=="JSON",
+(* Include the 1/HIGHSCALE^2 (for dim-6 WCs) and 1/HIGHSCALE (for dim-5 WCs) factors *)
+dataOutput=Join[Chop[dataOutput[[1;;1664]]/HIGHSCALE^2,$MachineEpsilon],Chop[dataOutput[[1665;;1670]]/HIGHSCALE,$MachineEpsilon]];
+WriteWCsJSON;
+,
+If[format=="YAML",
+(* Include the 1/HIGHSCALE^2 factor *)
+dataOutput=Join[Chop[dataOutput[[1;;1664]]/HIGHSCALE^2,$MachineEpsilon],Chop[dataOutput[[1665;;1670]]/HIGHSCALE,$MachineEpsilon]];
+WriteWCsYAML;
+];
+];
+];
 
 (* Close file *)
 Close[outfile];

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     45232,       1101]
-NotebookOptionsPosition[     42086,        996]
-NotebookOutlinePosition[     42420,       1011]
-CellTagsIndexPosition[     42377,       1008]
+NotebookDataLength[     45365,       1102]
+NotebookOptionsPosition[     42219,        997]
+NotebookOutlinePosition[     42553,       1012]
+CellTagsIndexPosition[     42510,       1009]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -172,11 +172,10 @@ Cell[BoxData[
  RowBox[{"(*", " ", 
   RowBox[{
    RowBox[{
-    RowBox[{
-    "The", " ", "results", " ", "obtained", " ", "with", " ", "SMEFT", " ", 
-     "runner", " ", "are", " ", "saved", " ", 
-     RowBox[{"in", " ", "'"}], "Var"}], "/.", 
-    RowBox[{"run", "'"}]}], ",", " ", 
+   "The", " ", "results", " ", "obtained", " ", "with", " ", "SMEFT", " ", 
+    "runner", " ", "are", " ", "saved", " ", 
+    RowBox[{"in", " ", "'"}], 
+    RowBox[{"outSMEFTrunner", "'"}]}], ",", " ", 
    RowBox[{
     RowBox[{
     "which", " ", "can", " ", "be", " ", "evaluated", " ", "at", " ", 
@@ -184,7 +183,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"Log", "[", "\[Mu]", "]"}], " ", "values"}]}]}], " ", 
   "*)"}]], "Input",
- CellChangeTimes->{{3.699263216331849*^9, 3.6992632774524937`*^9}}],
+ CellChangeTimes->{{3.699263216331849*^9, 3.6992632774524937`*^9}, {
+  3.717755083165917*^9, 3.717755086867141*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -730,9 +730,10 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-  "WriteWCsMassBasisOutputFile", "[", "\"\<Output_WCsMassBasis.dat\>\"", 
-   "]"}], ";"}]], "Input",
+  RowBox[{"WriteWCsOutputFile", "[", 
+   RowBox[{
+   "\"\<Output_WCsMassBasis.dat\>\"", ",", "\"\<MassBasis\>\"", ",", 
+    "\"\<SLHA\>\""}], "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.697350093216093*^9, 3.697350104173358*^9}, {
    3.697350185415141*^9, 3.697350185836795*^9}, {3.6984752883411922`*^9, 
    3.69847528884044*^9}, {3.69847600875243*^9, 3.6984760362967377`*^9}, 
@@ -745,7 +746,7 @@ Cell[BoxData[
    3.699085975759082*^9, 3.699085976227306*^9}, {3.6997957186200247`*^9, 
    3.699795719680271*^9}, {3.6997957526647387`*^9, 3.6997957642083*^9}, 
    3.700211009750087*^9, {3.700307121940032*^9, 3.7003071450347853`*^9}, 
-   3.70030781195485*^9}],
+   3.70030781195485*^9, {3.7191600378937893`*^9, 3.7191600851109867`*^9}}],
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
@@ -1036,72 +1037,72 @@ Cell[6852, 153, 151, 3, 32, "Input"]
 Cell[CellGroupData[{
 Cell[7040, 161, 502, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[7545, 170, 581, 16, 55, "Input"],
-Cell[8129, 188, 1378, 29, 143, "Input"],
-Cell[9510, 219, 362, 7, 32, "Input"],
-Cell[9875, 228, 2901, 75, 187, "Input"],
-Cell[12779, 305, 4124, 105, 188, "Input"],
-Cell[16906, 412, 4204, 107, 233, "Input"],
-Cell[21113, 521, 2551, 64, 231, "Input"],
-Cell[23667, 587, 341, 7, 32, "Input"],
-Cell[24011, 596, 892, 13, 32, "Input"]
+Cell[7545, 170, 610, 16, 55, "Input"],
+Cell[8158, 188, 1378, 29, 143, "Input"],
+Cell[9539, 219, 362, 7, 32, "Input"],
+Cell[9904, 228, 2901, 75, 187, "Input"],
+Cell[12808, 305, 4124, 105, 188, "Input"],
+Cell[16935, 412, 4204, 107, 233, "Input"],
+Cell[21142, 521, 2551, 64, 231, "Input"],
+Cell[23696, 587, 341, 7, 32, "Input"],
+Cell[24040, 596, 892, 13, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24940, 614, 377, 6, 66, "Chapter",
+Cell[24969, 614, 377, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[25320, 622, 197, 3, 32, "Input"]
+Cell[25349, 622, 197, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25554, 630, 419, 6, 66, "Chapter",
+Cell[25583, 630, 419, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[25976, 638, 1294, 18, 32, "Input"],
-Cell[27273, 658, 176, 3, 32, "Input"]
+Cell[26005, 638, 1294, 18, 32, "Input"],
+Cell[27302, 658, 176, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27486, 666, 498, 7, 66, "Chapter",
+Cell[27515, 666, 498, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[27987, 675, 283, 6, 32, "Input"],
-Cell[28273, 683, 302, 7, 32, "Input"],
-Cell[28578, 692, 1953, 26, 32, "Input"],
-Cell[30534, 720, 124, 1, 32, "Input"],
-Cell[30661, 723, 253, 5, 32, "Input"],
-Cell[30917, 730, 1038, 17, 32, "Input"],
-Cell[31958, 749, 401, 8, 32, "Input"],
-Cell[32362, 759, 97, 1, 32, "Input"],
-Cell[32462, 762, 97, 1, 32, "Input"],
-Cell[32562, 765, 178, 2, 32, "Input"],
-Cell[32743, 769, 178, 2, 32, "Input"],
-Cell[32924, 773, 295, 4, 32, "Input"],
-Cell[33222, 779, 279, 4, 32, "Input"],
-Cell[33504, 785, 179, 2, 32, "Input"],
-Cell[33686, 789, 275, 6, 32, "Input"],
-Cell[33964, 797, 202, 4, 32, "Input"],
-Cell[34169, 803, 233, 6, 32, "Input"],
-Cell[34405, 811, 378, 10, 55, "Input"],
-Cell[34786, 823, 341, 7, 32, "Input"],
-Cell[35130, 832, 985, 14, 32, "Input"]
+Cell[28016, 675, 283, 6, 32, "Input"],
+Cell[28302, 683, 302, 7, 32, "Input"],
+Cell[28607, 692, 1953, 26, 32, "Input"],
+Cell[30563, 720, 124, 1, 32, "Input"],
+Cell[30690, 723, 253, 5, 32, "Input"],
+Cell[30946, 730, 1142, 18, 32, "Input"],
+Cell[32091, 750, 401, 8, 32, "Input"],
+Cell[32495, 760, 97, 1, 32, "Input"],
+Cell[32595, 763, 97, 1, 32, "Input"],
+Cell[32695, 766, 178, 2, 32, "Input"],
+Cell[32876, 770, 178, 2, 32, "Input"],
+Cell[33057, 774, 295, 4, 32, "Input"],
+Cell[33355, 780, 279, 4, 32, "Input"],
+Cell[33637, 786, 179, 2, 32, "Input"],
+Cell[33819, 790, 275, 6, 32, "Input"],
+Cell[34097, 798, 202, 4, 32, "Input"],
+Cell[34302, 804, 233, 6, 32, "Input"],
+Cell[34538, 812, 378, 10, 55, "Input"],
+Cell[34919, 824, 341, 7, 32, "Input"],
+Cell[35263, 833, 985, 14, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36152, 851, 401, 6, 66, "Chapter",
+Cell[36285, 852, 401, 6, 66, "Chapter",
  Evaluatable->False],
-Cell[36556, 859, 245, 4, 32, "Input"]
+Cell[36689, 860, 245, 4, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36838, 868, 445, 7, 66, "Chapter",
+Cell[36971, 869, 445, 7, 66, "Chapter",
  Evaluatable->False],
-Cell[37286, 877, 194, 3, 32, "Input"]
+Cell[37419, 878, 194, 3, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37517, 885, 547, 8, 66, "Chapter",
+Cell[37650, 886, 547, 8, 66, "Chapter",
  Evaluatable->False],
-Cell[38067, 895, 402, 8, 32, "Input"],
-Cell[38472, 905, 260, 6, 32, "Input"],
-Cell[38735, 913, 236, 6, 32, "Input"],
-Cell[38974, 921, 1048, 28, 77, "Input"],
-Cell[40025, 951, 394, 8, 32, "Input"],
-Cell[40422, 961, 316, 7, 32, "Input"],
-Cell[40741, 970, 341, 7, 32, "Input"],
-Cell[41085, 979, 985, 14, 32, "Input"]
+Cell[38200, 896, 402, 8, 32, "Input"],
+Cell[38605, 906, 260, 6, 32, "Input"],
+Cell[38868, 914, 236, 6, 32, "Input"],
+Cell[39107, 922, 1048, 28, 77, "Input"],
+Cell[40158, 952, 394, 8, 32, "Input"],
+Cell[40555, 962, 316, 7, 32, "Input"],
+Cell[40874, 971, 341, 7, 32, "Input"],
+Cell[41218, 980, 985, 14, 32, "Input"]
 }, Open  ]]
 }
 ]

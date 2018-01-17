@@ -37,7 +37,7 @@
 \[Beta][GuX]=3/2(GuGuhGu-GdGdhGu)+(\[Gamma]H-9/4g^2-17/12gp^2-8gs^2)Gu+2m2/HIGHSCALE^2(3WC[u\[CurlyPhi]]+1/2(WC[\[CurlyPhi]D]-2WC[\[CurlyPhi]\[EmptySquare]])Gu-C\[CurlyPhi]q1hGu+3C\[CurlyPhi]q3hGu+GuC\[CurlyPhi]uh-GdC\[CurlyPhi]udh-2(Cqu1Gu[rpts,pt]+4/3Cqu8Gu[rpts,pt])-Clequ1Gec[ptrs,pt]+3Cquqd1Gdc[rspt,pt]+1/2(Cquqd1Gdc[psrt,pt]+4/3Cquqd8Gdc[psrt,pt]));
 
 
-\[Beta][GdX]=3/2(GdGdhGd-GuGuhGd)+(\[Gamma]H-9/4g^2-5/12gp^2-8gs^2)Gd+2m2/HIGHSCALE^2(3WC[d\[CurlyPhi]]+1/2(WC[\[CurlyPhi]D]-2WC[\[CurlyPhi]\[EmptySquare]])Gd+C\[CurlyPhi]q1hGd+3C\[CurlyPhi]q3hGd-GdC\[CurlyPhi]dh-GucC\[CurlyPhi]ud-2(Cqd1Gd[rpts,pt]+4/3Cqd8Gd[rpts,pt])+CledqcGe[ptsr,pt]+3Cquqd1Guc[ptrs,pt]+1/2(Cquqd1Guc[rpts,tp]+4/3Cquqd8Guc[rpts,tp]));
+\[Beta][GdX]=3/2(GdGdhGd-GuGuhGd)+(\[Gamma]H-9/4g^2-5/12gp^2-8gs^2)Gd+2m2/HIGHSCALE^2(3WC[d\[CurlyPhi]]+1/2(WC[\[CurlyPhi]D]-2WC[\[CurlyPhi]\[EmptySquare]])Gd+C\[CurlyPhi]q1hGd+3C\[CurlyPhi]q3hGd-GdC\[CurlyPhi]dh-GuC\[CurlyPhi]ud-2(Cqd1Gd[rpts,pt]+4/3Cqd8Gd[rpts,pt])+CledqcGe[ptsr,pt]+3Cquqd1Guc[ptrs,pt]+1/2(Cquqd1Guc[rpts,tp]+4/3Cquqd8Guc[rpts,tp]));
 
 
 \[Beta][GeX]=3/2GeGehGe+(\[Gamma]H-3/4(3g^2+5gp^2))Ge+2m2/HIGHSCALE^2(3WC[e\[CurlyPhi]]+1/2(WC[\[CurlyPhi]D]-2WC[\[CurlyPhi]\[EmptySquare]])Ge+C\[CurlyPhi]l1hGe+3C\[CurlyPhi]l3hGe-GeC\[CurlyPhi]eh-2CleGe[rpts,pt]+3CledqGd[rspt,tp]-3Clequ1Guc[rspt,pt]);

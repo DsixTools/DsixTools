@@ -108,6 +108,7 @@ GuC\[CurlyPhi]u=Gu.WC[\[CurlyPhi]u];
 GdC\[CurlyPhi]d=Gd.WC[\[CurlyPhi]d];
 GeC\[CurlyPhi]e=Ge.WC[\[CurlyPhi]e];
 GuC\[CurlyPhi]ud=Gu.WC[\[CurlyPhi]ud];
+GucC\[CurlyPhi]ud=Guc.WC[\[CurlyPhi]ud];
 GuC\[CurlyPhi]uh=Gu.H[WC[\[CurlyPhi]u]];
 GdC\[CurlyPhi]dh=Gd.H[WC[\[CurlyPhi]d]];
 GdC\[CurlyPhi]udh=Gd.H[WC[\[CurlyPhi]ud]];

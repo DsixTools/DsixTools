@@ -26,8 +26,17 @@ EWmatcher=True;
 InitializeEWmatcherInput;
 
 
-(* Function to apply biunitary transformation *)
-Biunitary[mat_,dim_]:=Block[{mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
+(* Function to apply a biunitary transformation *)
+Biunitary[mat_]:=Block[{CPVchanged,dim,mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
+
+If[SquareMatrixQ[mat],
+
+If[!ValueQ[CPV],
+If[Min[Im[mat]]==0&&Max[Im[mat]]==0,CPV=0;,CPV=1;]; (* Check if the matrix is real or complex *)
+CPVchanged=True;
+];
+
+dim=Length[mat];
 
 mat2L=mat.H[mat];
 mat2R=H[mat].mat;
@@ -66,7 +75,15 @@ RotLPre=RotRPre;
 RotL=Transpose[RotLPre];
 RotR=Transpose[RotRPre];
 
+If[CPVchanged,Clear[CPV];];
+
 Return[{eigen,RotL,RotR}];
+
+,
+
+Message[Biunitary::NotSquare,mat];
+];
+
 ];
 
 
@@ -147,18 +164,18 @@ GuEW=Table[GU[i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 Cu\[CurlyPhi]EW=Table[U\[CurlyPhi][i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 mu=v/Sqrt[2](GuEW-1/2v^2/HIGHSCALE^2Cu\[CurlyPhi]EW);
 mu=SetPrecision[mu,10];
-mudiag=Biunitary[mu,3][[1]];
-UL=Biunitary[mu,3][[2]];
-UR=Biunitary[mu,3][[3]];
+mudiag=Biunitary[mu][[1]];
+UL=Biunitary[mu][[2]];
+UR=Biunitary[mu][[3]];
 
 (* Down quarks *)
 GdEW=Table[GD[i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 Cd\[CurlyPhi]EW=Table[D\[CurlyPhi][i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 md=v/Sqrt[2](GdEW-1/2v^2/HIGHSCALE^2Cd\[CurlyPhi]EW);
 md=SetPrecision[md,10];
-mddiag=Biunitary[md,3][[1]];
-DL=Biunitary[md,3][[2]];
-DR=Biunitary[md,3][[3]];
+mddiag=Biunitary[md][[1]];
+DL=Biunitary[md][[2]];
+DR=Biunitary[md][[3]];
 
 (* Rephasing to obtain the CKM matrix with standard phase convention *)
 NewRotationsCKM=StandardCKM;
@@ -174,9 +191,9 @@ GeEW=Table[GE[i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 Ce\[CurlyPhi]EW=Table[E\[CurlyPhi][i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
 me=v/Sqrt[2](GeEW-1/2v^2/HIGHSCALE^2Ce\[CurlyPhi]EW);
 me=SetPrecision[me,10];
-mediag=Biunitary[me,3][[1]];
-EL=Biunitary[me,3][[2]];
-ER=Biunitary[me,3][[3]];
+mediag=Biunitary[me][[1]];
+EL=Biunitary[me][[2]];
+ER=Biunitary[me][[3]];
 
 (* Neutrinos *)
 Cll\[CurlyPhi]\[CurlyPhi]EW=Table[LL\[CurlyPhi]\[CurlyPhi][i,j],{i,1,3},{j,1,3}]//inputEWmatcher;
@@ -186,8 +203,8 @@ m\[Nu]=-v^2/(2HIGHSCALE)Cll\[CurlyPhi]\[CurlyPhi]EW;
 (* This is only done if neutrinos are massive *)
 If[Max[Abs[m\[Nu]]]!=0,
 m\[Nu]=SetPrecision[m\[Nu],10];
-m\[Nu]diag=Biunitary[m\[Nu],3][[1]];
-NL=Biunitary[m\[Nu],3][[3]];
+m\[Nu]diag=Biunitary[m\[Nu]][[1]];
+NL=Biunitary[m\[Nu]][[3]];
 NR=NL;
 NewRotationsPMNS=StandardPMNS;
 EL=NewRotationsPMNS[[1]];

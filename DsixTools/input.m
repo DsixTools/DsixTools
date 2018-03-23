@@ -1051,15 +1051,28 @@ ReadInputFiles[optionsFile_,WCsFile_,SMFile_]:=Block[{},
 
 InitializeInput;
 
-inputOptions=Import[optionsFile,"Table"];
-inputSM=Import[SMFile,"Table"];
+(* Read options file *)
+If[FileExistsQ[optionsFile],
+inputOptions=Import[optionsFile,"Table"];,
+Message[ReadInputFiles::OptionsNotFound,optionsFile];
+];
+
+(* Read SM file *)
+If[FileExistsQ[SMFile],
+inputSM=Import[SMFile,"Table"];,
+Message[ReadInputFiles::SMNotFound,SMFile];
+];
 
 ReadOptionsFile;
 ReadSMFile;
 
+(* Read WCs file *)
+If[FileExistsQ[WCsFile],
+
 If[FileExtension[WCsFile]=="dat", (* WCs input in SLHA format *)
 
 inputWCs=Import[WCsFile,"Table"];
+
 WCsType="SMEFT";
 MyPrint["Input : "<>WCsType<>" Wilson coefficients"];
 ReadSMEFTWCsFile;
@@ -1073,6 +1086,9 @@ ReadInputFiles[optionsFile,"WCsInput-SMEFT.dat",SMFile];
 
 ];
 ];
+,
+Message[ReadInputFiles::WCsNotFound,WCsFile];
+];
 
 ];
 
@@ -1081,8 +1097,17 @@ ReadInputFiles[optionsFile_,WCsFile_]:=Block[{},
 
 InitializeInput;
 
-inputOptions=Import[optionsFile,"Table"];
-inputWCs=Import[WCsFile,"Table"];
+(* Read options file *)
+If[FileExistsQ[optionsFile],
+inputOptions=Import[optionsFile,"Table"];,
+Message[ReadInputFiles::OptionsNotFound,optionsFile];
+];
+
+(* Read WCs file *)
+If[FileExistsQ[WCsFile],
+inputWCs=Import[WCsFile,"Table"];,
+Message[ReadInputFiles::WCsNotFound,WCsFile];
+];
 
 ReadOptionsFile;
 
@@ -1098,7 +1123,11 @@ ReadInputFiles[optionsFile_]:=Block[{},
 
 InitializeInput;
 
-inputOptions=Import[optionsFile,"Table"];
+(* Read options file *)
+If[FileExistsQ[optionsFile],
+inputOptions=Import[optionsFile,"Table"];,
+Message[ReadInputFiles::OptionsNotFound,optionsFile];
+];
 
 ReadOptionsFile;
 
@@ -1116,6 +1145,8 @@ WriteWCsFile[SLHAFile,dataOutput];
 
 WCXFtoSLHA[WCXFFile_,SLHAFile_,HIGHSCALEvalue_]:=Block[{format},
 
+If[FileExistsQ[WCXFFile],
+
 MyPrint["Translating WCXF to SLHA"];
 
 If[FileExtension[WCXFFile]=="json",
@@ -1132,10 +1163,18 @@ wcxfdata=Join["values"/.inputWCsWCXF[[4]],Table[WCsWCXF[[i]]->0,{i,1,Length[WCsW
 ReadSMEFTWCsFileWCXF;
 WriteInputFileSLHA[SLHAFile];
 
+,
+
+Message[WCXFtoSLHA::NotFound,WCXFFile];
+
+];
+
 ];
 
 
 SLHAtoWCXF[SLHAFile_,WCXFFile_,CPVvalue_,LOWSCALEvalue_,HIGHSCALEvalue_]:=Block[{},
+
+If[FileExistsQ[SLHAFile],
 
 MyPrint["Translating SLHA to WCXF"];
 
@@ -1159,6 +1198,12 @@ WriteWCsJSON;
 If[FileExtension[WCXFFile]=="yaml"||FileExtension[WCXFFile]=="yml",
 WriteWCsYAML;
 ];
+];
+
+,
+
+Message[SLHAtoWCXF::NotFound,SLHAFile];
+
 ];
 
 ];

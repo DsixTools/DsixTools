@@ -19,19 +19,55 @@
 
 
 
+LoadModule::Already="Warning : `1` module already loaded";
+
+
+LoadModule::NotFound="Error : `1` module does not exist. These are the modules in DsixTools: "<>ToString[DsixToolsModules];
+
+
+ReadInputFiles::OptionsNotFound="Error : options file `1` not found";
+
+
+ReadInputFiles::WCsNotFound="Error : WCs input file `1` not found";
+
+
+ReadInputFiles::SMNotFound="Error : SM parameters input file `1` not found";
+
+
+WCXFtoSLHA::NotFound="Error : WCXF input file `1` not found";
+
+
+SLHAtoWCXF::NotFound="Error : SLHA input file `1` not found";
+
+
+RunRGEsSMEFTpython::OptionsNotFound="Error : options file `1` not found";
+
+
+RunRGEsSMEFTpython::WCsNotFound="Error : WCs input file `1` not found";
+
+
+RunRGEsSMEFTpython::SMNotFound="Error : SM parameters input file `1` not found";
+
+
+Biunitary::NotSquare="Error : the matrix `1` is not square";
+
+
 H[mat_]:=If[CPV==0,Transpose[mat],ConjugateTranspose[mat]]
 CC[mat_]:=If[CPV==0,mat,Conjugate[mat]]
 
 
 LoadModule[moduleName_]:=Block[{moduleLoc},
 
+If[MemberQ[DsixToolsModules,moduleName],
 If[ToExpression[moduleName], (* Module already loaded *)
-Print[moduleName<>" module already loaded"];
+Message[LoadModule::Already,moduleName];
 ,
 moduleLoc=DsixToolsDir<>moduleName<>"/"<>moduleName<>".m";
 Get[moduleLoc];
 ];
-
+,
+Message[LoadModule::NotFound,moduleName]; (* Module does not exist *)
+];
 ];
 
 

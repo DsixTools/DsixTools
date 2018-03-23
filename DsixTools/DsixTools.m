@@ -115,7 +115,7 @@ InitializeEWmatcherInput::usage="InitializeEWmatcherInput initializes the input 
 FindParameterWET::usage="FindParameterWET[parameter] returns the position of parameter in the WETParameters list";
 
 
-Biunitary::usage="Biunitary[mat,dim] applies a biunitary transformation to the dim x dim matrix mat";
+Biunitary::usage="Biunitary[mat] applies a biunitary transformation to the square matrix mat";
 
 
 RotateToMassBasis::usage="RotateToMassBasis transforms the SMEFT WCs to the fermion mass basis";
@@ -224,7 +224,7 @@ Init[CBS1[u][1]],Init[CBS1[u][2]],Init[CBS1[u][3]],Init[CBS1[u][4]],Init[CBS1[u]
 {outSMEFTrunner,dataOutput,outname,ToMassBasis,WCsInMB,ToWCXFBasis,WCsInWCXF,PrintMessages};
 
 
-DsixToolsVersion="1.1.2";
+DsixToolsVersion="1.1.3";
 
 
 Print[StyleForm["DsixTools ","Title",FontSize->26,Bold],StyleForm[DsixToolsVersion,"Title",FontSize->26,Bold]];
@@ -237,6 +237,7 @@ Print[StyleForm["This program is free software: you can redistribute it and/or m
 DsixToolsDir=$InputFileName//DirectoryName;
 
 
+DsixToolsModules={"SMEFTrunner","EWmatcher","WETrunner"};
 SMEFTrunner=False;
 EWmatcher=False;
 WETrunner=False;

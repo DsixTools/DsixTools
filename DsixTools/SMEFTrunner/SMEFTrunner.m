@@ -129,6 +129,10 @@ RunRGEsSMEFTpython[optionsFile_,WCsFile_,SMFile_]:=Block[{},
 
 SMEFTrunner=False;
 
+If[FileExistsQ[optionsFile],
+If[FileExistsQ[WCsFile],
+If[FileExistsQ[SMFile],
+
 (* We read the options file to get the values for HIGHSCALE and LOWSCALE *)
 ReadInputFiles[optionsFile];
 
@@ -148,6 +152,13 @@ MyPrint["Running finished!"];
 (* The results must be imported back to Mathematica *)
 ReadInputFiles[optionsFile,"Output_SMEFTrunner.dat","Output_SMEFTrunner.dat"];
 outSMEFTrunner=Parameters/.input;
+
+,
+Message[RunRGEsSMEFTpython::OptionsNotFound,SMFile];];
+,
+Message[RunRGEsSMEFTpython::WCsNotFound,WCsFile];];
+,
+Message[RunRGEsSMEFTpython::SMNotFound,optionsFile];];
 
 ];
 

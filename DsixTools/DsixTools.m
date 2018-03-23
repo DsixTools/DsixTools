@@ -61,7 +61,7 @@ TurnOffMessages::usage="TurnOffMessages turns off the messages written by DsixTo
 ReadInputFiles::usage="ReadInputFiles[options_file,{WCsInput_file},{SMInput_file}] reads all input files";
 
 
-WriteInputFiles ::usage="WriteInputFiles[options_file,WCsInput_file,{SMInput_file},data] creates input files with the parameter values in data";
+WriteInputFiles::usage="WriteInputFiles[options_file,WCsInput_file,{SMInput_file},data] creates input files with the parameter values in data";
 
 
 WriteAndReadInputFiles::usage="WriteAndReadInputFiles[options_file,WCsInput_file,{SMInput_file}] writes data into the input files and then reads them";
@@ -232,6 +232,7 @@ Print[StyleForm["by Alejandro Celis, Javier Fuentes-Martin, Avelino Vicente and 
 Print[StyleForm["Reference: arXiv:1704.04504",FontSize->16]];
 Print[StyleForm["Website: https://dsixtools.github.io/",FontSize->16]];
 Print[StyleForm["This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.",FontSize->16]];
+Print[StyleForm["See ?DsixTools`* for a list of routines and variables.",FontSize->16]];
 
 
 DsixToolsDir=$InputFileName//DirectoryName;

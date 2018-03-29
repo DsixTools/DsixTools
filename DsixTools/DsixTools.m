@@ -100,9 +100,6 @@ LoadBetaFunctions::usage="LoadBetaFunctions constructs the SMEFT \[Beta] functio
 RunRGEsSMEFT::usage="RunRGEsSMEFT runs the SMEFT RGEs";
 
 
-RunRGEsSMEFTpython::usage="RunRGEsSMEFT[WCsInput_file,SMInput_file] runs the SMEFT RGEs using the python-smeftrunner package";
-
-
 ExportSMEFTrunner::usage="ExportSMEFTrunner exports the SMEFTrunner results to an output file";
 
 

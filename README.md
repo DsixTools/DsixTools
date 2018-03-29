@@ -10,7 +10,6 @@ The project currently presents three modules:
 - **EWmatcher:** Tree-level matching of the SMEFT to the WET
 - **WETrunner:** WET QCD and QED running down to the b-quark mass scale
 
-Since version v1.1.1, DsixTools includes an interface to [python-smeftrunner](https://github.com/DsixTools/python-smeftrunner), a Python implementation of the **SMEFTrunner** module written by [Xuanyou Pan](https://github.com/pxylisa) and [David Straub](https://github.com/DavidMStraub).
 
 More modules are expected to be added soon. Stay tunned!
 

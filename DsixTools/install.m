@@ -84,8 +84,7 @@ InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,Questio
 packageName="DsixTools";
 packageDir=FileNameJoin[{$UserBaseDirectory,"Applications","DsixTools"}];
 MinVersion=9.0;
-DsixToolsLink="http://ific.uv.es/~montesin/DD.zip";
-(* DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/master.zip"; *)
+DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/master.zip";
 
 (* Messages *)
 

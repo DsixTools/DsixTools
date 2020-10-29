@@ -160,7 +160,7 @@ Print["Installation complete!"];
 InstallDsixTools;
 
 
-QuestionConvert="Do you want to convert the .m files to .mx format to reduce the load time?";
+QuestionConvert="Do you want to convert the .m files to .mx format to reduce the DsixTools loading time?";
 
 If[
 ChoiceDialog[QuestionConvert,{"Yes"->True,"No"->False},WindowFloating->True,WindowTitle->"Convert m to mx"],

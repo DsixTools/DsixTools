@@ -77,6 +77,17 @@ Print["Conversion complete!"];
 ];
 
 
+ImportFiles:=Block[{},
+Import[DsixTools`DsixToolsDir<>"BetaSMEFT.mx"];
+Import[DsixTools`DsixToolsDir<>"BetaSM.mx"];
+DsixTools`USMEFT=Import[DsixTools`DsixToolsDir<>"evolutionSMEFT.mx"];
+Import[DsixTools`DsixToolsDir<>"EWMatching.mx"];
+Import[DsixTools`DsixToolsDir<>"BetaLEFT.mx"];
+DsixTools`ULEFT=Import[DsixTools`DsixToolsDir<>"evolutionLEFT.mx"];
+DsixTools`BuildAllRGEs;
+];
+
+
 InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,QuestionOverwrite,tmpFile,unzipDir,zipDir},
 
 (* Definitions *)
@@ -166,6 +177,7 @@ ChoiceDialog[QuestionConvert,{"Yes"->True,"No"->False},WindowFloating->True,Wind
 DsixTools`ImportFiles=False;
 Needs["DsixTools`"];
 ConvertFiles;
+ImportFiles;
 ,
 Needs["DsixTools`"]
 ];

@@ -4,14 +4,9 @@ DsixTools is a Mathematica Package for the matching and renormalization-group ev
 
 ## Project status
 
-The project currently presents three modules: 
+The current version of DsixTools fully integrates the Standard Model Effective Field Theory (SMEFT) and the Low-Energy Effective Field Theory (LEFT), treating both theories on an equal footing. It implements the one-loop SMEFT RGEs, the complete one-loop matching between the SMEFT and the LEFT, and the one-loop LEFT RGEs, all up to operators of canonical dimension six. It also implements higher-order effects and includes a long list of routines for the handling of these two theories.
 
-- **SMEFTrunner:** one-loop RGE in the SMEFT
-- **EWmatcher:** Tree-level matching of the SMEFT to the WET
-- **WETrunner:** WET QCD and QED running down to the b-quark mass scale
-
-
-More modules are expected to be added soon. Stay tunned!
+More features are expected to be added soon. Stay tunned!
 
 ## Project web site
 
@@ -23,10 +18,11 @@ This web site is built with Jekyll and hosted on Github pages. You can check out
 
 ## Installing and loading DsixTools
 
-Download the folder DsixTools and place it in the Applications folder of the Mathematica base directory. Alternatively, you can place the DsixTools folder in a given directory and call the package by specifying its location via:
+The simplest way to download and install DsixTools is to run the following command in a Mathematica session:
 
-> pathtoDsixTools = " < directory > " ;
-> AppendTo [ $Path , pathtoDsixTools ];
+> Import["https://raw.githubusercontent.com/DsixTools/DsixTools/master/install.m"];
+
+This will download and install DsixTools in the Applications folder of the Mathematica base directory, activate the documentation and load the package. During the installation process a pop up window will appear asking if you want to convert the .m files to .mx format. This option is recommended, since it significantly reduces the DsixTools loading time.
 
 To load DsixTools use the command:
 
@@ -38,10 +34,11 @@ Please submit bugs and feature request using Github's issue system, or send us a
 
 ## Contributors
 
-- Alejandro Celis (Alejandro.Celis@physik.uni-muenchen.de)
-- Javier Fuentes-Martin (fuentes@physik.uzh.ch)
-- Avelino Vicente (Avelino.Vicente@ific.uv.es)
-- Javier Virto (jvirto@mit.edu)
+- Alejandro Celis (alejandrocelis5555@gmail.com)
+- Javier Fuentes-Martin (jfuentes@uni-mainz.de)
+- Pedro Ruiz-Femenia (pedro.d.ruiz@uv.es)
+- Avelino Vicente (avelino.vicente@ific.uv.es)
+- Javier Virto (jvirto@ub.edu)
 
 ## License
 

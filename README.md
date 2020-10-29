@@ -1,4 +1,4 @@
-# DsixTools: The Standard Model Effective Field Theory Toolkit
+# DsixTools: The Effective Field Theory Toolkit
 
 DsixTools is a Mathematica Package for the matching and renormalization-group evolution from the new-physics scale to the scale of low-energy observables.
 

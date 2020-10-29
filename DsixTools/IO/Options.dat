@@ -1,0 +1,9 @@
+Block SCALES
+1 10000		# UV scale [GeV]
+2 91.1876	# EW scale [GeV]
+Block OPTIONS
+1 1	# Method to solve RGEs : 1 (NDSolve), 2 (leading log) or 3 (evolution matrix)
+2 1	# Use SM RGEs to compute SM parameters at the high-energy scale
+3 5	# SMEFT RGEs loop order for methods 1 and 2
+4 5	# LEFT RGEs loop order for methods 1 and 2
+5 1	# Matching loop order

@@ -1,0 +1,10 @@
+Block GAUGE
+1 1.218232	# gQCD
+2 0.31		# eQED
+Block THETA
+1 1.0E-10	# thetaQCD
+2 0 		# thetaQED
+Block MN
+1 1 2.0E2	# Mn(1,1)
+1 2 -4.0E2	# Mn(1,2)
+3 3 1.0E2	# Mn(3,3)

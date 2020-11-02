@@ -1816,7 +1816,7 @@ DsixToolsVersion="2.0";
 CellPrint[TextCell["DsixTools "<>ToString[DsixToolsVersion],"Text",Purple,Background->LightBlue,FontSize->14]];
 
 Print["by Alejandro Celis, Javier Fuentes-Martin, Pedro Ruiz-Femenia, Avelino Vicente and Javier Virto \n",
-"References: ",Hyperlink["arXiv:1704.04504","https://arxiv.org/abs/1704.04504"]," and ",Hyperlink["arXiv:2010.xxxxx","https://arxiv.org/abs/2010.xxxxx"],"\n",
+"References: ",Hyperlink["arXiv:1704.04504","https://arxiv.org/abs/1704.04504"]," and ",Hyperlink["arXiv:2010.16341","https://arxiv.org/abs/2010.16341"],"\n",
 "Website: ",Hyperlink["https://dsixtools.github.io/","https://dsixtools.github.io/"]];
 
 (*Print[StyleForm["This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.",FontSize\[Rule]10]];*)

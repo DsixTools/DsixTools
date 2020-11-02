@@ -469,8 +469,13 @@ solSMEFT=Dispatch[Join[newSM,solnewWCs]];
 
 (* Save results in SMEFTrun function *)
 SMEFTrun[x_,"log10"]:=
-If[MemberQ[ParametersSMEFT[[1;;5]],x],
-Re[x/.insertt/.solSMEFT],x//.SubRedundant/.insertt/.solSMEFT/.{t0->tHIGH,tf->t}];
+If[MemberQ[ParametersSMEFT[[1;;lastSM]],x],
+(* SM parameter *)
+If[MemberQ[ParametersSMEFT[[1;;5]],x],Re[x/.insertt/.solSMEFT],x//.SubRedundant/.insertt/.solSMEFT/.{t0->tHIGH,tf->t}]
+,
+(* WC *)
+If[t==tHIGH,x/.inputSMEFTrunner,x//.SubRedundant/.insertt/.solSMEFT/.{t0->tHIGH,tf->t}]
+];
 ];
 
 (* define input for EWmatcher *)
@@ -564,6 +569,14 @@ solnewWCs=MapThread[(#1[t]->#2)&,{ParametersLEFT[[lastQEDQCD+1;;-1]],newWCs}];
 solLEFT=Dispatch[Join[newQEDQCD,solnewWCs]];
 
 (* Save results in LEFTrun function *)
+(* LEFTrun[x_,"log10"]:=
+If[MemberQ[ParametersLEFT[[1;;lastQEDQCD]],x],
+(* QED&QCD parameter *)
+If[MemberQ[ParametersLEFT[[1;;4]],x],Re[x/.insertt/.solLEFT],x//.SubRedundant/.insertt/.solLEFT]
+,
+(* WC *)
+If[t\[Equal]tEW,x/.inputLEFTrunner,x//.SubRedundant/.insertt/.solLEFT/.t\[Rule]t]
+]; *)
 LEFTrun[x_,"log10"]:=
 If[MemberQ[ParametersLEFT[[1;;4]],x],
 Re[x/.insertt/.solLEFT],x//.SubRedundant/.insertt/.solLEFT];

@@ -46,6 +46,6 @@ DsixTools is free software under the copyleft of the GNU General Public License.
 
 ## Citation
 
-If you use DsixTools please cite: [arXiv:1704.04504](https://arxiv.org/abs/1704.04504).
+If you use DsixTools please cite: [arXiv:2010.16341](https://arxiv.org/abs/2010.16341) and [arXiv:1704.04504](https://arxiv.org/abs/1704.04504).
 
 

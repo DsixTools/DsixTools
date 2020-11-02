@@ -95,8 +95,7 @@ InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,Questio
 packageName="DsixTools";
 packageDir=FileNameJoin[{$UserBaseDirectory,"Applications","DsixTools"}];
 MinVersion=9.0;
-DsixToolsLink="http://ific.uv.es/~montesin/DD.zip";
-(* DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/master.zip"; *)
+DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/master.zip";
 
 (* Messages *)
 
@@ -147,12 +146,21 @@ CopyDirectory[DirectoryName[zipDir[[1]]],packageDir];
 (* Delete the extracted archive *)
 
 Quiet@DeleteDirectory[unzipDir,DeleteContents->True];
+                        
+(* Unzip and delete evolution matrix files *)
+USMEFTFile=packageDir<>"/Package/evolutionSMEFT.m.zip";
+ExtractArchive[USMEFTFile,packageDir<>"Package"];
+Quiet@DeleteFile[USMEFTFile];
+                        
+ULEFTFile=packageDir<>"/Package/evolutionLEFT.m.zip";
+ExtractArchive[ULEFTFile,packageDir<>"Package"];
+Quiet@DeleteFile[ULEFTFile];
 
 (* Activate the documentation *)
 
 Print["Setting up the help system"];
 
-(* Unzip and delete Documentation file*)
+(* Unzip and delete Documentation file *)
 
 DocuFile=packageDir<>"/Documentation.zip";
 ExtractArchive[DocuFile,packageDir];

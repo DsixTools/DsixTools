@@ -149,11 +149,11 @@ Quiet@DeleteDirectory[unzipDir,DeleteContents->True];
                         
 (* Unzip and delete evolution matrix files *)
 USMEFTFile=packageDir<>"/Package/evolutionSMEFT.m.zip";
-ExtractArchive[USMEFTFile,packageDir<>"Package"];
+ExtractArchive[USMEFTFile,packageDir<>"/Package"];
 Quiet@DeleteFile[USMEFTFile];
                         
 ULEFTFile=packageDir<>"/Package/evolutionLEFT.m.zip";
-ExtractArchive[ULEFTFile,packageDir<>"Package"];
+ExtractArchive[ULEFTFile,packageDir<>"/Package"];
 Quiet@DeleteFile[ULEFTFile];
 
 (* Activate the documentation *)

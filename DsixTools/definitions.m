@@ -125,6 +125,9 @@ LEFTLagrangian::WrongInput="Function called with wrong arguments";
 LEFTLagrangian::Initialization="LEFT input not initialized";
 
 
+LEFTLagrangian::WrongScale="The scale should be between LOWSCALE and EWSCALE";
+
+
 ObjectInfo::WrongOperator="The operator `1` does not exist"
 
 
@@ -637,23 +640,25 @@ LEFTLagrangian=Which[
 (*1*)
 Length[{##}]!=1,Message[LEFTLagrangian::WrongInput],
 (*2*)
-Length[{##}]==1,Which[
-(*2.1*)
+Length[{##}]==1\[And]!NumberQ[##],Message[LEFTLagrangian::WrongInput],
+(*3*)
+Length[{##}]==1\[And]NumberQ[##],Which[
+(*3.1*)
 InitInput===False,
 Message[LEFTLagrangian::Initialization],
-(*2.2*)
+(*3.2*)
 (##>EWSCALE)\[Or](##<LOWSCALE),
 Message[LEFTLagrangian::WrongScale],
-(*2.3*)
+(*3.3*)
 InitInput=="LEFT"\[And]##==EWSCALE,
 LEFTParametersTotal.LEFTOperatorsTotal/.InputValues,
-(*2.4*)
+(*3.4*)
 InitInput=="LEFT"\[And]##!=EWSCALE\[And]LOWSCALE<=##<EWSCALE,
 If[!LEFTrunner,TurnOffMessages;LEFTRunRGEs;TurnOnMessages];(LEFTrun[LEFTParametersTotal]/.\[Mu]->##).LEFTOperatorsTotal,
-(*2.5*)
+(*3.5*)
 InitInput=="SMEFT"\[And]!NumberQ[HIGHSCALE],
 Message[SMEFTLagrangian::Initialization],
-(*2.6*)
+(*3.6*)
 InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE],
 If[!LEFTrunner,TurnOffMessages;RunDsixTools;TurnOnMessages];(LEFTrun[LEFTParametersTotal]/.\[Mu]->##).LEFTOperatorsTotal
 ]

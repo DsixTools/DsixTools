@@ -476,6 +476,7 @@ If[MemberQ[ParametersSMEFT[[1;;5]],x],Re[x/.insertt/.solSMEFT],x//.SubRedundant/
 (* WC *)
 If[t==tHIGH,x/.inputSMEFTrunner,x//.SubRedundant/.insertt/.solSMEFT/.{t0->tHIGH,tf->t}]
 ];
+
 ];
 
 (* define input for EWmatcher *)
@@ -618,14 +619,21 @@ Return[EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]];
 LEFTEvolve[WC_,tini_,tfinal_,"log10"]:=LEFTEvolve[WC,10^tini,10^tfinal];
 
 
-D6run[x_,"log10"]:=Block[{var},
+D6run[x_,"log10"]:=Block[{var,SMEFTCase,LEFTCase,MyRep},
 
-var=Variables@Level[x,{0}];
+var=Integrate`getAllVariables[x,{}];
 
-If[AllTrue[var,MemberQ[SMEFTParametersTotal,#]&]||AllTrue[var,MemberQ[LEFTParametersTotal,#]&],
+If[Head[var]===List,var=var,var={var}];
 
-If[AllTrue[var,MemberQ[SMEFTParametersTotal,#]&],Return[SMEFTrun[x,"log10"]]];
-If[AllTrue[var,MemberQ[LEFTParametersTotal,#]&],Return[LEFTrun[x,"log10"]]];
+SMEFTCase=AnyTrue[var,MemberQ[SMEFTParametersTotal,#]&]&&AllTrue[var,!MemberQ[LEFTParametersTotal,#]&];
+LEFTCase=AnyTrue[var,MemberQ[LEFTParametersTotal,#]&]&&AllTrue[var,!MemberQ[SMEFTParametersTotal,#]&];
+
+If[SMEFTCase||LEFTCase,
+
+If[SMEFTCase,MyRep=If[MemberQ[SMEFTParametersTotal,#],#->SMEFTrun[#,"log10"],#->#]&/@var];
+If[LEFTCase,MyRep=If[MemberQ[LEFTParametersTotal,#],#->LEFTrun[#,"log10"],#->#]&/@var];
+
+Return[x/.MyRep];
 
 ,
 

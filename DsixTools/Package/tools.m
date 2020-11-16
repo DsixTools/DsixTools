@@ -595,7 +595,7 @@ LEFTrun[x_]:=LEFTrun[x,"log10"]/.t->Log10[\[Mu]];
 
 
 (* Analytical application of the evolution matrix *)
-LEFTEvolve[WC_,\[Mu]final_,\[Mu]ini_]:=Block[{pos},
+LEFTEvolve[WC_,\[Mu]final_]:=Block[{pos},
 
 lastQEDQCD=First[LEFTFindParameter[Md[3,3]]];
 
@@ -604,19 +604,17 @@ pos=LEFTFindParameter[WC][[1]]-lastQEDQCD;
 WCs=ParametersLEFT[[lastQEDQCD+1;;-1]];
 
 (* Apply evolution matrix *)
-(* EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]:=EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]=
-MyRound[ComplexExpand[ULEFT[[pos,1;;-1]].WCs/.t\[Rule]Log[\[Mu]final],_]]; *)
-EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]:=EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]=
+EvolvedLEFT[WC,\[Mu]final]:=EvolvedLEFT[WC,\[Mu]final]=
 ULEFT[[pos]].WCs/.t->Log[10,\[Mu]final];
 
 
-Return[EvolvedLEFT[WC,\[Mu]final-\[Mu]ini]];
+Return[EvolvedLEFT[WC,\[Mu]final]];
 
 ]
 
 
 (* Definition of LEFTEvolve with t input *)
-LEFTEvolve[WC_,tini_,tfinal_,"log10"]:=LEFTEvolve[WC,10^tini,10^tfinal];
+LEFTEvolve[WC_,tfinal_,"log10"]:=LEFTEvolve[WC,10^tfinal];
 
 
 D6run[x_,"log10"]:=Block[{var,SMEFTCase,LEFTCase,MyRep},

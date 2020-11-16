@@ -1760,7 +1760,7 @@ LEFTParameterList::usage="LEFTParameterList[] returns the complete list of indep
 SMEFTRunRGEs::usage="SMEFTRunRGEs runs the SMEFT RGEs";
 
 
-SMEFTEvolve::usage="SMEFTEvolve[X,x_Final,x_Initial] returns the SMEFT parameter X at x_Final=\[Mu]Final as a function of the SMEFT parameters at x_Initial=\[Mu]Initial, where both \[Mu]Initial and \[Mu]Final are energy scales given in GeV. SMEFTEvolve[X,xFinal,xInitial,'log10'] returns the SMEFT parameter X at x_Final=tFinal as a function of the SMEFT parameters at x_Initial=tInitial, with t = Log10(\[Mu]/GeV)";
+SMEFTEvolve::usage="SMEFTEvolve[X,\[Mu]Final,\[Mu]Initial] returns the SMEFT parameter X at \[Mu]=\[Mu]Final as a function of the SMEFT parameters at \[Mu]=\[Mu]Initial, where both \[Mu]Initial and \[Mu]Final are energy scales given in GeV. SMEFTEvolve[X,tFinal,tInitial,'log10'] returns the SMEFT parameter X at t=tFinal as a function of the SMEFT parameters at t=tInitial, with t = Log10(\[Mu]/GeV)";
 
 
 (* ::Input::Initialization:: *)
@@ -1788,7 +1788,7 @@ EWmatcherExport::usage="EWmatcherExport[] exports the EWmatcher results to an SL
 LEFTRunRGEs::usage="LEFTRunRGEs runs the LEFT RGEs";
 
 
-LEFTEvolve::usage="LEFTEvolve[X,\[Mu]Initial,\[Mu]Final] returns the LEFT parameter X at \[Mu]=\[Mu]Final as a function of the LEFT parameters at \[Mu]=\[Mu]Initial, where both \[Mu]Initial and \[Mu]Final are energy scales given in GeV. LEFTEvolve[X,tInitial,tFinal,'log10'] returns the LEFT parameter X at t=tFinal as a function of the LEFT parameters at t=tInitial, with t = Log10(\[Mu]/GeV)";
+LEFTEvolve::usage="LEFTEvolve[X,\[Mu]Final] returns the LEFT parameter X at \[Mu]=\[Mu]Final as a function of the LEFT parameters at \[Mu]=EWSCALE, where \[Mu]Final is an energy scale given in GeV. LEFTEvolve[X,tFinal,'log10'] returns the LEFT parameter X at t=tFinal as a function of the LEFT parameters at t=tEW, with t = Log10(\[Mu]/GeV)";
 
 
 (* ::Input::Initialization:: *)
@@ -1816,7 +1816,7 @@ DsixToolsVersion="2.0";
 CellPrint[TextCell["DsixTools "<>ToString[DsixToolsVersion],"Text",Purple,Background->LightBlue,FontSize->14]];
 
 Print["by Alejandro Celis, Javier Fuentes-Martin, Pedro Ruiz-Femenia, Avelino Vicente and Javier Virto \n",
-"References: ",Hyperlink["arXiv:1704.04504","https://arxiv.org/abs/1704.04504"]," and ",Hyperlink["arXiv:2010.16341","https://arxiv.org/abs/2010.16341"],"\n",
+"References: ",Hyperlink["arXiv:1704.04504","https://arxiv.org/abs/1704.04504"]," and ",Hyperlink["arXiv:2010.xxxxx","https://arxiv.org/abs/2010.xxxxx"],"\n",
 "Website: ",Hyperlink["https://dsixtools.github.io/","https://dsixtools.github.io/"]];
 
 (*Print[StyleForm["This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.",FontSize\[Rule]10]];*)

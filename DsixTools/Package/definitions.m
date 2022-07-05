@@ -310,40 +310,40 @@ LEFTWCs2F={
 LEFTWCs4F={
 {ML\[Nu]\[Nu]VLL,L\[Nu]\[Nu]VLL,O\[Nu]\[Nu]VLL,8,{n\[Nu],n\[Nu],n\[Nu],n\[Nu]},6,"LEFT","LLLL","-"},
 {MLeeVLL,LeeVLL,OeeVLL,8,{ne,ne,ne,ne},6,"LEFT","LLLL","-"},
-{ML\[Nu]eVLL,L\[Nu]eVLL,O\[Nu]eVLL,5,{n\[Nu],n\[Nu],ne,ne},6,"LEFT","LLLL","-"},
-{ML\[Nu]uVLL,L\[Nu]uVLL,O\[Nu]uVLL,5,{n\[Nu],n\[Nu],nu,nu},6,"LEFT","LLLL","-"},
-{ML\[Nu]dVLL,L\[Nu]dVLL,O\[Nu]dVLL,5,{n\[Nu],n\[Nu],nd,nd},6,"LEFT","LLLL","-"},
-{MLeuVLL,LeuVLL,OeuVLL,5,{ne,ne,nu,nu},6,"LEFT","LLLL","-"},
-{MLedVLL,LedVLL,OedVLL,5,{ne,ne,nd,nd},6,"LEFT","LLLL","-"},
+{ML\[Nu]eVLL,L\[Nu]eVLL,O\[Nu]eVLL,7,{n\[Nu],n\[Nu],ne,ne},6,"LEFT","LLLL","-"},
+{ML\[Nu]uVLL,L\[Nu]uVLL,O\[Nu]uVLL,7,{n\[Nu],n\[Nu],nu,nu},6,"LEFT","LLLL","-"},
+{ML\[Nu]dVLL,L\[Nu]dVLL,O\[Nu]dVLL,7,{n\[Nu],n\[Nu],nd,nd},6,"LEFT","LLLL","-"},
+{MLeuVLL,LeuVLL,OeuVLL,7,{ne,ne,nu,nu},6,"LEFT","LLLL","-"},
+{MLedVLL,LedVLL,OedVLL,7,{ne,ne,nd,nd},6,"LEFT","LLLL","-"},
 {ML\[Nu]eduVLL,L\[Nu]eduVLL,O\[Nu]eduVLL,5,{n\[Nu],ne,nd,nu},6,"LEFT","LLLL","-"},
 {MLuuVLL,LuuVLL,OuuVLL,6,{nu,nu,nu,nu},6,"LEFT","LLLL","-"},
 {MLddVLL,LddVLL,OddVLL,6,{nd,nd,nd,nd},6,"LEFT","LLLL","-"},
-{MLudV1LL,LudV1LL,OudV1LL,5,{nu,nu,nd,nd},6,"LEFT","LLLL","-"},
-{MLudV8LL,LudV8LL,OudV8LL,5,{nu,nu,nd,nd},6,"LEFT","LLLL","-"},
+{MLudV1LL,LudV1LL,OudV1LL,7,{nu,nu,nd,nd},6,"LEFT","LLLL","-"},
+{MLudV8LL,LudV8LL,OudV8LL,7,{nu,nu,nd,nd},6,"LEFT","LLLL","-"},
 {MLeeVRR,LeeVRR,OeeVRR,8,{ne,ne,ne,ne},6,"LEFT","RRRR","-"},
-{MLeuVRR,LeuVRR,OeuVRR,5,{ne,ne,nu,nu},6,"LEFT","RRRR","-"},
-{MLedVRR,LedVRR,OedVRR,5,{ne,ne,nd,nd},6,"LEFT","RRRR","-"},
+{MLeuVRR,LeuVRR,OeuVRR,7,{ne,ne,nu,nu},6,"LEFT","RRRR","-"},
+{MLedVRR,LedVRR,OedVRR,7,{ne,ne,nd,nd},6,"LEFT","RRRR","-"},
 {MLuuVRR,LuuVRR,OuuVRR,6,{nu,nu,nu,nu},6,"LEFT","RRRR","-"},
 {MLddVRR,LddVRR,OddVRR,6,{nd,nd,nd,nd},6,"LEFT","RRRR","-"},
-{MLudV1RR,LudV1RR,OudV1RR,5,{nu,nu,nd,nd},6,"LEFT","RRRR","-"},
-{MLudV8RR,LudV8RR,OudV8RR,5,{nu,nu,nd,nd},6,"LEFT","RRRR","-"},
-{ML\[Nu]eVLR,L\[Nu]eVLR,O\[Nu]eVLR,5,{n\[Nu],n\[Nu],ne,ne},6,"LEFT","LLRR","-"},
-{MLeeVLR,LeeVLR,OeeVLR,5,{ne,ne,ne,ne},6,"LEFT","LLRR","-"},
-{ML\[Nu]uVLR,L\[Nu]uVLR,O\[Nu]uVLR,5,{n\[Nu],n\[Nu],nu,nu},6,"LEFT","LLRR","-"},
-{ML\[Nu]dVLR,L\[Nu]dVLR,O\[Nu]dVLR,5,{n\[Nu],n\[Nu],nd,nd},6,"LEFT","LLRR","-"},
-{MLeuVLR,LeuVLR,OeuVLR,5,{ne,ne,nu,nu},6,"LEFT","LLRR","-"},
-{MLedVLR,LedVLR,OedVLR,5,{ne,ne,nd,nd},6,"LEFT","LLRR","-"},
-{MLueVLR,LueVLR,OueVLR,5,{nu,nu,ne,ne},6,"LEFT","LLRR","-"},
-{MLdeVLR,LdeVLR,OdeVLR,5,{nd,nd,ne,ne},6,"LEFT","LLRR","-"},
+{MLudV1RR,LudV1RR,OudV1RR,7,{nu,nu,nd,nd},6,"LEFT","RRRR","-"},
+{MLudV8RR,LudV8RR,OudV8RR,7,{nu,nu,nd,nd},6,"LEFT","RRRR","-"},
+{ML\[Nu]eVLR,L\[Nu]eVLR,O\[Nu]eVLR,7,{n\[Nu],n\[Nu],ne,ne},6,"LEFT","LLRR","-"},
+{MLeeVLR,LeeVLR,OeeVLR,7,{ne,ne,ne,ne},6,"LEFT","LLRR","-"},
+{ML\[Nu]uVLR,L\[Nu]uVLR,O\[Nu]uVLR,7,{n\[Nu],n\[Nu],nu,nu},6,"LEFT","LLRR","-"},
+{ML\[Nu]dVLR,L\[Nu]dVLR,O\[Nu]dVLR,7,{n\[Nu],n\[Nu],nd,nd},6,"LEFT","LLRR","-"},
+{MLeuVLR,LeuVLR,OeuVLR,7,{ne,ne,nu,nu},6,"LEFT","LLRR","-"},
+{MLedVLR,LedVLR,OedVLR,7,{ne,ne,nd,nd},6,"LEFT","LLRR","-"},
+{MLueVLR,LueVLR,OueVLR,7,{nu,nu,ne,ne},6,"LEFT","LLRR","-"},
+{MLdeVLR,LdeVLR,OdeVLR,7,{nd,nd,ne,ne},6,"LEFT","LLRR","-"},
 {ML\[Nu]eduVLR,L\[Nu]eduVLR,O\[Nu]eduVLR,5,{n\[Nu],ne,nd,nu},6,"LEFT","LLRR","-"},
-{MLuuV1LR,LuuV1LR,OuuV1LR,5,{nu,nu,nu,nu},6,"LEFT","LLRR","-"},
-{MLuuV8LR,LuuV8LR,OuuV8LR,5,{nu,nu,nu,nu},6,"LEFT","LLRR","-"},
-{MLudV1LR,LudV1LR,OudV1LR,5,{nu,nu,nd,nd},6,"LEFT","LLRR","-"},
-{MLudV8LR,LudV8LR,OudV8LR,5,{nu,nu,nd,nd},6,"LEFT","LLRR","-"},
-{MLduV1LR,LduV1LR,OduV1LR,5,{nd,nd,nu,nu},6,"LEFT","LLRR","-"},
-{MLduV8LR,LduV8LR,OduV8LR,5,{nd,nd,nu,nu},6,"LEFT","LLRR","-"},
-{MLddV1LR,LddV1LR,OddV1LR,5,{nd,nd,nd,nd},6,"LEFT","LLRR","-"},
-{MLddV8LR,LddV8LR,OddV8LR,5,{nd,nd,nd,nd},6,"LEFT","LLRR","-"},
+{MLuuV1LR,LuuV1LR,OuuV1LR,7,{nu,nu,nu,nu},6,"LEFT","LLRR","-"},
+{MLuuV8LR,LuuV8LR,OuuV8LR,7,{nu,nu,nu,nu},6,"LEFT","LLRR","-"},
+{MLudV1LR,LudV1LR,OudV1LR,7,{nu,nu,nd,nd},6,"LEFT","LLRR","-"},
+{MLudV8LR,LudV8LR,OudV8LR,7,{nu,nu,nd,nd},6,"LEFT","LLRR","-"},
+{MLduV1LR,LduV1LR,OduV1LR,7,{nd,nd,nu,nu},6,"LEFT","LLRR","-"},
+{MLduV8LR,LduV8LR,OduV8LR,7,{nd,nd,nu,nu},6,"LEFT","LLRR","-"},
+{MLddV1LR,LddV1LR,OddV1LR,7,{nd,nd,nd,nd},6,"LEFT","LLRR","-"},
+{MLddV8LR,LddV8LR,OddV8LR,7,{nd,nd,nd,nd},6,"LEFT","LLRR","-"},
 {MLudduV1LR,LudduV1LR,OudduV1LR,5,{nu,nd,nd,nu},6,"LEFT","LLRR","-"},
 {MLudduV8LR,LudduV8LR,OudduV8LR,5,{nu,nd,nd,nu},6,"LEFT","LLRR","-"},
 {MLeeSRR,LeeSRR,OeeSRR,6,{ne,ne,ne,ne},6,"LEFT","LRLR","-"},
@@ -818,7 +818,7 @@ LEFTNF={1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,
 
 (* Function to rewrite the SMEFT WCs as strings following the WCXF conventions *)
 WCXFStringSMEFT[sym_]:=Block[{},
-res=StringReplace[ToString[sym],{"C"->"","HDD"->"phiD","Q"->"q","U"->"u","D"->"d","L"->"l","E"->"e","H"->"phi","\[EmptySquare]"->"Box",StringExpression["[",a___,"]"]:>"_"<>StringDelete[ToString[a],", "]}];
+res=StringReplace[ToString[sym],{"C"->"","H"->"phi","box"->"Box","CHD"->"HD",StringExpression["[",a___,"]"]:>"_"<>StringDelete[ToString[a],", "]}];
 Return[res];
 ];
 
@@ -826,6 +826,10 @@ Return[res];
 (* Function to rewrite the LEFT WCs as strings following the WCXF conventions *)
 WCXFStringLEFT[sym_]:=Block[{},
 res=StringReplace[ToString[sym],{RegularExpression["(?m)^L"]->"","N"->"nu","\[Nu]"->"nu","\[Gamma]"->"gamma","U"->"u","D"->"d","E"->"e",StringExpression["[",a___,"]"]:>"_"<>StringDelete[ToString[a],", "]}];
+If[StringContainsQ[res,"S1"],res="S1"<>StringDrop[res,StringPosition[res,"S1"][[1]]]];
+If[StringContainsQ[res,"S8"],res="S8"<>StringDrop[res,StringPosition[res,"S8"][[1]]]];
+If[StringContainsQ[res,"V1"],res="V1"<>StringDrop[res,StringPosition[res,"V1"][[1]]]];
+If[StringContainsQ[res,"V8"],res="V8"<>StringDrop[res,StringPosition[res,"V8"][[1]]]];
 If[StringContainsQ[res,"S"],res="S"<>StringDrop[res,{StringPosition[res,"S"][[1,1]]}]];
 If[StringContainsQ[res,"V"],res="V"<>StringDrop[res,{StringPosition[res,"V"][[1,1]]}]];
 If[StringContainsQ[res,"T"],res="T"<>StringDrop[res,{StringPosition[res,"T"][[1,1]]}]];
@@ -878,7 +882,7 @@ Framed[Grid[{
 {Style["Flavor indices: "<>nn<>"\n",16,Black]},
 {Style[WCname<>" elements:",16,Black]},
 {StringJoin[
-Table[If[MemberQ[Symbol[EFT<>"ParameterList"][],list[[i]]],ToString[list[[i]]]<>"\n",StringJoin[ToString[list[[i]]]," = ",ToString[list[[i]]//.SubRedundant,InputForm]<>"\n"]],{i,1,Length[list]}]]}
+Table[If[MemberQ[Symbol[EFT<>"ParameterList"][],list[[i]]],ToString[list[[i]]]<>"\n",StringJoin[ToString[list[[i]]]," = ",ToString[list[[i]]//.SubRedundant,InputForm]<>"\n"]],{i,Length[list]}]]}
 },Alignment->Left,Spacings->{0,0.6}],Background->GrayLevel[0.9]]
 ],
 
@@ -916,6 +920,3 @@ Join[
 Table[PopupWindow[Framed[Tooltip[#[[-2]],#[[-1]]],Background->GrayLevel[0.96],FrameStyle->White,RoundingRadius->12,ImageSize->Large],ObjectInfo[#[[3]]]]&/@LEFTObjectList[[1+15(ii-1);;15 ii]],{ii,1,6}],
 {PopupWindow[Framed[Tooltip[#[[-2]],#[[-1]]],Background->GrayLevel[0.96],FrameStyle->White,RoundingRadius->12,ImageSize->Large],ObjectInfo[#[[3]]]]&/@LEFTObjectList[[91;;103]]}
 ],Background->LightOrange,Frame->All,FrameStyle->White,FrameStyle->White];
-
-
-

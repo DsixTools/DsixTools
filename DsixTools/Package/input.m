@@ -1449,6 +1449,11 @@ If[!MemberQ[Join[SMEFTParametersTotal,LEFTParametersTotal],list[[i,1]]],Message[
 
 ];
 
+(* Set control variables to False *)
+SMEFTrunner=False;
+LEFTrunner=False;
+EWmatcher=False;
+
 ];
 SetAttributes[NewInput,HoldAll];
 
@@ -1502,6 +1507,11 @@ Message[NewScale::WrongScale,scale];
 
 (* Consistency check *)
 If[!LOWSCALE<EWSCALE<HIGHSCALE,Message[NewScale::NotValidScale]];
+
+(* Set control variables to False *)
+SMEFTrunner=False;
+LEFTrunner=False;
+EWmatcher=False;
 
 ];
 

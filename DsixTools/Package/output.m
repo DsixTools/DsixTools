@@ -714,7 +714,7 @@ Write4FLEFT;
 ];
 
 
-WriteWCsSMEFTJSON[scale_]:=Block[{last},
+WriteWCsSMEFTJSON[scale_]:=Block[{last,RealPrev},
 
 last=SMEFTFindParameter[\[Theta]s]//First;
 
@@ -724,19 +724,26 @@ Write[outfile,"  \"basis\": \"Warsaw\","];
 Write[outfile,"  \"scale\": ",outR[scale],","];
 Write[outfile,"  \"values\": {"];
 Do[
-If[Element[dataOutput[[i+last]],Reals],
-If[i<Length[SMEFTWCsWCXF],
-Write[outfile,"    \""<>ToString[SMEFTWCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+last]]],","];
+
+If[dataOutput[[i+last]]!=0,
+
+If[i!=1,If[RealPrev,Write[outfile,","],Write[outfile,"    },"]]];
+
+If[Im[dataOutput[[i+last]]]==0,
+RealPrev=True;
+WriteString[outfile,"    \""<>ToString[SMEFTWCsWCXF[[i]]]<>"\": ",outR[Re[dataOutput[[i+last]]]]];
 ,
-Write[outfile,"    \""<>ToString[SMEFTWCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+last]]]];
-];
-,
+RealPrev=False;
 Write[outfile,"    \""<>ToString[SMEFTWCsWCXF[[i]]]<>"\": {"];
 Write[outfile,"      \"Re\": ",outR[Re[dataOutput[[i+last]]]],","];
 Write[outfile,"      \"Im\": ",outR[Im[dataOutput[[i+last]]]]];
-If[i<Length[SMEFTWCsWCXF],Write[outfile,"    },"];,Write[outfile,"    }"];];
 ];
-,{i,1,Length[SMEFTWCsWCXF]}];
+
+];
+
+If[i==Length[SMEFTWCsWCXF],If[RealPrev,Write[outfile,""],Write[outfile,"    }"]]];
+
+,{i,Length[SMEFTWCsWCXF]}];
 Write[outfile,"  }"];
 Write[outfile,"}"];
 
@@ -752,6 +759,7 @@ Write[outfile,"basis: Warsaw"];
 Write[outfile,"scale: ",outR[scale]];
 Write[outfile,"values:"];
 Do[
+If[dataOutput[[i+last]]!=0,
 If[Element[dataOutput[[i+last]],Reals],
 Write[outfile,"  "<>ToString[SMEFTWCsWCXF[[i]]]<>": ",outR[dataOutput[[i+last]]]];
 ,
@@ -759,34 +767,42 @@ Write[outfile,"  "<>ToString[SMEFTWCsWCXF[[i]]]<>":"];
 Write[outfile,"    Re: ",outR[Re[dataOutput[[i+last]]]]];
 Write[outfile,"    Im: ",outR[Im[dataOutput[[i+last]]]]];
 ];
-,{i,1,Length[SMEFTWCsWCXF]}];
+];
+,{i,Length[SMEFTWCsWCXF]}];
 
 ];
 
 
-WriteWCsLEFTJSON[scale_]:=Block[{last},
+WriteWCsLEFTJSON[scale_]:=Block[{last,RealPrev},
 
 last=LEFTFindParameter[Md[3,3]]//First;
 
 Write[outfile,"{"];
-Write[outfile,"  \"eft\": \"LEFT\","];
-Write[outfile,"  \"basis\": \"San Diego\","];
+Write[outfile,"  \"eft\": \"WET\","];
+Write[outfile,"  \"basis\": \"JMS\","];
 Write[outfile,"  \"scale\": ",outR[scale],","];
 Write[outfile,"  \"values\": {"];
 Do[
-If[Element[dataOutput[[i+last]],Reals],
-If[i<Length[LEFTWCsWCXF],
-Write[outfile,"    \""<>ToString[LEFTWCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+last]]],","];
+
+If[dataOutput[[i+last]]!=0,
+
+If[i!=1,If[RealPrev,Write[outfile,","],Write[outfile,"    },"]]];
+
+If[Im[dataOutput[[i+last]]]==0,
+RealPrev=True;
+WriteString[outfile,"    \""<>ToString[LEFTWCsWCXF[[i]]]<>"\": ",outR[Re[dataOutput[[i+last]]]]];
 ,
-Write[outfile,"    \""<>ToString[LEFTWCsWCXF[[i]]]<>"\": ",outR[dataOutput[[i+last]]]];
-];
-,
+RealPrev=False;
 Write[outfile,"    \""<>ToString[LEFTWCsWCXF[[i]]]<>"\": {"];
 Write[outfile,"      \"Re\": ",outR[Re[dataOutput[[i+last]]]],","];
 Write[outfile,"      \"Im\": ",outR[Im[dataOutput[[i+last]]]]];
-If[i<Length[LEFTWCsWCXF],Write[outfile,"    },"];,Write[outfile,"    }"];];
 ];
-,{i,1,Length[LEFTWCsWCXF]}];
+
+];
+
+If[i==Length[LEFTWCsWCXF],If[RealPrev,Write[outfile,""],Write[outfile,"    }"]]];
+
+,{i,Length[LEFTWCsWCXF]}];
 Write[outfile,"  }"];
 Write[outfile,"}"];
 
@@ -797,11 +813,12 @@ WriteWCsLEFTYAML[scale_]:=Block[{last},
 
 last=LEFTFindParameter[Md[3,3]]//First;
 
-Write[outfile,"eft: LEFT"];
-Write[outfile,"basis: San Diego"];
+Write[outfile,"eft: WET"];
+Write[outfile,"basis: JMS"];
 Write[outfile,"scale: ",outR[scale]];
 Write[outfile,"values:"];
 Do[
+If[dataOutput[[i+last]]!=0,
 If[Element[dataOutput[[i+last]],Reals],
 Write[outfile,"  "<>ToString[LEFTWCsWCXF[[i]]]<>": ",outR[dataOutput[[i+last]]]];
 ,
@@ -809,7 +826,8 @@ Write[outfile,"  "<>ToString[LEFTWCsWCXF[[i]]]<>":"];
 Write[outfile,"    Re: ",outR[Re[dataOutput[[i+last]]]]];
 Write[outfile,"    Im: ",outR[Im[dataOutput[[i+last]]]]];
 ];
-,{i,1,Length[LEFTWCsWCXF]}];
+];
+,{i,Length[LEFTWCsWCXF]}];
 
 ];
 
@@ -902,14 +920,16 @@ SMEFTrunnerExport:=Block[{},
 Which[
 Length[{##}]==0,
 MyPrint["Exporting SMEFTrunner results"];
-dataOutput=Chop[SMEFTrun/@ParametersSMEFT/.\[Mu]->EWSCALE,$MachineEpsilon];
+dataOutput=SMEFTrun/@ParametersSMEFT/.\[Mu]->EWSCALE;
+(* dataOutput=Chop[SMEFTrun/@ParametersSMEFT/.\[Mu]\[Rule]EWSCALE,$MachineEpsilon]; *)
 outname="Output_SMEFTrunner.dat";
 WriteSMEFTOutputFile[outname,dataOutput];
 ,
 Length[{##}]==2,
 MyPrint["Exporting SMEFTrunner results"];
 If[{##}[[1]]=="SLHA",
-dataOutput=Chop[SMEFTrun/@ParametersSMEFT/.\[Mu]->EWSCALE,$MachineEpsilon];
+dataOutput=SMEFTrun/@ParametersSMEFT/.\[Mu]->EWSCALE;
+(* dataOutput=Chop[SMEFTrun/@ParametersSMEFT/.\[Mu]\[Rule]EWSCALE,$MachineEpsilon]; *)
 outname={##}[[2]]<>".dat";
 WriteSMEFTOutputFile[outname,dataOutput];
 ,
@@ -932,14 +952,16 @@ EWmatcherExport:=Block[{},
 Which[
 Length[{##}]==0,
 MyPrint["Exporting EWmatcher results"];
-dataOutput=Chop[ParametersLEFT/.Match,$MachineEpsilon];
+dataOutput=ParametersLEFT/.Match;
+(* dataOutput=Chop[ParametersLEFT/.Match,$MachineEpsilon]; *)
 outname="Output_EWmatcher.dat";
 WriteLEFTOutputFile[outname,dataOutput,1];
 ,
 Length[{##}]==2,
 MyPrint["Exporting EWmatcher results"];
 If[{##}[[1]]=="SLHA",
-dataOutput=Chop[ParametersLEFT/.Match,$MachineEpsilon];
+dataOutput=ParametersLEFT/.Match;
+(* dataOutput=Chop[ParametersLEFT/.Match,$MachineEpsilon]; *)
 outname={##}[[2]]<>".dat";
 WriteLEFTOutputFile[outname,dataOutput,1];
 ,
@@ -962,14 +984,16 @@ LEFTrunnerExport:=Block[{},
 Which[
 Length[{##}]==0,
 MyPrint["Exporting LEFTrunner results"];
-dataOutput=Chop[LEFTrun/@ParametersLEFT/.\[Mu]->LOWSCALE,$MachineEpsilon];
+dataOutput=LEFTrun/@ParametersLEFT/.\[Mu]->LOWSCALE;
+(* dataOutput=Chop[LEFTrun/@ParametersLEFT/.\[Mu]\[Rule]LOWSCALE,$MachineEpsilon]; *)
 outname="Output_LEFTrunner.dat";
 WriteLEFTOutputFile[outname,dataOutput,2];
 ,
 Length[{##}]==2,
 MyPrint["Exporting LEFTrunner results"];
 If[{##}[[1]]=="SLHA",
-dataOutput=Chop[LEFTrun/@ParametersLEFT/.\[Mu]->LOWSCALE,$MachineEpsilon];
+dataOutput=LEFTrun/@ParametersLEFT/.\[Mu]->LOWSCALE;
+(* dataOutput=Chop[LEFTrun/@ParametersLEFT/.\[Mu]\[Rule]LOWSCALE,$MachineEpsilon]; *)
 outname={##}[[2]]<>".dat";
 WriteLEFTOutputFile[outname,dataOutput,2];
 ,
@@ -988,17 +1012,20 @@ Message[LEFTrunnerExport::WrongInput]
 
 ComputeSMEFTrunnerInd:=Block[{},
 If[!ValueQ[ParametersSMEFTInd],ParametersSMEFTInd=ToIndependentSingle/@ParametersSMEFT;];
-Return[Chop[SMEFTrun/@ParametersSMEFTInd/.\[Mu]->EWSCALE,$MachineEpsilon]];
+Return[SMEFTrun/@ParametersSMEFTInd/.\[Mu]->EWSCALE];
+(* Return[Chop[SMEFTrun/@ParametersSMEFTInd/.\[Mu]\[Rule]EWSCALE,$MachineEpsilon]]; *)
 ];
 
 
 ComputeEWmatcherInd:=Block[{},
 If[!ValueQ[ParametersLEFTInd],ParametersLEFTInd=ToIndependentSingle/@ParametersLEFT;];
-Return[Chop[ParametersLEFTInd/.Match,$MachineEpsilon]];
+Return[ParametersLEFTInd/.Match];
+(* Return[Chop[ParametersLEFTInd/.Match,$MachineEpsilon]]; *)
 ];
 
 
 ComputeLEFTrunnerInd:=Block[{},
 If[!ValueQ[ParametersLEFTInd],ParametersLEFTInd=ToIndependentSingle/@ParametersLEFT;];
-Return[Chop[LEFTrun/@ParametersLEFTInd/.\[Mu]->LOWSCALE,$MachineEpsilon]];
+Return[LEFTrun/@ParametersLEFTInd/.\[Mu]->LOWSCALE];
+(* Return[Chop[LEFTrun/@ParametersLEFTInd/.\[Mu]\[Rule]LOWSCALE,$MachineEpsilon]]; *)
 ];

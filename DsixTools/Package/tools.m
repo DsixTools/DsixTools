@@ -551,7 +551,8 @@ RGEsMethod==3,
 lastQEDQCD=First[LEFTFindParameter[Md[3,3]]];
 
 (* Initial LEFT WCs *)
-WCs=SparseArray[Chop[ParametersLEFT[[lastQEDQCD+1;;-1]]/.inputLEFTrunner]];
+(* WCs=SparseArray[Chop[ParametersLEFT[[lastQEDQCD+1;;-1]]/.inputLEFTrunner]]; *)
+WCs=SparseArray[ParametersLEFT[[lastQEDQCD+1;;-1]]/.inputLEFTrunner];
 nonnullWCs=WCs["NonzeroPositions"];
 
 (* Apply evolution matrix *)
@@ -563,7 +564,8 @@ newWCs=SparseArray[Table[0,{Length[ULEFT]}]];
 (* We neglect the running of the WCs in the running of the QED&QCD parameters and take them as constants *)
 solnewWCs=Dispatch[MapThread[(#1[t]->#2)&,{ParametersLEFT[[lastQEDQCD+1;;-1]],WCs}]];
 initQEDQCD=Map[#[tEW]==(#/.inputLEFTrunner)&,ParametersLEFT[[1;;lastQEDQCD]]];
-equationsQEDQCD=Join[RGEsLEFTt[[1;;lastQEDQCD]]/.solnewWCs,initQEDQCD]//Chop;
+(* equationsQEDQCD=Join[RGEsLEFTt[[1;;lastQEDQCD]]/.solnewWCs,initQEDQCD]//Chop; *)
+equationsQEDQCD=Chop[Join[RGEsLEFTt[[1;;lastQEDQCD]]/.solnewWCs,initQEDQCD],10^(-15)];
 newQEDQCD=NDSolve[equationsQEDQCD,ParametersLEFT[[1;;lastQEDQCD]],{t,tLOW,tEW},Method->{"EquationSimplification"->"Solve"}][[1]];
 
 solnewWCs=MapThread[(#1[t]->#2)&,{ParametersLEFT[[lastQEDQCD+1;;-1]],newWCs}];
@@ -581,6 +583,7 @@ If[t\[Equal]tEW,x/.inputLEFTrunner,x//.SubRedundant/.insertt/.solLEFT/.t\[Rule]t
 LEFTrun[x_,"log10"]:=
 If[MemberQ[ParametersLEFT[[1;;4]],x],
 Re[x/.insertt/.solLEFT],x//.SubRedundant/.insertt/.solLEFT];
+
 ];
 
 If[RGEsMethod==1,MyPrint["Running finished!"];];

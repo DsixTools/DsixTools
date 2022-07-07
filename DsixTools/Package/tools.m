@@ -708,6 +708,7 @@ H1=2 Arg[Exp[I \[Delta]e] Conjugate[PMNS0[[1,1]]]];
 H2=2 Arg[Exp[I \[Delta]e] Conjugate[PMNS0[[1,2]]]];
 
 Kmat=DiagonalMatrix[{Exp[I \[Delta]e],Exp[I \[Delta]\[Mu]],Exp[I \[Delta]\[Tau]]}];
+
 ELnew=EL.Kmat;
 ERnew=ER.Kmat;
 
@@ -880,7 +881,7 @@ m\[Nu]=-v^2/2MCllHHAtScale;
 (* Diagonalization and rephasing to obtain the PMNS matrix with standard phase convention *)
 (* This is only done if neutrinos are massive *)
 If[Max[Abs[m\[Nu]]]!=0,
-m\[Nu]=SetPrecision[m\[Nu],20];
+m\[Nu]=SetPrecision[m\[Nu],30];
 m\[Nu]diag=Biunitary[m\[Nu]][[1]];
 NL=Biunitary[m\[Nu]][[3]];
 NR=NL;
@@ -1264,7 +1265,7 @@ m\[Nu]=M\[Nu]AtScale;
 (* Diagonalization and rephasing to obtain the PMNS matrix with standard phase convention *)
 (* This is only done if neutrinos are massive *)
 If[Max[Abs[m\[Nu]]]!=0,
-m\[Nu]=SetPrecision[m\[Nu],20];
+m\[Nu]=SetPrecision[m\[Nu],30];
 m\[Nu]diag=Biunitary[m\[Nu]][[1]];
 NL=Biunitary[m\[Nu]][[3]];
 NR=NL;

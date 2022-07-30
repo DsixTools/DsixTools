@@ -146,6 +146,9 @@ Match::usage="Dispatch that replaces all LEFT parameters by their numerical valu
 MatchAnalytical::usage="Dispatch that replaces all LEFT parameters by their analytical matching conditions";
 
 
+MatchAnalyticalUV::usage="Dispatch that replaces all SMEFT parameters by their analytical matching conditions at the UV matching scale";
+
+
 Qg::usage="Qg SMEFT operator";
 
 
@@ -1673,7 +1676,16 @@ SMEFTFindParameter::usage="SMEFTFindParameter[parameter] returns the position of
 LEFTFindParameter::usage="LEFTFindParameter[parameter] returns the position of parameter in the list of independent LEFT parameters. LEFTFindParameter[atributes,parameter] returns the position of parameter in a list composed by the independent LEFT parameters with all attributes in the list attributes";
 
 
+Diagonalize::usage="Diagonalize[mat] brings the square matrix mat to diagonal form by applying a biunitary transformation or a Takagi factorization";
+
+
 Biunitary::usage="Biunitary[mat] applies a biunitary transformation to the square matrix mat";
+
+
+Takagi::usage="Takagi[mat] applies a Takagi factorization to the square symmetric matrix mat";
+
+
+SumRepeated::usage="SumRepeated[X] applies Einstein summation convention to the analytical expression X by summing over repeated indices";
 
 
 RunDsixTools::usage="Master DsixTools routine. RunDsixTools runs the SMEFT parameters from HIGHSCALE to EWSCALE, matches to the LEFT, and finally runs the LEFT parameters from EWSCALE to LOWSCALE";
@@ -1710,6 +1722,9 @@ SLHAtoWCXF::usage="SLHAtoWCXF[SLHA_file,WCXF_file,SCALE_,EFT_] translates a WCs 
 
 
 SetSMLEFTInput::usage="Routine that sets the LEFT input to a pure SM one";
+
+
+ReadMME::usage="ReadMME[MME_file] reads the MatchMakerEFT file MME_file";
 
 
 D6Simplify::usage="D6Simplify[X] replaces all redundant Wilson coefficients in X by their expressions in terms of the non-redundant ones and eliminates complex conjugates on real parameters. It can also be used on analytical expressions containing several parameters";
@@ -1809,7 +1824,7 @@ LEFTLagrangian::usage= "LEFTLagrangian[\[Mu]0] gives the expression for the full
 
 
 (* ::Input::Initialization:: *)
-DsixToolsVersion="2.0";
+DsixToolsVersion="2.1";
 
 
 (* ::Input::Initialization:: *)

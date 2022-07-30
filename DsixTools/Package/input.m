@@ -1417,6 +1417,21 @@ NewScale[{LOWSCALE->(LOWSCALE/.addlist)}];
 
 (* Part 2: Parameters input *)
 
+If[MemberQ[list,Global`MMEfile,2], (* MatchMakerEFT input *)
+
+If[NumberQ[HIGHSCALE],
+
+listnew=NumMME[list]; 
+NewInput[listnew];
+
+,
+
+Message[NewInput::MissingHIGHSCALE];
+
+];
+
+,
+
 (* Check all input parameters *)
 If[MyContainsAll[Join[SMEFTParametersTotal,LEFTParametersTotal],list[[All,1]]],
 
@@ -1446,6 +1461,8 @@ Message[NewInput::MixedEFTs];
 Do[
 If[!MemberQ[Join[SMEFTParametersTotal,LEFTParametersTotal],list[[i,1]]],Message[NewInput::WrongParameter,list[[i,1]]];];
 ,{i,Length[list[[All,1]]]}];
+
+];
 
 ];
 
@@ -1704,3 +1721,168 @@ Protect[InputBasis];
 Message[SetInputBasis::WrongBasis,basis];
 ];
 ];
+
+
+(* Routine to rename WCs *)
+MMEtoD6[a_]:=Block[{MMEname},
+If[MatchQ[a,g],MMEname=Global`g2];
+If[MatchQ[a,gp],MMEname=Global`g1];
+If[MatchQ[a,gs],MMEname=Global`g3];
+If[MatchQ[a,\[Lambda]],MMEname=Global`alphaOlambda];
+If[MatchQ[a,m2],MMEname=Global`alphaOmuH2];
+If[MatchQ[a,Gu[__]],MMEname=Global`alphaOlambdau@@a];
+If[MatchQ[a,Gd[__]],MMEname=Global`alphaOlambdad@@a];
+If[MatchQ[a,Ge[__]],MMEname=Global`alphaOlambdae@@a];
+If[MatchQ[a,CG],MMEname=Global`alphaO3G];
+If[MatchQ[a,CGtilde],MMEname=Global`alphaO3Gt];
+If[MatchQ[a,CW],MMEname=Global`alphaO3W];
+If[MatchQ[a,CWtilde],MMEname=Global`alphaO3Wt];
+If[MatchQ[a,CH],MMEname=Global`alphaOH];
+If[MatchQ[a,CHbox],MMEname=Global`alphaOHBox];
+If[MatchQ[a,CHD],MMEname=Global`alphaOHD];
+If[MatchQ[a,CHG],MMEname=Global`alphaOHG];
+If[MatchQ[a,CHB],MMEname=Global`alphaOHB];
+If[MatchQ[a,CHW],MMEname=Global`alphaOHW];
+If[MatchQ[a,CHWB],MMEname=Global`alphaOHWB];
+If[MatchQ[a,CHGtilde],MMEname=Global`alphaOHGt];
+If[MatchQ[a,CHBtilde],MMEname=Global`alphaOHBt];
+If[MatchQ[a,CHWtilde],MMEname=Global`alphaOHWt];
+If[MatchQ[a,CHWtildeB],MMEname=Global`alphaOHWBt];
+If[MatchQ[a,CuH[__]],MMEname=Global`alphaOuH@@a];
+If[MatchQ[a,CdH[__]],MMEname=Global`alphaOdH@@a];
+If[MatchQ[a,CeH[__]],MMEname=Global`alphaOeH@@a];
+If[MatchQ[a,CeW[__]],MMEname=Global`alphaOeW@@a];
+If[MatchQ[a,CeB[__]],MMEname=Global`alphaOeB@@a];
+If[MatchQ[a,CuG[__]],MMEname=Global`alphaOuG@@a];
+If[MatchQ[a,CuW[__]],MMEname=Global`alphaOuW@@a];
+If[MatchQ[a,CuB[__]],MMEname=Global`alphaOuB@@a];
+If[MatchQ[a,CdG[__]],MMEname=Global`alphaOdG@@a];
+If[MatchQ[a,CdW[__]],MMEname=Global`alphaOdW@@a];
+If[MatchQ[a,CdB[__]],MMEname=Global`alphaOdB@@a];
+If[MatchQ[a,CHl1[__]],MMEname=Global`alphaOHl1@@a];
+If[MatchQ[a,CHl3[__]],MMEname=Global`alphaOHl3@@a];
+If[MatchQ[a,CHe[__]],MMEname=Global`alphaOHe@@a];
+If[MatchQ[a,CHq1[__]],MMEname=Global`alphaOHq1@@a];
+If[MatchQ[a,CHq3[__]],MMEname=Global`alphaOHq3@@a];
+If[MatchQ[a,CHu[__]],MMEname=Global`alphaOHu@@a];
+If[MatchQ[a,CHd[__]],MMEname=Global`alphaOHd@@a];
+If[MatchQ[a,CHud[__]],MMEname=Global`alphaOHud@@a];
+If[MatchQ[a,Cll[__]],MMEname=Global`alphaOll@@a];
+If[MatchQ[a,Cqq1[__]],MMEname=Global`alphaOqq1@@a];
+If[MatchQ[a,Cqq3[__]],MMEname=Global`alphaOqq3@@a];
+If[MatchQ[a,Clq1[__]],MMEname=Global`alphaOlq1@@a];
+If[MatchQ[a,Clq3[__]],MMEname=Global`alphaOlq3@@a];
+If[MatchQ[a,Cee[__]],MMEname=Global`alphaOee@@a];
+If[MatchQ[a,Cuu[__]],MMEname=Global`alphaOuu@@a];
+If[MatchQ[a,Cdd[__]],MMEname=Global`alphaOdd@@a];
+If[MatchQ[a,Ceu[__]],MMEname=Global`alphaOeu@@a];
+If[MatchQ[a,Ced[__]],MMEname=Global`alphaOed@@a];
+If[MatchQ[a,Cud1[__]],MMEname=Global`alphaOud1@@a];
+If[MatchQ[a,Cud8[__]],MMEname=Global`alphaOud8@@a];
+If[MatchQ[a,Cle[__]],MMEname=Global`alphaOle@@a];
+If[MatchQ[a,Clu[__]],MMEname=Global`alphaOlu@@a];
+If[MatchQ[a,Cld[__]],MMEname=Global`alphaOld@@a];
+If[MatchQ[a,Cqe[__]],MMEname=Global`alphaOqe@@a];
+If[MatchQ[a,Cqu1[__]],MMEname=Global`alphaOqu1@@a];
+If[MatchQ[a,Cqu8[__]],MMEname=Global`alphaOqu8@@a];
+If[MatchQ[a,Cqd1[__]],MMEname=Global`alphaOqd1@@a];
+If[MatchQ[a,Cqd8[__]],MMEname=Global`alphaOqd8@@a];
+If[MatchQ[a,Cledq[__]],MMEname=Global`alphaOledq@@a];
+If[MatchQ[a,Cquqd1[__]],MMEname=Global`alphaOquqd1@@a];
+If[MatchQ[a,Cquqd8[__]],MMEname=Global`alphaOquqd8@@a];
+If[MatchQ[a,Clequ1[__]],MMEname=Global`alphaOlequ1@@a];
+If[MatchQ[a,Clequ3[__]],MMEname=Global`alphaOlequ3@@a];
+(* If[MatchQ[a,Cduql[__]],MMEname=Global`alphaOduql@@a];
+If[MatchQ[a,Cqque[__]],MMEname=Global`alphaOqque@@a];
+If[MatchQ[a,Cqqql[__]],MMEname=Global`alphaOqqql@@a];
+If[MatchQ[a,Cduue[__]],MMEname=Global`alphaOduue@@a]; *)
+If[MatchQ[a,Cduql[__]],MMEname=0];
+If[MatchQ[a,Cqque[__]],MMEname=0];
+If[MatchQ[a,Cqqql[__]],MMEname=0];
+If[MatchQ[a,Cduue[__]],MMEname=0];
+If[MatchQ[a,CllHH[__]],MMEname=Global`alphaWeinberg@@a];
+
+Return[MMEname]
+]
+
+
+(* Auxiliary function to split the terms in an analytical expression *)
+(* Routine by Jsoe Santiago *)
+Splitter[exp_] := Block[{res}, res = DeleteCases[Level[Expand[exp] + "REMOVETHIS", 1], "REMOVETHIS"]; res]; 
+
+
+(* Routine to get the repeated indices in an analytical expression *)
+(* Adapted from a routine by Jose Santiago *)
+GetIndices[exp_]:=Block[{mons,int,iii,allindices,counts},
+
+mons=Splitter[exp];
+int={};
+
+Do[allindices=StringSplit[StringReplace[StringRiffle[StringCases[ToString[InputForm[mons[[iii]]/.Power[a_[c___],2]:>Dot@@Table[a[c],2]]],"["~~s:Except["["|"]"]...~~"]":>s],","]," "->""],","];counts=Counts[allindices];
+AppendTo[int,Keys[Select[counts,#>1&]]];
+,{iii,Length[mons]}];
+
+Return[Symbol/@Select[DeleteDuplicates[Flatten[int]],!MemberQ[{"1","2","3"},#]&]];
+]
+
+
+(* Routine to sum over repeated indices *)
+SumRepeated [x_]:=Block[{list,indices,res},
+
+list=GetIndices[x];
+indices=list/.((#->{#,3})&/@list);
+
+If[indices=={},res=x,res=Sum[x,##]&@@indices];
+
+Return[res];
+]
+
+
+(* Routine to run the SM up to HIGHSCALE *)
+(* The result of the running is saved in a replacement rule that uses MME's notation *)
+RunSMtoUV:=Block[{SMgauge,SMHiggs,SMGe,SMGu,SMGd,SM},
+
+NewInput[{CG->0}];
+SMEFTRunRGEs;
+SMgauge={Global`g1->D6run[gp],Global`g2->D6run[g],Global`g3->D6run[gs]}/.\[Mu]->HIGHSCALE;
+SMHiggs={Global`muH->Sqrt[D6run[m2]],Global`lam->D6run[\[Lambda]]}/.\[Mu]->HIGHSCALE;
+SMGe=Table[Global`yl[i,j]->D6run[Ge[i,j]]/.\[Mu]->HIGHSCALE,{i,3},{j,3}];
+SMGu=Table[Global`yu[i,j]->D6run[Gu[i,j]]/.\[Mu]->HIGHSCALE,{i,3},{j,3}];
+SMGd=Table[Global`yd[i,j]->D6run[Gd[i,j]]/.\[Mu]->HIGHSCALE,{i,3},{j,3}];
+
+SM=Join[SMgauge,SMHiggs,SMGe,SMGu,SMGd]//Flatten;
+Return[SM];
+
+]
+
+
+NumMME[list_]:=Block[{MMEfilename,SM,tol,D6Input,matching},
+
+(* Read MME file *)
+MMEfilename=Global`MMEfile/.list;
+ReadMME[MMEfilename];
+matching=DsixTools`MatchingResult[[3]];
+
+(* Compute SM parameters at HIGHSCALE *)
+SM=RunSMtoUV;
+
+(* Numerical tolerance *)
+tol=20;
+
+(* Generate DsixTools input *)
+D6Input=Chop[(#->SumRepeated[MMEtoD6[#]/.matching/.Global`onelooporder->1/.Global`invepsilonbar->0/.\[Mu]->HIGHSCALE])&/@SMEFTParametersTotal[[36;;-1]]/.list/.SM,10^(-tol)];
+
+Return[D6Input];
+
+]
+
+
+ReadMME[MMEfile_]:=Block[{matching},
+
+If[FileExistsQ[MMEfile],Get[MMEfile],Message[ReadMME::MMENotFound,MMEfile];];
+
+(* Matching in the Warsaw basis *)
+matching=Join[DsixTools`MatchingResult[[4]],DsixTools`MatchingResult[[3]]]//Flatten;
+MatchAnalyticalUV=Dispatch[(#->MMEtoD6[#]/.matching)&/@SMEFTParametersTotal]; 
+
+]

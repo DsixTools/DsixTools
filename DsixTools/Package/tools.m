@@ -24,68 +24,100 @@ H[mat_]:=ConjugateTranspose[mat]
 CC[mat_]:=Conjugate[mat]
 
 
-(* Auxiliary function equivalent to SquareMatrixQ but valid for Mathematica versions < 10.0 *)
+(* Auxiliary function equivalent to SquareMatrixQ but valid for Mathematica versions<10.0 *)
 MySquareMatrixQ:=Dimensions[#][[1]]==Dimensions[#][[2]]&;
 
 
-(* ::Input::Initialization:: *)
-(* Function to apply a biunitary transformation *)
-Biunitary[mat_]:=Block[{dim,mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
+(* Function to apply a biunitary transformation *)Biunitary[mat_]:=Block[{dim,mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
 
-If[MySquareMatrixQ[mat],
-
-dim=Length[mat];
+If[MySquareMatrixQ[mat],dim=Length[mat];
 
 mat2L=mat.H[mat];
 mat2R=H[mat].mat;
-
 eigen=Sqrt[Eigenvalues[mat2L]];
-
 RotLPre=Eigenvectors[mat2L];
 RotRPre=Eigenvectors[mat2R];
 
 (* Reorder eigenvectors *)
+
 copy=RotLPre;
 Do[RotLPre[[i,All]]=copy[[dim+1-i,All]];,{i,1,dim}];
-
 copy=RotRPre;
 Do[RotRPre[[i,All]]=copy[[dim+1-i,All]];,{i,1,dim}];
 
 (* Rephasing - only done if mat is complex *)
-If[Re[mat]!=mat,
 
+If[Re[mat]!=mat,
 (* Absorb phases in R eigenvectors *)
 MatrixPhase=CC[RotLPre].mat.Transpose[RotRPre];
 Do[
 phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
-RotRPre[[i,All]]=CC[phase] RotRPre[[i,All]];
-,{i,1,dim}];
-
-(* Special for symmetric matrices *)
-(* Absorb phases in R eigenvectors again *)
-If[Abs[RotLPre]==Abs[RotRPre],
-MatrixPhase=RotRPre.mat.Transpose[RotRPre];
-Do[
-phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
-RotRPre[[i,All]]=Sqrt[CC[phase]] RotRPre[[i,All]];
-,{i,1,dim}];
-RotLPre=RotRPre;
-];
+RotRPre[[i,All]]=CC[phase] RotRPre[[i,All]];,
+{i,1,dim}];
 
 ];
 
 (* Transpose *)
 RotL=Transpose[RotLPre];
 RotR=Transpose[RotRPre];
-
-Return[{eigen,RotL,RotR}];
-
-,
+Return[{Sort[eigen],RotL,RotR}];,
 
 Message[Biunitary::NotSquare,mat];
 ];
+];
+
+
+(* Function to apply a Takagi factorization *)
+Takagi[mat_]:=Block[{dim,eigen,mat2,Rot,RotPre,copy,MatrixPhase,phase},
+
+If[MySquareMatrixQ[mat],
+If[SymmetricMatrixQ[mat],
+
+dim=Length[mat];
+
+mat2=mat.H[mat];
+eigen=Sqrt[Eigenvalues[mat2]];
+RotPre=CC@Eigenvectors[mat2];
+
+(* Reorder eigenvectors *)
+
+copy=RotPre;
+Do[RotPre[[i,All]]=copy[[dim+1-i,All]];,{i,1,dim}];
+
+(* Rephasing  *)
+MatrixPhase=RotPre.mat.Transpose[RotPre];
+Do[
+phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
+RotPre[[i,All]]=Sqrt[CC[phase]] RotPre[[i,All]];,
+{i,1,dim}];
+
+(* Transpose *)
+Rot=Transpose[RotPre];
+
+Return[{Sort[eigen],Rot}];,
+
+Message[Takagi::NotSym,mat];
+];,
+Message[Takagi::NotSquare,mat];
+];
 
 ];
+
+
+Diagonalize[mat_]:=Block[{out},
+
+If[MySquareMatrixQ[mat],
+If[DiagonalMatrixQ[mat],
+out={Sort[Eigenvalues[mat]],IdentityMatrix[Length[mat]],IdentityMatrix[Length[mat]]};
+,
+If[SymmetricMatrixQ[mat],out=Takagi[mat],out=Biunitary[mat]];
+];
+Return[out];
+,
+Message[Diagonalize::NotSquare,mat];
+];
+
+]
 
 
 (* 2F Hermitian matrix *)
@@ -846,16 +878,16 @@ DiagonalizeFermionsSMEFT[dim6_]:=Block[{},
 (* Up quarks *)
 mu=If[dim6,v/Sqrt[2](GuAtScale-1/2v^2 MCuHAtScale),v/Sqrt[2]GuAtScale];
 mu=SetPrecision[mu,20];
-mudiag=Biunitary[mu][[1]];
-UL=Biunitary[mu][[2]];
-UR=Biunitary[mu][[3]];
+mudiag=Diagonalize[mu][[1]];
+UL=Diagonalize[mu][[2]];
+UR=Diagonalize[mu][[3]];
 
 (* Down quarks *)
 md=If[dim6,v/Sqrt[2](GdAtScale-1/2v^2 MCdHAtScale),v/Sqrt[2]GdAtScale];
 md=SetPrecision[md,20];
-mddiag=Biunitary[md][[1]];
-DL=Biunitary[md][[2]];
-DR=Biunitary[md][[3]];
+mddiag=Diagonalize[md][[1]];
+DL=Diagonalize[md][[2]];
+DR=Diagonalize[md][[3]];
 
 (* Rephasing to obtain the CKM matrix with standard phase convention - only done if the CKM matrix is complex *)
 If[Re[H[UL].DL]!=H[UL].DL,
@@ -871,9 +903,9 @@ DR=NewRotationsCKM[[4]];
 (* Charged leptons *)
 me=If[dim6,v/Sqrt[2](GeAtScale-1/2v^2 MCeHAtScale),v/Sqrt[2]GeAtScale];
 me=SetPrecision[me,20];
-mediag=Biunitary[me][[1]];
-EL=Biunitary[me][[2]];
-ER=Biunitary[me][[3]];
+mediag=Diagonalize[me][[1]];
+EL=Diagonalize[me][[2]];
+ER=Diagonalize[me][[3]];
 
 (* Neutrinos *)
 m\[Nu]=-v^2/2MCllHHAtScale;
@@ -882,8 +914,8 @@ m\[Nu]=-v^2/2MCllHHAtScale;
 (* This is only done if neutrinos are massive *)
 If[Max[Abs[m\[Nu]]]!=0,
 m\[Nu]=SetPrecision[m\[Nu],30];
-m\[Nu]diag=Biunitary[m\[Nu]][[1]];
-NL=Biunitary[m\[Nu]][[3]];
+m\[Nu]diag=Diagonalize[m\[Nu]][[1]];
+NL=Diagonalize[m\[Nu]][[2]];
 NR=NL;
 (* Rephasing to obtain the PMNS matrix with standard phase convention - only done if the PMNS matrix is complex *)
 If[Re[H[EL].NL]!=H[EL].NL,
@@ -1239,25 +1271,25 @@ DiagonalizeFermionsLEFT:=Block[{},
 (* Up quarks *)
 mu=MuAtScale;
 mu=SetPrecision[mu,20];
-mudiag=Biunitary[mu][[1]];
-UL=Biunitary[mu][[2]];
-UR=Biunitary[mu][[3]];
+mudiag=Diagonalize[mu][[1]];
+UL=Diagonalize[mu][[2]];
+UR=Diagonalize[mu][[3]];
 
 (* Down quarks *)
 md=MdAtScale;
 md=SetPrecision[md,20];
-mddiag=Biunitary[md][[1]];
-DL=Biunitary[md][[2]];
-DR=Biunitary[md][[3]];
+mddiag=Diagonalize[md][[1]];
+DL=Diagonalize[md][[2]];
+DR=Diagonalize[md][[3]];
 
 (* LEPTONS *)
 
 (* Charged leptons *)
 me=MeAtScale;
 me=SetPrecision[me,20];
-mediag=Biunitary[me][[1]];
-EL=Biunitary[me][[2]];
-ER=Biunitary[me][[3]];
+mediag=Diagonalize[me][[1]];
+EL=Diagonalize[me][[2]];
+ER=Diagonalize[me][[3]];
 
 (* Neutrinos *)
 m\[Nu]=M\[Nu]AtScale;
@@ -1266,8 +1298,8 @@ m\[Nu]=M\[Nu]AtScale;
 (* This is only done if neutrinos are massive *)
 If[Max[Abs[m\[Nu]]]!=0,
 m\[Nu]=SetPrecision[m\[Nu],30];
-m\[Nu]diag=Biunitary[m\[Nu]][[1]];
-NL=Biunitary[m\[Nu]][[3]];
+m\[Nu]diag=Diagonalize[m\[Nu]][[1]];
+NL=Diagonalize[m\[Nu]][[2]];
 NR=NL;
 (* Rephasing to obtain the PMNS matrix with standard phase convention - only done if the PMNS matrix is complex *)
 If[Re[H[EL].NL]!=H[EL].NL,

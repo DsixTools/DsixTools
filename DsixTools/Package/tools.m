@@ -28,6 +28,10 @@ CC[mat_]:=Conjugate[mat]
 MySquareMatrixQ:=Dimensions[#][[1]]==Dimensions[#][[2]]&;
 
 
+(* Auxiliary function equivalent to DiagonalMatrixQ but valid for Mathematica versions<12.0 *)
+MyDiagonalMatrixQ:=#==DiagonalMatrix@Diagonal[#]&;
+
+
 (* Function to apply a biunitary transformation *)Biunitary[mat_]:=Block[{dim,mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
 
 If[MySquareMatrixQ[mat],dim=Length[mat];
@@ -107,7 +111,7 @@ Message[Takagi::NotSquare,mat];
 Diagonalize[mat_]:=Block[{out},
 
 If[MySquareMatrixQ[mat],
-If[DiagonalMatrixQ[mat],
+If[MyDiagonalMatrixQ[mat],
 out={Sort[Eigenvalues[mat]],IdentityMatrix[Length[mat]],IdentityMatrix[Length[mat]]};
 ,
 If[SymmetricMatrixQ[mat],out=Takagi[mat],out=Biunitary[mat]];

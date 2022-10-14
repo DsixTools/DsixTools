@@ -32,6 +32,10 @@ MySquareMatrixQ:=Dimensions[#][[1]]==Dimensions[#][[2]]&;
 MyDiagonalMatrixQ:=#==DiagonalMatrix@Diagonal[#]&;
 
 
+(* Auxiliary function equivalent to SymmetricMatrixQ but without a fixed numerical tolerance *)
+MySymmetricMatrixQ:=Max[Abs[#-Transpose[#]]]==0&;
+
+
 (* Function to apply a biunitary transformation *)Biunitary[mat_]:=Block[{dim,mat2L,mat2R,eigen,RotL,RotR,RotLPre,RotRPre,copy,MatrixPhase,phase},
 
 If[MySquareMatrixQ[mat],dim=Length[mat];
@@ -75,7 +79,7 @@ Message[Biunitary::NotSquare,mat];
 Takagi[mat_]:=Block[{dim,eigen,mat2,Rot,RotPre,copy,MatrixPhase,phase},
 
 If[MySquareMatrixQ[mat],
-If[SymmetricMatrixQ[mat],
+If[MySymmetricMatrixQ[mat],
 
 dim=Length[mat];
 
@@ -114,7 +118,7 @@ If[MySquareMatrixQ[mat],
 If[MyDiagonalMatrixQ[mat],
 out={Sort[Eigenvalues[mat]],IdentityMatrix[Length[mat]],IdentityMatrix[Length[mat]]};
 ,
-If[SymmetricMatrixQ[mat],out=Takagi[mat],out=Biunitary[mat]];
+If[MySymmetricMatrixQ[mat],out=Takagi[mat],out=Biunitary[mat]];
 ];
 Return[out];
 ,
@@ -1064,7 +1068,7 @@ SMEFTChangeBasis[basis];
 
 NewBasis0F={g->gAtScale,gp->gpAtScale,gs->gsAtScale,\[Lambda]->\[Lambda]AtScale,m2->m2AtScale,\[Theta]->\[Theta]AtScale,\[Theta]p->\[Theta]pAtScale,\[Theta]s->\[Theta]sAtScale,CG->CGAtScale,CGtilde->CGtildeAtScale,CW->CWAtScale,CWtilde->CWtildeAtScale,CH->CHAtScale,CHbox->CHboxAtScale,CHD->CHDAtScale,CHG->CHGAtScale,CHB->CHBAtScale,CHW->CHWAtScale,CHWB->CHWBAtScale,CHGtilde->CHGtildeAtScale,CHBtilde->CHBtildeAtScale,CHWtilde->CHWtildeAtScale,CHWtildeB->CHWtildeBAtScale};
 NewBasis2F=Table[{Gu[r,s]->GuNew[[r,s]],Gd[r,s]->GdNew[[r,s]],Ge[r,s]->GeNew[[r,s]],CuH[r,s]->MCuHNew[[r,s]],CdH[r,s]->MCdHNew[[r,s]],CeH[r,s]->MCeHNew[[r,s]],CeW[r,s]->MCeWNew[[r,s]],CeB[r,s]->MCeBNew[[r,s]],CuG[r,s]->MCuGNew[[r,s]],CuW[r,s]->MCuWNew[[r,s]],CuB[r,s]->MCuBNew[[r,s]],CdG[r,s]->MCdGNew[[r,s]],CdW[r,s]->MCdWNew[[r,s]],CdB[r,s]->MCdBNew[[r,s]],CHl1[r,s]->MCHl1New[[r,s]],CHl3[r,s]->MCHl3New[[r,s]],CHe[r,s]->MCHeNew[[r,s]],CHq1[r,s]->MCHq1New[[r,s]],CHq3[r,s]->MCHq3New[[r,s]],CHu[r,s]->MCHuNew[[r,s]],CHd[r,s]->MCHdNew[[r,s]],CHud[r,s]->MCHudNew[[r,s]],CllHH[r,s]->MCllHHNew[[r,s]]},{r,3},{s,3}];
-NewBasis4F=Table[{Cll[p,r,s,t]->MCllNew[[p,r,s,t]],Cqq1[p,r,s,t]->MCqq1New[[p,r,s,t]],Cqq3[p,r,s,t]->MCqq3New[[p,r,s,t]],Clq1[p,r,s,t]->MClq1New[[p,r,s,t]],Clq3[p,r,s,t]->MClq3New[[p,r,s,t]],Cee[p,r,s,t]->MCeeNew[[p,r,s,t]],Cuu[p,r,s,t]->MCuuNew[[p,r,s,t]],Cdd[p,r,s,t]->MCddNew[[p,r,s,t]],Ceu[p,r,s,t]->MCeuNew[[p,r,s,t]],Ced[p,r,s,t]->MCedNew[[p,r,s,t]],Cud1[p,r,s,t]->MCud1New[[p,r,s,t]],Cud8[p,r,s,t]->MCud8New[[p,r,s,t]],Cle[p,r,s,t]->MCleNew[[p,r,s,t]],Clu[p,r,s,t]->MCluNew[[p,r,s,t]],Cld[p,r,s,t]->MCldNew[[p,r,s,t]],Cqe[p,r,s,t]->MCqeNew[[p,r,s,t]],Cqu1[p,r,s,t]->MCqu1New[[p,r,s,t]],Cqu8[p,r,s,t]->MCqu8New[[p,r,s,t]],Cqd1[p,r,s,t]->MCqd1New[[p,r,s,t]],Cqd8[p,r,s,t]->MCqd8New[[p,r,s,t]],Cledq[p,r,s,t]->MCledqNew[[p,r,s,t]],Cquqd1[p,r,s,t]->MCquqd1New[[p,r,s,t]],Cquqd8[p,r,s,t]->MCquqd8New[[p,r,s,t]],Clequ1[p,r,s,t]->MClequ1New[[p,r,s,t]],Clequ3[p,r,s,t]->MClequ3New[[p,r,s,t]],Cduql[p,r,s,t]->MCduqlNew[[p,r,s,t]],Cqque[p,r,s,t]->MCqqueNew[[p,r,s,t]],Cqqql[p,r,s,t]->MCqqqlNew[[p,r,s,t]],Cduue[p,r,s,t]->MCduueNew[[p,r,s,t]]},{p,3},{r,3},{s,3},{t,3}]; 
+NewBasis4F=Table[{Cll[p,r,s,t]->MCllNew[[p,r,s,t]],Cqq1[p,r,s,t]->MCqq1New[[p,r,s,t]],Cqq3[p,r,s,t]->MCqq3New[[p,r,s,t]],Clq1[p,r,s,t]->MClq1New[[p,r,s,t]],Clq3[p,r,s,t]->MClq3New[[p,r,s,t]],Cee[p,r,s,t]->MCeeNew[[p,r,s,t]],Cuu[p,r,s,t]->MCuuNew[[p,r,s,t]],Cdd[p,r,s,t]->MCddNew[[p,r,s,t]],Ceu[p,r,s,t]->MCeuNew[[p,r,s,t]],Ced[p,r,s,t]->MCedNew[[p,r,s,t]],Cud1[p,r,s,t]->MCud1New[[p,r,s,t]],Cud8[p,r,s,t]->MCud8New[[p,r,s,t]],Cle[p,r,s,t]->MCleNew[[p,r,s,t]],Clu[p,r,s,t]->MCluNew[[p,r,s,t]],Cld[p,r,s,t]->MCldNew[[p,r,s,t]],Cqe[p,r,s,t]->MCqeNew[[p,r,s,t]],Cqu1[p,r,s,t]->MCqu1New[[p,r,s,t]],Cqu8[p,r,s,t]->MCqu8New[[p,r,s,t]],Cqd1[p,r,s,t]->MCqd1New[[p,r,s,t]],Cqd8[p,r,s,t]->MCqd8New[[p,r,s,t]],Cledq[p,r,s,t]->MCledqNew[[p,r,s,t]],Cquqd1[p,r,s,t]->MCquqd1New[[p,r,s,t]],Cquqd8[p,r,s,t]->MCquqd8New[[p,r,s,t]],Clequ1[p,r,s,t]->MClequ1New[[p,r,s,t]],Clequ3[p,r,s,t]->MClequ3New[[p,r,s,t]],Cduql[p,r,s,t]->MCduqlNew[[p,r,s,t]],Cqque[p,r,s,t]->MCqqueNew[[p,r,s,t]],Cqqql[p,r,s,t]->MCqqqlNew[[p,r,s,t]],Cduue[p,r,s,t]->MCduueNew[[p,r,s,t]]},{p,3},{r,3},{s,3},{t,3}];
 
 ToNewBasis=Join[NewBasis0F,NewBasis2F,NewBasis4F]//Flatten;
 

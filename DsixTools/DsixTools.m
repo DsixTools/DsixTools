@@ -1775,7 +1775,7 @@ LEFTParameterList::usage="LEFTParameterList[] returns the complete list of indep
 SMEFTRunRGEs::usage="SMEFTRunRGEs runs the SMEFT RGEs";
 
 
-SMEFTEvolve::usage="SMEFTEvolve[X,\[Mu]Final,\[Mu]Initial] returns the SMEFT parameter X at \[Mu]=\[Mu]Final as a function of the SMEFT parameters at \[Mu]=\[Mu]Initial, where both \[Mu]Initial and \[Mu]Final are energy scales given in GeV. SMEFTEvolve[X,tFinal,tInitial,'log10'] returns the SMEFT parameter X at t=tFinal as a function of the SMEFT parameters at t=tInitial, with t = Log10(\[Mu]/GeV)";
+SMEFTEvolve::usage="SMEFTEvolve[X,\[Mu]Final,\[Mu]Initial] returns the SMEFT WC X at \[Mu]=\[Mu]Final as a function of the SMEFT parameters at \[Mu]=\[Mu]Initial, where both \[Mu]Initial and \[Mu]Final are energy scales given in GeV. SMEFTEvolve[X,tFinal,tInitial,'log10'] returns the SMEFT WC X at t=tFinal as a function of the SMEFT parameters at t=tInitial, with t = Log10(\[Mu]/GeV)";
 
 
 (* ::Input::Initialization:: *)
@@ -1803,7 +1803,7 @@ EWmatcherExport::usage="EWmatcherExport[] exports the EWmatcher results to an SL
 LEFTRunRGEs::usage="LEFTRunRGEs runs the LEFT RGEs";
 
 
-LEFTEvolve::usage="LEFTEvolve[X,\[Mu]Final] returns the LEFT parameter X at \[Mu]=\[Mu]Final as a function of the LEFT parameters at \[Mu]=EWSCALE, where \[Mu]Final is an energy scale given in GeV. LEFTEvolve[X,tFinal,'log10'] returns the LEFT parameter X at t=tFinal as a function of the LEFT parameters at t=tEW, with t = Log10(\[Mu]/GeV)";
+LEFTEvolve::usage="LEFTEvolve[X,\[Mu]Final] returns the LEFT WC X at \[Mu]=\[Mu]Final as a function of the LEFT parameters at \[Mu]=EWSCALE, where \[Mu]Final is an energy scale given in GeV. LEFTEvolve[X,tFinal,'log10'] returns the LEFT WC X at t=tFinal as a function of the LEFT parameters at t=tEW, with t = Log10(\[Mu]/GeV)";
 
 
 (* ::Input::Initialization:: *)

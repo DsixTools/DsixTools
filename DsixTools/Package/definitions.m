@@ -648,7 +648,8 @@ InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE]\[And](##>HIGHSCALE\[Or]##<EWSCALE),
 Message[SMEFTLagrangian::WrongScale],
 (*3.3*)
 InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE]\[And](EWSCALE<=##<=HIGHSCALE),
-If[!SMEFTrunner,TurnOffMessages;SMEFTRunRGEs;TurnOnMessages];(SMEFTrun[SMEFTParametersTotal]/.\[Mu]->##/.t->Log[10,##]).SMEFTOperatorsTotal//Chop
+If[!SMEFTrunner,TurnOffMessages;SMEFTRunRGEs;TurnOnMessages];
+(SMEFTrun/@SMEFTParametersTotal/.\[Mu]->##).SMEFTOperatorsTotal//Chop
 ]
 (**)
 ]&;
@@ -671,13 +672,15 @@ InitInput=="LEFT"\[And]##==EWSCALE,
 LEFTParametersTotal.LEFTOperatorsTotal/.InputValues,
 (*3.4*)
 InitInput=="LEFT"\[And]##!=EWSCALE\[And]LOWSCALE<=##<EWSCALE,
-If[!LEFTrunner,TurnOffMessages;LEFTRunRGEs;TurnOnMessages];(LEFTrun[LEFTParametersTotal]/.\[Mu]->##/.t->Log[10,##]).LEFTOperatorsTotal,
+If[!LEFTrunner,TurnOffMessages;LEFTRunRGEs;TurnOnMessages];
+(LEFTrun/@LEFTParametersTotal/.\[Mu]->##).LEFTOperatorsTotal//Chop,
 (*3.5*)
 InitInput=="SMEFT"\[And]!NumberQ[HIGHSCALE],
 Message[SMEFTLagrangian::Initialization],
 (*3.6*)
 InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE],
-If[!LEFTrunner,TurnOffMessages;RunDsixTools;TurnOnMessages];(LEFTrun[LEFTParametersTotal]/.\[Mu]->##/.t->Log[10,##]).LEFTOperatorsTotal
+If[!LEFTrunner,TurnOffMessages;RunDsixTools;TurnOnMessages];
+(LEFTrun/@LEFTParametersTotal/.\[Mu]->##).LEFTOperatorsTotal//Chop
 ]
 (**)
 ]&;

@@ -537,13 +537,19 @@ SMEFTrun[x_]:=SMEFTrun[x,"log10"]/.t->Log10[\[Mu]];
 SMEFTEvolve[WC_,tfinal_,tini_,"log10"]:=
 Block[{pos},
 
+lastSM=First[SMEFTFindParameter[\[Theta]s]];
+
+If[Length[SMEFTFindParameter[WC/.SubRedundant]]==0||SMEFTFindParameter[WC/.SubRedundant][[1]]<=lastSM, (* The input is not a SMEFT WC *)
+
+Message[SMEFTEvolve::NoWC];
+
+,
+
 If[tfinal==tini, (* No evolution is required *)
 
 Return[WC];
 
 ,
-
-lastSM=First[SMEFTFindParameter[\[Theta]s]];
 
 pos=SMEFTFindParameter[WC/.SubRedundant][[1]]-lastSM;
 
@@ -555,6 +561,7 @@ EvolvedSMEFT[WC,tfinal,tini]:=EvolvedSMEFT[WC,tfinal,tini]=
 
 Return[EvolvedSMEFT[WC,tfinal,tini]];
 
+];
 ];
 ]
 
@@ -648,13 +655,19 @@ LEFTrun[x_]:=LEFTrun[x,"log10"]/.t->Log10[\[Mu]];
 (* Analytical application of the evolution matrix *)
 LEFTEvolve[WC_,\[Mu]final_]:=Block[{pos},
 
+lastQEDQCD=First[LEFTFindParameter[Md[3,3]]];
+
+If[Length[LEFTFindParameter[WC/.SubRedundant]]==0||LEFTFindParameter[WC/.SubRedundant][[1]]<=lastQEDQCD, (* The input is not a LEFT WC *)
+
+Message[LEFTEvolve::NoWC];
+
+,
+
 If[\[Mu]final==EWSCALE, (* No evolution is required *)
 
 Return[WC];
 
 ,
-
-lastQEDQCD=First[LEFTFindParameter[Md[3,3]]];
 
 pos=LEFTFindParameter[WC][[1]]-lastQEDQCD;
 
@@ -667,6 +680,7 @@ ULEFT[[pos]].WCs/.t->Log[10,\[Mu]final];
 
 Return[EvolvedLEFT[WC,\[Mu]final]];
 
+];
 ];
 
 ]

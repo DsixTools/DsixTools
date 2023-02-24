@@ -107,6 +107,12 @@ D6run::WrongInput="The parameters in `1` must all belong to the SMEFT or all to 
 SetRGEsMethod::WrongMethod="`1` is not a valid RGEs resolution method. No change will be made";
 
 
+SMEFTEvolve::NoWC="SMEFTEvolve can only be used for SMEFT WCs";
+
+
+LEFTEvolve::NoWC="LEFTEvolve can only be used for LEFT WCs";
+
+
 SetSMEFTLoopOrder::NoChange="SMEFTLoopOrder is already fixed to `1`. No change will be made";
 
 

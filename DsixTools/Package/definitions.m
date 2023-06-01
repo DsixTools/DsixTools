@@ -496,7 +496,7 @@ SubRedu[10]={XX[2,1,1,1]->-XX[1,2,1,1],XX[2,1,1,2]->-XX[1,2,1,2],XX[2,1,1,3]->-X
 
 (* 4F SMEFT special case qqql *)
 Redu[11]={{2,1,1,1},{2,1,1,2},{2,1,1,3},{2,2,1,1},{2,2,1,2},{2,2,1,3},{3,1,1,1},{3,1,1,2},{3,1,1,3},{3,1,2,1},{3,1,2,2},{3,1,2,3},{3,2,1,1},{3,2,1,2},{3,2,1,3},{3,2,2,1},{3,2,2,2},{3,2,2,3},{3,3,1,1},{3,3,1,2},{3,3,1,3},{3,3,2,1},{3,3,2,2},{3,3,2,3}};
-SubRedu[11]={XX[2,1,1,1]->XX[1,2,1,1],XX[2,1,1,2]->XX[1,1,2,2],XX[2,1,1,3]->XX[1,1,2,3],XX[2,2,1,1]->XX[1,2,2,1],XX[2,2,1,2]->XX[1,2,2,2],XX[2,2,1,3]->XX[1,2,2,3],XX[3,1,1,1]->XX[1,1,3,1],XX[3,1,1,2]->XX[1,1,3,2],XX[3,1,1,3]->XX[1,1,3,3],XX[3,1,2,1]->XX[2,3,1,1]+XX[2,1,3,1]-XX[1,3,2,1],XX[3,1,2,2]->XX[2,3,1,2]+XX[2,1,3,2]-XX[1,3,2,2],XX[3,1,2,3]->XX[2,3,1,3]+XX[2,1,3,3]-XX[1,3,2,3],XX[3,2,1,1]->XX[1,3,2,1]+XX[1,2,3,1]-XX[2,3,1,1],XX[3,2,1,2]->XX[1,3,2,2]+XX[1,2,3,2]-XX[2,3,1,2],XX[3,2,1,3]->XX[1,3,2,3]+XX[1,2,3,3]-XX[2,3,1,3],XX[3,2,2,1]->XX[2,2,3,1],XX[3,2,2,2]->XX[2,2,3,2],XX[3,2,2,3]->XX[2,2,3,3],XX[3,3,1,1]->XX[1,3,3,1],XX[3,3,1,2]->XX[1,3,3,2],XX[3,3,1,3]->XX[1,3,3,3],XX[3,3,2,1]->XX[2,3,3,1],XX[3,3,2,2]->XX[2,3,3,2],XX[3,3,2,3]->XX[2,3,3,3]};
+SubRedu[11]={XX[2,1,1,1]->XX[1,1,2,1],XX[2,1,1,2]->XX[1,1,2,2],XX[2,1,1,3]->XX[1,1,2,3],XX[2,2,1,1]->XX[1,2,2,1],XX[2,2,1,2]->XX[1,2,2,2],XX[2,2,1,3]->XX[1,2,2,3],XX[3,1,1,1]->XX[1,1,3,1],XX[3,1,1,2]->XX[1,1,3,2],XX[3,1,1,3]->XX[1,1,3,3],XX[3,1,2,1]->XX[2,3,1,1]+XX[2,1,3,1]-XX[1,3,2,1],X[3,1,2,2]->XX[2,3,1,2]+XX[2,1,3,2]-XX[1,3,2,2],XX[3,1,2,3]->XX[2,3,1,3]+XX[2,1,3,3]-XX[1,3,2,3],X[3,2,1,1]->XX[1,3,2,1]+XX[1,2,3,1]-XX[2,3,1,1],XX[3,2,1,2]->XX[1,3,2,2]+XX[1,2,3,2]-XX[2,3,1,2],X[3,2,1,3]->XX[1,3,2,3]+XX[1,2,3,3]-XX[2,3,1,3],XX[3,2,2,1]->XX[2,2,3,1],XX[3,2,2,2]->XX[2,2,3,2],XX[3,2,2,3]->XX[2,2,3,3],XX[3,3,1,1]->XX[1,3,3,1],XX[3,3,1,2]->XX[1,3,3,2],XX[3,3,1,3]->XX[1,3,3,3],XX[3,3,2,1]->XX[2,3,3,1],XX[3,3,2,2]->XX[2,3,3,2],XX[3,3,2,3]->XX[2,3,3,3]};
 
 
 (* 4F LEFT special case \[CapitalDelta]L = 4 *)
@@ -655,7 +655,7 @@ Message[SMEFTLagrangian::WrongScale],
 (*3.3*)
 InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE]\[And](EWSCALE<=##<=HIGHSCALE),
 If[!SMEFTrunner,TurnOffMessages;SMEFTRunRGEs;TurnOnMessages];
-(SMEFTrun/@SMEFTParametersTotal/.\[Mu]->##).SMEFTOperatorsTotal//Chop
+(SMEFTrun/@SMEFTParametersTotal/.\[Mu]->##) . SMEFTOperatorsTotal//Chop
 ]
 (**)
 ]&;
@@ -675,18 +675,18 @@ Message[LEFTLagrangian::Initialization],
 Message[LEFTLagrangian::WrongScale],
 (*3.3*)
 InitInput=="LEFT"\[And]##==EWSCALE,
-LEFTParametersTotal.LEFTOperatorsTotal/.InputValues,
+LEFTParametersTotal . LEFTOperatorsTotal/.InputValues,
 (*3.4*)
 InitInput=="LEFT"\[And]##!=EWSCALE\[And]LOWSCALE<=##<EWSCALE,
 If[!LEFTrunner,TurnOffMessages;LEFTRunRGEs;TurnOnMessages];
-(LEFTrun/@LEFTParametersTotal/.\[Mu]->##).LEFTOperatorsTotal//Chop,
+(LEFTrun/@LEFTParametersTotal/.\[Mu]->##) . LEFTOperatorsTotal//Chop,
 (*3.5*)
 InitInput=="SMEFT"\[And]!NumberQ[HIGHSCALE],
 Message[SMEFTLagrangian::Initialization],
 (*3.6*)
 InitInput=="SMEFT"\[And]NumberQ[HIGHSCALE],
 If[!LEFTrunner,TurnOffMessages;RunDsixTools;TurnOnMessages];
-(LEFTrun/@LEFTParametersTotal/.\[Mu]->##).LEFTOperatorsTotal//Chop
+(LEFTrun/@LEFTParametersTotal/.\[Mu]->##) . LEFTOperatorsTotal//Chop
 ]
 (**)
 ]&;

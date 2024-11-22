@@ -40,8 +40,8 @@ MySymmetricMatrixQ:=Max[Abs[#-Transpose[#]]]==0&;
 
 If[MySquareMatrixQ[mat],dim=Length[mat];
 
-mat2L=mat.H[mat];
-mat2R=H[mat].mat;
+mat2L=mat . H[mat];
+mat2R=H[mat] . mat;
 eigen=Sqrt[Eigenvalues[mat2L]];
 RotLPre=Eigenvectors[mat2L];
 RotRPre=Eigenvectors[mat2R];
@@ -57,7 +57,7 @@ Do[RotRPre[[i,All]]=copy[[dim+1-i,All]];,{i,1,dim}];
 
 If[Re[mat]!=mat,
 (* Absorb phases in R eigenvectors *)
-MatrixPhase=CC[RotLPre].mat.Transpose[RotRPre];
+MatrixPhase=CC[RotLPre] . mat . Transpose[RotRPre];
 Do[
 phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
 RotRPre[[i,All]]=CC[phase] RotRPre[[i,All]];,
@@ -83,7 +83,7 @@ If[MySymmetricMatrixQ[mat],
 
 dim=Length[mat];
 
-mat2=mat.H[mat];
+mat2=mat . H[mat];
 eigen=Sqrt[Eigenvalues[mat2]];
 RotPre=CC@Eigenvectors[mat2];
 
@@ -93,7 +93,7 @@ copy=RotPre;
 Do[RotPre[[i,All]]=copy[[dim+1-i,All]];,{i,1,dim}];
 
 (* Rephasing  *)
-MatrixPhase=RotPre.mat.Transpose[RotPre];
+MatrixPhase=RotPre . mat . Transpose[RotPre];
 Do[
 phase=MatrixPhase[[i,i]]/Abs[MatrixPhase[[i,i]]];
 RotPre[[i,All]]=Sqrt[CC[phase]] RotPre[[i,All]];,
@@ -371,9 +371,11 @@ RGEsSMt=If[FileExistsQ[DsixToolsDir<>"RGEsSM.mx"],Import[DsixToolsDir<>"RGEsSM.m
 ];
 
 If[theory=="LEFT",
-RGEsLEFT=Join[\[Beta]/@ParametersLEFT[[1;;First[LEFTFindParameter[Md[3,3]]]]]/.ToLoopOrder[LEFTLoopOrder]//Chop,\[Beta]/@ParametersLEFT[[First[LEFTFindParameter[Md[3,3]]]+1;;-1]]];
+(*RGEsLEFT=Join[\[Beta]/@ParametersLEFT[[1;;First[LEFTFindParameter[Md[3,3]]]]]/.ToLoopOrder[LEFTLoopOrder]//Chop,\[Beta]/@ParametersLEFT[[First[LEFTFindParameter[Md[3,3]]]+1;;-1]]];*)
+(****NEW****) RGEsLEFT=(\[Beta]/@ParametersLEFT)/.ToLoopOrder[LEFTLoopOrder];
 RGEsLEFTtPre=If[FileExistsQ[DsixToolsDir<>"RGEsLEFT.mx"],Import[DsixToolsDir<>"RGEsLEFT.mx"],Import[DsixToolsDir<>"RGEsLEFT.m"]];
-RGEsLEFTt=Join[RGEsLEFTtPre[[1;;First[LEFTFindParameter[Md[3,3]]]]]/.ToLoopOrder[LEFTLoopOrder]//Chop,RGEsLEFTtPre[[First[LEFTFindParameter[Md[3,3]]]+1;;-1]]];
+(*RGEsLEFTt=Join[RGEsLEFTtPre[[1;;First[LEFTFindParameter[Md[3,3]]]]]/.ToLoopOrder[LEFTLoopOrder]//Chop,RGEsLEFTtPre[[First[LEFTFindParameter[Md[3,3]]]+1;;-1]]];*)
+(****NEW****) RGEsLEFTt=RGEsLEFTtPre/.ToLoopOrder[LEFTLoopOrder];
 ];
 
 
@@ -557,7 +559,7 @@ WCs=ParametersSMEFT[[lastSM+1;;-1]];
 
 (* Apply evolution matrix *)
 EvolvedSMEFT[WC,tfinal,tini]:=EvolvedSMEFT[WC,tfinal,tini]=
-(USMEFT[[pos,All]].WCs)/.{tf->tfinal,t0->tini};
+(USMEFT[[pos,All]] . WCs)/.{tf->tfinal,t0->tini};
 
 Return[EvolvedSMEFT[WC,tfinal,tini]];
 
@@ -675,7 +677,7 @@ WCs=ParametersLEFT[[lastQEDQCD+1;;-1]];
 
 (* Apply evolution matrix *)
 EvolvedLEFT[WC,\[Mu]final]:=EvolvedLEFT[WC,\[Mu]final]=
-ULEFT[[pos]].WCs/.t->Log[10,\[Mu]final];
+ULEFT[[pos]] . WCs/.t->Log[10,\[Mu]final];
 
 
 Return[EvolvedLEFT[WC,\[Mu]final]];
@@ -722,7 +724,7 @@ D6run[x_]:=D6run[x,"log10"]/.t->Log10[\[Mu]];
 (* Routine to obtain the CKM matrix following the standard phase convention *)
 StandardCKM:=Block[{CKM0,\[Alpha]1,\[Alpha]2,\[Alpha]3,\[Beta]1,\[Beta]2,s13,c13,s12,c12,s23,c23,\[Gamma],a,\[Delta],K\[Alpha],K\[Beta],ULnew,URnew,DLnew,DRnew},
 
-CKM0=H[UL].DL;
+CKM0=H[UL] . DL;
 
 \[Alpha]1=\[Delta]+Arg[CKM0[[1,3]]];
 \[Alpha]2=Arg[CKM0[[2,3]]];
@@ -745,10 +747,10 @@ a=c12 s13 s23/(s12 c23);
 K\[Alpha]=DiagonalMatrix[{Exp[I \[Alpha]1],Exp[I \[Alpha]2],Exp[I \[Alpha]3]}];
 K\[Beta]=DiagonalMatrix[{Exp[I \[Beta]1],Exp[I \[Beta]2],1}];
 
-ULnew=UL.K\[Alpha];
-URnew=UR.K\[Alpha];
-DLnew=DL.K\[Beta];
-DRnew=DR.K\[Beta];
+ULnew=UL . K\[Alpha];
+URnew=UR . K\[Alpha];
+DLnew=DL . K\[Beta];
+DRnew=DR . K\[Beta];
 
 Return[{ULnew,URnew,DLnew,DRnew}];
 
@@ -758,7 +760,7 @@ Return[{ULnew,URnew,DLnew,DRnew}];
 (* Routine to obtain the PMNS matrix following the standard phase convention. Based on Appendix A.2 of hep-ph/0305273 *)
 StandardPMNS:=Block[{PMNS0,\[Theta]12,\[Theta]23,\[Theta]13,\[Delta],\[Delta]e,\[Delta]\[Mu],\[Delta]\[Tau],H1,H2,s13,c13,s12,c12,s23,c23,U4term,Kmat,ELnew,ERnew},
 
-PMNS0=H[EL].NL;
+PMNS0=H[EL] . NL;
 
 \[Theta]13=ArcSin[Abs[PMNS0[[1,3]]]];
 \[Theta]12=ArcTan[Abs[PMNS0[[1,2]]/PMNS0[[1,1]]]];
@@ -779,8 +781,8 @@ H2=2 Arg[Exp[I \[Delta]e] Conjugate[PMNS0[[1,2]]]];
 
 Kmat=DiagonalMatrix[{Exp[I \[Delta]e],Exp[I \[Delta]\[Mu]],Exp[I \[Delta]\[Tau]]}];
 
-ELnew=EL.Kmat;
-ERnew=ER.Kmat;
+ELnew=EL . Kmat;
+ERnew=ER . Kmat;
 
 Return[{ELnew,ERnew}];
 
@@ -928,7 +930,7 @@ DL=Diagonalize[md][[2]];
 DR=Diagonalize[md][[3]];
 
 (* Rephasing to obtain the CKM matrix with standard phase convention - only done if the CKM matrix is complex *)
-If[Re[H[UL].DL]!=H[UL].DL,
+If[Re[H[UL] . DL]!=H[UL] . DL,
 NewRotationsCKM=StandardCKM;
 UL=NewRotationsCKM[[1]];
 UR=NewRotationsCKM[[2]];
@@ -956,7 +958,7 @@ m\[Nu]diag=Diagonalize[m\[Nu]][[1]];
 NL=Diagonalize[m\[Nu]][[2]];
 NR=NL;
 (* Rephasing to obtain the PMNS matrix with standard phase convention - only done if the PMNS matrix is complex *)
-If[Re[H[EL].NL]!=H[EL].NL,
+If[Re[H[EL] . NL]!=H[EL] . NL,
 NewRotationsPMNS=StandardPMNS;
 EL=NewRotationsPMNS[[1]];
 ER=NewRotationsPMNS[[2]];
@@ -1001,36 +1003,36 @@ NLh=ELh;
 ];
 
 (* SM Yukawas *)
-GuNew=ULh.GuAtScale.UR;
-GdNew=DLh.GdAtScale.DR;
-GeNew=ELh.GeAtScale.ER;
+GuNew=ULh . GuAtScale . UR;
+GdNew=DLh . GdAtScale . DR;
+GeNew=ELh . GeAtScale . ER;
 
 (* WCs *)
 
 (* \[Psi]^2H^3 *)
-MCuHNew=ULh.MCuHAtScale.UR;
-MCdHNew=DLh.MCdHAtScale.DR;
-MCeHNew=ELh.MCeHAtScale.ER;
+MCuHNew=ULh . MCuHAtScale . UR;
+MCdHNew=DLh . MCdHAtScale . DR;
+MCeHNew=ELh . MCeHAtScale . ER;
 
 (* \[Psi]^2X H *)
-MCeWNew=ELh.MCeWAtScale.ER;
-MCeBNew=ELh.MCeBAtScale.ER;
-MCuGNew=ULh.MCuGAtScale.UR;
-MCuWNew=ULh.MCuWAtScale.UR;
-MCuBNew=ULh.MCuBAtScale.UR;
-MCdGNew=DLh.MCdGAtScale.DR;
-MCdWNew=DLh.MCdWAtScale.DR;
-MCdBNew=DLh.MCdBAtScale.DR;
+MCeWNew=ELh . MCeWAtScale . ER;
+MCeBNew=ELh . MCeBAtScale . ER;
+MCuGNew=ULh . MCuGAtScale . UR;
+MCuWNew=ULh . MCuWAtScale . UR;
+MCuBNew=ULh . MCuBAtScale . UR;
+MCdGNew=DLh . MCdGAtScale . DR;
+MCdWNew=DLh . MCdWAtScale . DR;
+MCdBNew=DLh . MCdBAtScale . DR;
 
 (* \[Psi]^2H^2D *)
-MCHl1New=ELh.MCHl3AtScale.EL;
-MCHl3New=ELh.MCHl3AtScale.EL;
-MCHeNew=ERh.MCHeAtScale.ER;
-MCHq1New=DLh.MCHq1AtScale.DL;
-MCHq3New=DLh.MCHq3AtScale.DL;
-MCHuNew=URh.MCHuAtScale.UR;
-MCHdNew=DRh.MCHdAtScale.DR;
-MCHudNew=URh.MCHudAtScale.DR;
+MCHl1New=ELh . MCHl3AtScale . EL;
+MCHl3New=ELh . MCHl3AtScale . EL;
+MCHeNew=ERh . MCHeAtScale . ER;
+MCHq1New=DLh . MCHq1AtScale . DL;
+MCHq3New=DLh . MCHq3AtScale . DL;
+MCHuNew=URh . MCHuAtScale . UR;
+MCHdNew=DRh . MCHdAtScale . DR;
+MCHudNew=URh . MCHudAtScale . DR;
 
 (* LL LL *)
 MCllNew=MyContract[MCllAtScale,ELh,EL,ELh,EL];
@@ -1074,7 +1076,7 @@ MCqqqlNew=MyContract[MCqqqlAtScale,DL,DL,UL,EL,"TT"];
 MCduueNew=MyContract[MCduueAtScale,DR,UR,UR,ER,"TT"];
 
 (* dim-5 *)
-MCllHHNew=Transpose[EL].MCllHHAtScale.EL;
+MCllHHNew=Transpose[EL] . MCllHHAtScale . EL;
 
 ];
 
@@ -1151,9 +1153,9 @@ UL=DL;
 ULh=DLh;
 ];
 
-GuNew=ULh.GuAtScale.UR;
-GdNew=DLh.GdAtScale.DR;
-GeNew=ELh.GeAtScale.ER;
+GuNew=ULh . GuAtScale . UR;
+GdNew=DLh . GdAtScale . DR;
+GeNew=ELh . GeAtScale . ER;
 
 ToNewYukawas=Table[{Gu[r,s]->GuNew[[r,s]],Gd[r,s]->GdNew[[r,s]],Ge[r,s]->GeNew[[r,s]]},{r,3},{s,3}]//Flatten//Dispatch;
 
@@ -1340,7 +1342,7 @@ m\[Nu]diag=Diagonalize[m\[Nu]][[1]];
 NL=Diagonalize[m\[Nu]][[2]];
 NR=NL;
 (* Rephasing to obtain the PMNS matrix with standard phase convention - only done if the PMNS matrix is complex *)
-If[Re[H[EL].NL]!=H[EL].NL,
+If[Re[H[EL] . NL]!=H[EL] . NL,
 NewRotationsPMNS=StandardPMNS;
 EL=NewRotationsPMNS[[1]];
 ER=NewRotationsPMNS[[2]];
@@ -1367,22 +1369,22 @@ NRh=H[NR];
 LEFTChangeBasis:=Block[{},
 
 (* Mass matrices *)
-MMuNew=ULh.MuAtScale.UR;
-MMdNew=DLh.MdAtScale.DR;
-MMeNew=ELh.MeAtScale.ER;
-MM\[Nu]New=Transpose[NL].M\[Nu]AtScale.NL;
+MMuNew=ULh . MuAtScale . UR;
+MMdNew=DLh . MdAtScale . DR;
+MMeNew=ELh . MeAtScale . ER;
+MM\[Nu]New=Transpose[NL] . M\[Nu]AtScale . NL;
 
 (* WCs *)
 
 (* \[Nu]\[Nu]X *)
-ML\[Nu]\[Gamma]New=Transpose[NL].L\[Nu]\[Gamma]AtScale.NL;
+ML\[Nu]\[Gamma]New=Transpose[NL] . L\[Nu]\[Gamma]AtScale . NL;
 
 (* LRX *)
-MLe\[Gamma]New=ELh.Le\[Gamma]AtScale.ER;
-MLu\[Gamma]New=ULh.Lu\[Gamma]AtScale.UR;
-MLd\[Gamma]New=DLh.Ld\[Gamma]AtScale.DR;
-MLuGNew=ULh.LuGAtScale.UR;
-MLdGNew=DLh.LdGAtScale.DR;
+MLe\[Gamma]New=ELh . Le\[Gamma]AtScale . ER;
+MLu\[Gamma]New=ULh . Lu\[Gamma]AtScale . UR;
+MLd\[Gamma]New=DLh . Ld\[Gamma]AtScale . DR;
+MLuGNew=ULh . LuGAtScale . UR;
+MLdGNew=DLh . LdGAtScale . DR;
 
 (* LL LL *)
 ML\[Nu]\[Nu]VLLNew=MyContract[L\[Nu]\[Nu]VLLAtScale,NLh,NL,NLh,NL];

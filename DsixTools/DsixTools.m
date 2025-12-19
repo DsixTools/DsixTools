@@ -1924,7 +1924,7 @@ EmitSound[Sound[SoundNote[30,1,"Gunshot"]]];
 Pause[1];EmitSound[Get[DsixToolsDir<>"scream.m"]]];
 
 
-If[Round[Date[][[-1]]/100]==1,Murder]
+If[Round[Date[][[-1]]/100]==1,BennyHill]
 
 
 Block[{},

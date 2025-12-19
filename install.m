@@ -95,7 +95,7 @@ InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,Questio
 packageName="DsixTools";
 packageDir=FileNameJoin[{$UserBaseDirectory,"Applications","DsixTools"}];
 MinVersion=9.0;
-DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/masterXXX.zip";
+DsixToolsLink="https://github.com/DsixTools/DsixTools/archive/Two-Loop-SMEFT.zip";
 
 (* Messages *)
 

@@ -75,6 +75,9 @@ indices12={{1,1,2,2},{1,1,3,3},{2,2,3,3},{1,1,2,3},{1,2,2,3},{1,2,3,3}};
 (* 13 - 4F LEFT special cases dddSLL and dddSRR *) 
 indices13={{1,2,1,1},{1,2,1,2},{1,2,1,3},{1,2,2,1},{1,2,2,2},{1,2,2,3},{1,2,3,1},{1,2,3,2},{1,2,3,3},{1,3,1,1},{1,3,1,2},{1,3,1,3},{1,3,2,1},{1,3,2,2},{1,3,2,3},{1,3,3,1},{1,3,3,2},{1,3,3,3},{2,3,1,2},{2,3,1,3},{2,3,2,2},{2,3,2,3},{2,3,3,2},{2,3,3,3}};
 
+(* 14 - 4F LEFT special case cat 6 "non-hermitian" *)
+indices14={{1,1,1,1},{1,1,1,2},{1,1,1,3},{1,1,2,1},{1,1,2,2},{1,1,2,3},{1,1,3,1},{1,1,3,2},{1,1,3,3},{1,2,1,2},{1,2,1,3},{1,2,2,1},{1,2,2,2},{1,2,2,3},{1,2,3,1},{1,2,3,2},{1,2,3,3},{1,3,1,3},{1,3,2,1},{1,3,2,2},{1,3,2,3},{1,3,3,1},{1,3,3,2},{1,3,3,3},{2,1,2,1},{2,1,2,2},{2,1,2,3},{2,1,3,1},{2,1,3,2},{2,1,3,3},{2,2,2,2},{2,2,2,3},{2,2,3,1},{2,2,3,2},{2,2,3,3},{2,3,2,3},{2,3,3,1},{2,3,3,2},{2,3,3,3},{3,1,3,1},{3,1,3,2},{3,1,3,3},{3,2,3,2},{3,2,3,3},{3,3,3,3}};
+
 
 (* ::Input::Initialization:: *)
 WriteScales[module_]:=Block[{},
@@ -143,6 +146,8 @@ If[cat==10,indices=indices10;indicesIm=indices;]; (* antisymmetric current \[Tim
 If[cat==11,indices=indices11;indicesIm=indices;]; (* SMEFT special case qqql *)
 If[cat==12,indices=indices12;indicesIm=indices;]; (* LEFT special case \[CapitalDelta]L = 4 *)
 If[cat==13,indices=indices13;indicesIm=indices;]; (* LEFT special cases dddSLL and dddSRR *)
+If[cat==14,indices=indices14;indicesIm=indices;]; (* 4F LEFT special case cat 6 "non-hermitian" *)
+
 
 indices=ToGens4F[indices,n1,n2,n3,n4];
 If[ReIm==1,indicesIm=ToGens4F[indicesIm,n1,n2,n3,n4]];
@@ -583,8 +588,8 @@ WriteWC4F["WCUDDUV8LR","udduv8lr",\!\(TraditionalForm\`\(TraditionalForm\`\(Trad
 WriteWC4F["IMWCUDDUV8LR","udduv8lr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudduV8LR] // First\)\)\)\)\)\),5,1,nu,nd,nd,nu];
 
 (* LR LR *)
-WriteWC4F["WCeeSRR","eesrr",\!\(TraditionalForm\`LEFTFindParameter[LeeSRR] // First\),6,0,ne,ne,ne,ne]; 
-WriteWC4F["IMWCeeSRR","eesrr",\!\(TraditionalForm\`LEFTFindParameter[LeeSRR] // First\),6,1,ne,ne,ne,ne];
+WriteWC4F["WCeeSRR","eesrr",\!\(TraditionalForm\`LEFTFindParameter[LeeSRR] // First\),14,0,ne,ne,ne,ne]; 
+WriteWC4F["IMWCeeSRR","eesrr",\!\(TraditionalForm\`LEFTFindParameter[LeeSRR] // First\),14,1,ne,ne,ne,ne];
 WriteWC4F["WCeuSRR","eusrr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LeuSRR] // First\)\),5,0,ne,ne,nu,nu]; 
 WriteWC4F["IMWCeuSRR","eusrr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LeuSRR] // First\)\),5,1,ne,ne,nu,nu];
 WriteWC4F["WCeuTRR","eutrr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LeuTRR] // First\)\)\),5,0,ne,ne,nu,nu]; 
@@ -597,18 +602,18 @@ WriteWC4F["WCNEDUSRR","nedusrr",\!\(TraditionalForm\`\(TraditionalForm\`\(Tradit
 WriteWC4F["IMWCNEDUSRR","nedusrr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[L\[Nu]eduSRR] // First\)\)\)\)\),5,1,n\[Nu],ne,nd,nu];
 WriteWC4F["WCNEDUTRR","nedutrr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[L\[Nu]eduTRR] // First\)\)\)\)\),5,0,n\[Nu],ne,nd,nu]; 
 WriteWC4F["IMWCNEDUTRR","nedutrr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[L\[Nu]eduTRR] // First\)\)\)\)\),5,1,n\[Nu],ne,nd,nu];
-WriteWC4F["WCuuS1RR","uus1rr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS1RR] // First\)\),6,0,nu,nu,nu,nu]; 
-WriteWC4F["IMWCuuS1RR","uus1rr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS1RR] // First\)\),6,1,nu,nu,nu,nu];
-WriteWC4F["WCuuS8RR","uus8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS8RR] // First\)\)\),6,0,nu,nu,nu,nu]; 
-WriteWC4F["IMWCuuS8RR","uus8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS8RR] // First\)\)\),6,1,nu,nu,nu,nu];
+WriteWC4F["WCuuS1RR","uus1rr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS1RR] // First\)\),14,0,nu,nu,nu,nu]; 
+WriteWC4F["IMWCuuS1RR","uus1rr",\!\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS1RR] // First\)\),14,1,nu,nu,nu,nu];
+WriteWC4F["WCuuS8RR","uus8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS8RR] // First\)\)\),14,0,nu,nu,nu,nu]; 
+WriteWC4F["IMWCuuS8RR","uus8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LuuS8RR] // First\)\)\),14,1,nu,nu,nu,nu];
 WriteWC4F["WCUDS1RR","uds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudS1RR] // First\)\)\),5,0,nu,nu,nd,nd]; 
 WriteWC4F["IMWCUDS1RR","uds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudS1RR] // First\)\)\),5,1,nu,nu,nd,nd];
 WriteWC4F["WCUDS8RR","uds8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudS8RR] // First\)\)\)\),5,0,nu,nu,nd,nd]; 
 WriteWC4F["IMWCUDS8RR","uds8rr",\!\(TraditionalForm\`LEFTFindParameter[LudS8RR] // First\),5,1,nu,nu,nd,nd];
-WriteWC4F["WCddS1RR","dds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS1RR] // First\)\)\)\),6,0,nd,nd,nd,nd]; 
-WriteWC4F["IMWCddS1RR","dds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS1RR] // First\)\)\)\),6,1,nd,nd,nd,nd];
-WriteWC4F["WCddS8RR","dds8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS8RR] // First\)\)\)\)\),6,0,nd,nd,nd,nd]; 
-WriteWC4F["IMWCddS8RR","dds8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS8RR] // First\)\)\)\)\),6,1,nd,nd,nd,nd];
+WriteWC4F["WCddS1RR","dds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS1RR] // First\)\)\)\),14,0,nd,nd,nd,nd]; 
+WriteWC4F["IMWCddS1RR","dds1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS1RR] // First\)\)\)\),14,1,nd,nd,nd,nd];
+WriteWC4F["WCddS8RR","dds8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS8RR] // First\)\)\)\)\),14,0,nd,nd,nd,nd]; 
+WriteWC4F["IMWCddS8RR","dds8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LddS8RR] // First\)\)\)\)\),14,1,nd,nd,nd,nd];
 WriteWC4F["WCUDDUS1RR","uddus1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudduS1RR] // First\)\)\)\)\)\),5,0,nu,nd,nd,nu]; 
 WriteWC4F["IMWCUDDUS1RR","uddus1rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudduS1RR] // First\)\)\)\)\)\),5,1,nu,nd,nd,nu];
 WriteWC4F["WCUDDUS8RR","uddus8rr",\!\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`\(TraditionalForm\`LEFTFindParameter[LudduS8RR] // First\)\)\)\)\)\)\),5,0,nu,nd,nd,nu]; 

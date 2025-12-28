@@ -185,7 +185,8 @@ CreateMenus;
 10 4F antisymmetric current \[Times] general current
 11 4F SMEFT special case qqql
 12 4F LEFT special case \[CapitalDelta]L = 4
-   13 4F LEFT special cases dddSLL and dddSRR
+13 4F LEFT special cases dddSLL and dddSRR
+14 4F LEFT special case cat 6 "non-hermitian"
 *)
 (* 5th entry: index ranges *)
 (* 6th entry: dimension *)
@@ -367,19 +368,19 @@ LEFTWCs4F={
 {MLddV8LR,LddV8LR,OddV8LR,7,{nd,nd,nd,nd},6,"LEFT","LLRR","-"},
 {MLudduV1LR,LudduV1LR,OudduV1LR,5,{nu,nd,nd,nu},6,"LEFT","LLRR","-"},
 {MLudduV8LR,LudduV8LR,OudduV8LR,5,{nu,nd,nd,nu},6,"LEFT","LLRR","-"},
-{MLeeSRR,LeeSRR,OeeSRR,6,{ne,ne,ne,ne},6,"LEFT","LRLR","-"},
+{MLeeSRR,LeeSRR,OeeSRR,14,{ne,ne,ne,ne},6,"LEFT","LRLR","-"},
 {MLeuSRR,LeuSRR,OeuSRR,5,{ne,ne,nu,nu},6,"LEFT","LRLR","-"},
 {MLeuTRR,LeuTRR,OeuTRR,5,{ne,ne,nu,nu},6,"LEFT","LRLR","-"},
 {MLedSRR,LedSRR,OedSRR,5,{ne,ne,nd,nd},6,"LEFT","LRLR","-"},
 {MLedTRR,LedTRR,OedTRR,5,{ne,ne,nd,nd},6,"LEFT","LRLR","-"},
 {ML\[Nu]eduSRR,L\[Nu]eduSRR,O\[Nu]eduSRR,5,{n\[Nu],ne,nd,nu},6,"LEFT","LRLR","-"},
 {ML\[Nu]eduTRR,L\[Nu]eduTRR,O\[Nu]eduTRR,5,{n\[Nu],ne,nd,nu},6,"LEFT","LRLR","-"},
-{MLuuS1RR,LuuS1RR,OuuS1RR,6,{nu,nu,nu,nu},6,"LEFT","LRLR","-"},
-{MLuuS8RR,LuuS8RR,OuuS8RR,6,{nu,nu,nu,nu},6,"LEFT","LRLR","-"},
+{MLuuS1RR,LuuS1RR,OuuS1RR,14,{nu,nu,nu,nu},6,"LEFT","LRLR","-"},
+{MLuuS8RR,LuuS8RR,OuuS8RR,14,{nu,nu,nu,nu},6,"LEFT","LRLR","-"},
 {MLudS1RR,LudS1RR,OudS1RR,5,{nu,nu,nd,nd},6,"LEFT","LRLR","-"},
 {MLudS8RR,LudS8RR,OudS8RR,5,{nu,nu,nd,nd},6,"LEFT","LRLR","-"},
-{MLddS1RR,LddS1RR,OddS1RR,6,{nd,nd,nd,nd},6,"LEFT","LRLR","-"},
-{MLddS8RR,LddS8RR,OddS8RR,6,{nd,nd,nd,nd},6,"LEFT","LRLR","-"},
+{MLddS1RR,LddS1RR,OddS1RR,14,{nd,nd,nd,nd},6,"LEFT","LRLR","-"},
+{MLddS8RR,LddS8RR,OddS8RR,14,{nd,nd,nd,nd},6,"LEFT","LRLR","-"},
 {MLudduS1RR,LudduS1RR,OudduS1RR,5,{nu,nd,nd,nu},6,"LEFT","LRLR","-"},
 {MLudduS8RR,LudduS8RR,OudduS8RR,5,{nu,nd,nd,nu},6,"LEFT","LRLR","-"},
 {MLeuSRL,LeuSRL,OeuSRL,5,{ne,ne,nu,nu},6,"LEFT","LRRL","-"},
@@ -509,6 +510,11 @@ Redu[13]={{1,1,1,1},{1,1,1,2},{1,1,1,3},{1,1,2,1},{1,1,2,2},{1,1,2,3},{1,1,3,1},
 SubRedu[13]={XX[1,1,1,1]->0,XX[1,1,1,2]->0,XX[1,1,1,3]->0,XX[1,1,2,1]->0,XX[1,1,2,2]->0,XX[1,1,2,3]->0,XX[1,1,3,1]->0,XX[1,1,3,2]->0,XX[1,1,3,3]->0,XX[2,1,1,1]->-XX[1,2,1,1],XX[2,1,1,2]->-XX[1,2,1,2],XX[2,1,1,3]->-XX[1,2,1,3],XX[2,1,2,1]->-XX[1,2,2,1],XX[2,1,2,2]->-XX[1,2,2,2],XX[2,1,2,3]->-XX[1,2,2,3],XX[2,1,3,1]->-XX[1,2,3,1],XX[2,1,3,2]->-XX[1,2,3,2],XX[2,1,3,3]->-XX[1,2,3,3],XX[2,2,1,1]->0,XX[2,2,1,2]->0,XX[2,2,1,3]->0,XX[2,2,2,1]->0,XX[2,2,2,2]->0,XX[2,2,2,3]->0,XX[2,2,3,1]->0,XX[2,2,3,2]->0,XX[2,2,3,3]->0,XX[2,3,1,1]->XX[1,3,1,2]-XX[1,2,1,3],XX[2,3,2,1]->XX[1,3,2,2]-XX[1,2,2,3],XX[2,3,3,1]->XX[1,3,3,2]-XX[1,2,3,3],XX[3,1,1,1]->-XX[1,3,1,1],XX[3,1,1,2]->-XX[1,3,1,2],XX[3,1,1,3]->-XX[1,3,1,3],XX[3,1,2,1]->-XX[1,3,2,1],XX[3,1,2,2]->-XX[1,3,2,2],XX[3,1,2,3]->-XX[1,3,2,3],XX[3,1,3,1]->-XX[1,3,3,1],XX[3,1,3,2]->-XX[1,3,3,2],XX[3,1,3,3]->-XX[1,3,3,3],XX[3,2,1,1]->XX[1,2,1,3]-XX[1,3,1,2],XX[3,2,1,2]->-XX[2,3,1,2],XX[3,2,1,3]->-XX[2,3,1,3],XX[3,2,2,1]->XX[1,2,2,3]-XX[1,3,2,2],XX[3,2,2,2]->-XX[2,3,2,2],XX[3,2,2,3]->-XX[2,3,2,3],XX[3,2,3,1]->XX[1,2,3,3]-XX[1,3,3,2],XX[3,2,3,2]->-XX[2,3,3,2],XX[3,2,3,3]->-XX[2,3,3,3],XX[3,3,1,1]->0,XX[3,3,1,2]->0,XX[3,3,1,3]->0,XX[3,3,2,1]->0,XX[3,3,2,2]->0,XX[3,3,2,3]->0,XX[3,3,3,1]->0,XX[3,3,3,2]->0,XX[3,3,3,3]->0};
 
 
+(* 4F LEFT special case cat 6 "non-hermitian" *)
+Redu[14]={{1,2,1,1},{1,3,1,1},{1,3,1,2},{2,1,1,1},{2,1,1,2},{2,1,1,3},{2,2,1,1},{2,2,1,2},{2,2,1,3},{2,2,2,1},{2,3,1,1},{2,3,1,2},{2,3,1,3},{2,3,2,1},{2,3,2,2},{3,1,1,1},{3,1,1,2},{3,1,1,3},{3,1,2,1},{3,1,2,2},{3,1,2,3},{3,2,1,1},{3,2,1,2},{3,2,1,3},{3,2,2,1},{3,2,2,2},{3,2,2,3},{3,2,3,1},{3,3,1,1},{3,3,1,2},{3,3,1,3},{3,3,2,1},{3,3,2,2},{3,3,2,3},{3,3,3,1},{3,3,3,2}};
+SubRedu[14]={XX[1,2,1,1]->XX[1,1,1,2],XX[1,3,1,1]->XX[1,1,1,3],XX[1,3,1,2]->XX[1,2,1,3],XX[2,1,1,1]->XX[1,1,2,1],XX[2,1,1,2]->XX[1,2,2,1],XX[2,1,1,3]->XX[1,3,2,1],XX[2,2,1,1]->XX[1,1,2,2],XX[2,2,1,2]->XX[1,2,2,2],XX[2,2,1,3]->XX[1,3,2,2],XX[2,2,2,1]->XX[2,1,2,2],XX[2,3,1,1]->XX[1,1,2,3],XX[2,3,1,2]->XX[1,2,2,3],XX[2,3,1,3]->XX[1,3,2,3],XX[2,3,2,1]->XX[2,1,2,3],XX[2,3,2,2]->XX[2,2,2,3],XX[3,1,1,1]->XX[1,1,3,1],XX[3,1,1,2]->XX[1,2,3,1],XX[3,1,1,3]->XX[1,3,3,1],XX[3,1,2,1]->XX[2,1,3,1],XX[3,1,2,2]->XX[2,2,3,1],XX[3,1,2,3]->XX[2,3,3,1],XX[3,2,1,1]->XX[1,1,3,2],XX[3,2,1,2]->XX[1,2,3,2],XX[3,2,1,3]->XX[1,3,3,2],XX[3,2,2,1]->XX[2,1,3,2],XX[3,2,2,2]->XX[2,2,3,2],XX[3,2,2,3]->XX[2,3,3,2],XX[3,2,3,1]->XX[3,1,3,2],XX[3,3,1,1]->XX[1,1,3,3],XX[3,3,1,2]->XX[1,2,3,3],XX[3,3,1,3]->XX[1,3,3,3],XX[3,3,2,1]->XX[2,1,3,3],XX[3,3,2,2]->XX[2,2,3,3],XX[3,3,2,3]->XX[2,3,3,3],XX[3,3,3,1]->XX[3,1,3,3],XX[3,3,3,2]->XX[3,2,3,3]};
+
+
 RedundantAction[k_]:=Block[{},
 
 If[2<=k<=4, (* 2F object *)
@@ -516,7 +522,7 @@ AppendTo[Redundant,Objects2F[[i,2]]@@@Redu[k]];
 AppendTo[SubRedundant,SubRedu[k]/.XX->Objects2F[[i,2]]];
 ];
 
-If[6<=k<=13, (* 4F object *)
+If[6<=k<=14, (* 4F object *)
 AppendTo[Redundant,Objects4F[[i,2]]@@@Redu[k]];
 AppendTo[SubRedundant,SubRedu[k]/.XX->Objects4F[[i,2]]];
 ];
@@ -536,7 +542,7 @@ Switch[Objects2F[[i,4]],2,RedundantAction[2],3,RedundantAction[3],4,RedundantAct
 
 (* 4F WCs *)
 Do[
-Switch[Objects4F[[i,4]],6,RedundantAction[6],7,RedundantAction[7],8,RedundantAction[8],9,RedundantAction[9],10,RedundantAction[10],11,RedundantAction[11],12,RedundantAction[12],13,RedundantAction[13]];
+Switch[Objects4F[[i,4]],6,RedundantAction[6],7,RedundantAction[7],8,RedundantAction[8],9,RedundantAction[9],10,RedundantAction[10],11,RedundantAction[11],12,RedundantAction[12],13,RedundantAction[13],14,RedundantAction[14]];
 ,{i,Length[Objects4F]}];
 
 Redundant=Flatten[Redundant];
@@ -607,7 +613,8 @@ Switch[cat,
 10,parRC=2, (* antisymmetric current \[Times] general current *)
 11,parRC=2, (* SMEFT special case qqql *)
 12,parRC=2, (* LEFT special case \[CapitalDelta]L = 4 *)
-13,parRC=2 (* LEFT special cases dddSLL and dddSRR *)
+13,parRC=2, (* LEFT special cases dddSLL and dddSRR *)
+14,parRC=2 (* LEFT special case cat 6 "non-hermitian" *)
 ];
 
 ];

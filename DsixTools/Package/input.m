@@ -954,6 +954,10 @@ checkConds[13]={WC[1,1,1,1]==0,WC[1,1,1,2]==0,WC[1,1,1,3]==0,WC[1,1,2,1]==0,WC[1
 checkAction[13]={WC[1,1,1,1]->0,WC[1,1,1,2]->0,WC[1,1,1,3]->0,WC[1,1,2,1]->0,WC[1,1,2,2]->0,WC[1,1,2,3]->0,WC[1,1,3,1]->0,WC[1,1,3,2]->0,WC[1,1,3,3]->0,WC[2,2,1,1]->0,WC[2,2,1,2]->0,WC[2,2,1,3]->0,WC[2,2,2,1]->0,WC[2,2,2,2]->0,WC[2,2,2,3]->0,WC[2,2,3,1]->0,WC[2,2,3,2]->0,WC[2,2,3,3]->0,WC[3,3,1,1]->0,WC[3,3,1,2]->0,WC[3,3,1,3]->0,WC[3,3,2,1]->0,WC[3,3,2,2]->0,WC[3,3,2,3]->0,WC[3,3,3,1]->0,WC[3,3,3,2]->0,WC[3,3,3,3]->0};
 
 
+(* 4F LEFT special case cat 6 "non-hermitian" *)
+(* No checks required for this category *)
+
+
 (* Auxiliary routine to extract arguments (or indices) from a generic expression *)
 GetArgs[_[i__,j__]]:={i,j}
 GetArgs[_[i__,j__,k__,l__]]:={i,j,k,l}
@@ -1024,7 +1028,7 @@ If[6<=cat<=13&&cat!=9&&cat!=11, (* 4F object *)
 {n1,n2,n3,n4}=Dimensions[WCput];
 checkConds4F[cat]=checkConds[cat]/.WC[m_,n_,p_,q_]:>If[m>n1||n>n2||p>n3||q>n4,0,WC[m,n,p,q]];
 
-(* cats 9 and 11 do not require any check whereas cats 10, 12 and 13 must only be checked for antisymmetry, not for hermiticity *)
+(* cats 9, 11 and 14 do not require any check whereas cats 10, 12 and 13 must only be checked for antisymmetry, not for hermiticity *)
 
 Do[
 If[!(checkConds4F[cat][[k]]/.WC[m_,n_,p_,q_]:>WCput[[m,n,p,q]]),
@@ -1692,8 +1696,8 @@ GeAtScale=MGe/.SMEFTinput;
 MCllHHAtScale=0;
 DiagonalizeFermionsSMEFT[False];
 DL=UL;
-MGuNew=Chop[H[UL].GuAtScale.UR,$MachineEpsilon];
-MGdNew=Chop[H[DL].GdAtScale.DR,$MachineEpsilon];
+MGuNew=Chop[H[UL] . GuAtScale . UR,$MachineEpsilon];
+MGdNew=Chop[H[DL] . GdAtScale . DR,$MachineEpsilon];
 Do[
 Init[Gu[m,n]]=MGuNew[[m,n]];
 Init[Gd[m,n]]=MGdNew[[m,n]];

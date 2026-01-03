@@ -1,5 +1,7 @@
 # DsixTools: The Effective Field Theory Toolkit
 
+VERSION FOR COMPARISON BETWEEN 1-LOOP AND 2-LOOP LEFT
+
 DsixTools is a Mathematica Package for the matching and renormalization-group evolution from the new-physics scale to the scale of low-energy observables.
 
 ## Project status
@@ -20,7 +22,7 @@ This web site is built with Jekyll and hosted on Github pages. You can check out
 
 The simplest way to download and install DsixTools is to run the following command in a Mathematica session:
 
-> Import["https://raw.githubusercontent.com/DsixTools/DsixTools/master/install.m"];
+> Import["https://raw.githubusercontent.com/DsixTools/DsixTools/Comparison-One-Two-Loop-LEFT/install.m"];
 
 This will download and install DsixTools in the Applications folder of the Mathematica base directory, activate the documentation and load the package. During the installation process a pop up window will appear asking if you want to convert the .m files to .mx format. This option is recommended, since it significantly reduces the DsixTools loading time.
 

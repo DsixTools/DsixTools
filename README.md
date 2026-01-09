@@ -1,6 +1,6 @@
 # DsixTools: The Effective Field Theory Toolkit
 
-VERSION INCLUDING 2-LOOP BETA FUNCTIONS OF FOUR-FERMION OPERATORS IN THE LEFT (FROM 2501.08384).
+VERSION IN PROGRESS WHERE THE TWO-LOOP BETA FUNCTIONS IN THE SMEFT WILL BE IMPLEMENTED.
 
 DsixTools is a Mathematica Package for the matching and renormalization-group evolution from the new-physics scale to the scale of low-energy observables.
 
@@ -22,7 +22,7 @@ This web site is built with Jekyll and hosted on Github pages. You can check out
 
 The simplest way to download and install DsixTools is to run the following command in a Mathematica session:
 
-> Import["https://raw.githubusercontent.com/DsixTools/DsixTools/Two-loop-LEFT/install.m"];
+> Import["https://raw.githubusercontent.com/DsixTools/DsixTools/Two-Loop-SMEFT/install.m"];
 
 This will download and install DsixTools in the Applications folder of the Mathematica base directory, activate the documentation and load the package. During the installation process a pop up window will appear asking if you want to convert the .m files to .mx format. This option is recommended, since it significantly reduces the DsixTools loading time.
 

@@ -43,6 +43,7 @@ DumpSave[DsixTools`DsixToolsDir<>"EWMatching.mx",DsixTools`MatchEW];
 
 Import[DsixTools`DsixToolsDir<>"BetaSMEFT.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaSMEFT.mx",DsixTools`\[Beta]];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"/Package/BetaSMEFT.m"]; (* Delete the ~900 MB file *)
 
 Import[DsixTools`DsixToolsDir<>"BetaSM.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaSM.mx",DsixTools`\[Beta]SM];
@@ -155,6 +156,11 @@ Quiet@DeleteFile[USMEFTFile];
 ULEFTFile=packageDir<>"/Package/evolutionLEFT.m.zip";
 ExtractArchive[ULEFTFile,packageDir<>"/Package"];
 Quiet@DeleteFile[ULEFTFile];
+
+(* Unzip and delete two-loop SMEFT file *)
+USMEFTRGEFile=packageDir<>"/Package/BetaSMEFT.m.zip";
+ExtractArchive[USMEFTRGEFile,packageDir<>"/Package"];
+Quiet@DeleteFile[USMEFTRGEFile];
 
 (* Activate the documentation *)
 

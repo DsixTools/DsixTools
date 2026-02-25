@@ -44,7 +44,7 @@ DumpSave[DsixTools`DsixToolsDir<>"EWMatching.mx",DsixTools`MatchEW];
 
 Import[DsixTools`DsixToolsDir<>"BetaSMEFT.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaSMEFT.mx",DsixTools`\[Beta]];
-Quiet@DeleteFile[DsixTools`DsixToolsDir<>"/Package/BetaSMEFT.m"]; (* Delete the ~900 MB file *)
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"BetaSMEFT.m"]; (* Delete the ~900 MB file *)
 
 Import[DsixTools`DsixToolsDir<>"BetaSM.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaSM.mx",DsixTools`\[Beta]SM];

@@ -25,7 +25,7 @@ InstallDsixTools::version="Warning: `1` has only been tested on Mathematica vers
 ConvertFiles:=Block[{SMEFTLaTeX,LEFTLaTeX,RGEsSMEFT,RGEsSM,RGEsLEFT,SMEFTU,LEFTU},
 
 Print["Converting files: m to mx"];
-Print["Note: This might take a while due to the size of the two-loop SMEFT \[Beta]-functions."];
+Print[Style["Note: ", Bold], "This might take a while due to the size of the two-loop SMEFT \[Beta]-functions."];
 
 (* LaTeX files *)
 

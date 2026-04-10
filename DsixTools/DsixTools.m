@@ -1828,7 +1828,7 @@ DsixToolsVersion="2.1";
 
 
 (* ::Input::Initialization:: *)
-CellPrint[TextCell["DsixTools "<>ToString[DsixToolsVersion],"Text",Purple,Background->LightBlue,FontSize->14]];
+CellPrint[TextCell["DsixTools "<>ToString[DsixToolsVersion]<>"  (TWO-LOOP SMEFT VERSION -- IN PROGRESS)","Text",Purple,Background->LightBlue,FontSize->14]];
 
 Print["by Alejandro Celis, Javier Fuentes-Martin, Pedro Ruiz-Femenia, Avelino Vicente and Javier Virto \n",
 "References: ",Hyperlink["arXiv:1704.04504","https://arxiv.org/abs/1704.04504"]," and ",Hyperlink["arXiv:2010.16341","https://arxiv.org/abs/2010.16341"],"\n",

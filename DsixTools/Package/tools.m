@@ -360,7 +360,7 @@ ToLoopOrder[n_]:={LoopParameter^i_./;i>n->0,LoopParameter->1}
 BuildRGEs[theory_]:=Block[{},
 
 If[theory=="SMEFT",
-RGEsSMEFT=Join[\[Beta]/@ParametersSMEFT[[1;;First[SMEFTFindParameter[Ge[3,3]]]]]/.ToLoopOrder[SMEFTLoopOrder]//Chop,\[Beta]/@ParametersSMEFT[[First[SMEFTFindParameter[Ge[3,3]]]+1;;-1]]];
+RGEsSMEFT=Join[\[Beta]/@ParametersSMEFT[[1;;First[SMEFTFindParameter[Ge[3,3]]]]]/.ToLoopOrder[SMEFTLoopOrder]//Chop,\[Beta]/@ParametersSMEFT[[First[SMEFTFindParameter[Ge[3,3]]]+1;;-1]]/.ToLoopOrder[SMEFTLoopOrder]];
 RGEsSMEFTtPre=If[FileExistsQ[DsixToolsDir<>"RGEsSMEFT.mx"],Import[DsixToolsDir<>"RGEsSMEFT.mx"],Import[DsixToolsDir<>"RGEsSMEFT.m"]];
 RGEsSMEFTt=Join[RGEsSMEFTtPre[[1;;First[SMEFTFindParameter[Ge[3,3]]]]]/.ToLoopOrder[SMEFTLoopOrder]//Chop,RGEsSMEFTtPre[[First[SMEFTFindParameter[Ge[3,3]]]+1;;-1]]];
 ];

@@ -57,6 +57,7 @@ DumpSave[DsixTools`DsixToolsDir<>"BetaLEFT.mx",DsixTools`\[Beta]];
 
 RGEsSMEFT=Import[DsixTools`DsixToolsDir<>"RGEsSMEFT.m"];
 Export[DsixTools`DsixToolsDir<>"RGEsSMEFT.mx",RGEsSMEFT];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"RGEsSMEFT.m"]; (* Delete the ~900 MB file *)
 
 RGEsSM=Import[DsixTools`DsixToolsDir<>"RGEsSM.m"];
 Export[DsixTools`DsixToolsDir<>"RGEsSM.mx",RGEsSM];
@@ -158,8 +159,12 @@ ULEFTFile=packageDir<>"/Package/evolutionLEFT.m.zip";
 ExtractArchive[ULEFTFile,packageDir<>"/Package"];
 Quiet@DeleteFile[ULEFTFile];
 
-(* Unzip and delete two-loop SMEFT file *)
+(* Unzip and delete two-loop SMEFT files *)
 USMEFTRGEFile=packageDir<>"/Package/BetaSMEFT.m.zip";
+ExtractArchive[USMEFTRGEFile,packageDir<>"/Package"];
+Quiet@DeleteFile[USMEFTRGEFile];
+
+USMEFTRGEFile=packageDir<>"/Package/RGEsSMEFT.m.zip";
 ExtractArchive[USMEFTRGEFile,packageDir<>"/Package"];
 Quiet@DeleteFile[USMEFTRGEFile];
 

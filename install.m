@@ -31,14 +31,17 @@ Print[Style["Note: ", Bold], "This might take a while due to the size of the two
 
 SMEFTLaTeX=Import[DsixTools`DsixToolsDir<>"SMEFTOpsLatex.m"];
 Export[DsixTools`DsixToolsDir<>"SMEFTOpsLatex.mx",SMEFTLaTeX];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"SMEFTOpsLatex.m"];
 
 LEFTLaTeX=Import[DsixTools`DsixToolsDir<>"LEFTOpsLatex.m"];
 Export[DsixTools`DsixToolsDir<>"LEFTOpsLatex.mx",LEFTLaTeX];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"LEFTOpsLatex.m"];
 
 (* EW matching *)
 
 Import[DsixTools`DsixToolsDir<>"EWMatching.m"];
 DumpSave[DsixTools`DsixToolsDir<>"EWMatching.mx",DsixTools`MatchEW];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"EWMatching.m"];
 
 (* \[Beta] functions *)
 
@@ -48,10 +51,12 @@ Quiet@DeleteFile[DsixTools`DsixToolsDir<>"BetaSMEFT.m"]; (* Delete the ~900 MB f
 
 Import[DsixTools`DsixToolsDir<>"BetaSM.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaSM.mx",DsixTools`\[Beta]SM];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"BetaSM.m"];
 
 Clear[DsixTools`\[Beta]];
 Import[DsixTools`DsixToolsDir<>"BetaLEFT.m"];
 DumpSave[DsixTools`DsixToolsDir<>"BetaLEFT.mx",DsixTools`\[Beta]];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"BetaLEFT.m"];
 
 (* RGEs *)
 
@@ -61,19 +66,23 @@ Quiet@DeleteFile[DsixTools`DsixToolsDir<>"RGEsSMEFT.m"]; (* Delete the ~900 MB f
 
 RGEsSM=Import[DsixTools`DsixToolsDir<>"RGEsSM.m"];
 Export[DsixTools`DsixToolsDir<>"RGEsSM.mx",RGEsSM];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"RGEsSM.m"];
 
 RGEsLEFT=Import[DsixTools`DsixToolsDir<>"RGEsLEFT.m"];
 Export[DsixTools`DsixToolsDir<>"RGEsLEFT.mx",RGEsLEFT];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"RGEsLEFT.m"];
 
 (* SMEFT evolution matrix *)
 
 SMEFTU=Import[DsixTools`DsixToolsDir<>"evolutionSMEFT.m"];
 Export[DsixTools`DsixToolsDir<>"evolutionSMEFT.mx",SMEFTU];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"evolutionSMEFT.m"];
 
 (* LEFT evolution matrix *)
 
 LEFTU=Import[DsixTools`DsixToolsDir<>"evolutionLEFT.m"];
 Export[DsixTools`DsixToolsDir<>"evolutionLEFT.mx",LEFTU];
+Quiet@DeleteFile[DsixTools`DsixToolsDir<>"evolutionLEFT.m"];
 
 Print["Conversion complete!"];
 

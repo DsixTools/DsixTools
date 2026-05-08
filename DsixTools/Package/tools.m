@@ -557,7 +557,7 @@ WCs=ParametersSMEFT[[lastSM+1;;-1]];
 
 (* Apply evolution matrix *)
 EvolvedSMEFT[WC,tfinal,tini]:=EvolvedSMEFT[WC,tfinal,tini]=
-(USMEFT[[pos,All]] . WCs)/.{tf->tfinal,t0->tini};
+(WCs . (Inverse[USMEFT[tfinal]] . USMEFT[tini])[[All,pos]]);
 
 Return[EvolvedSMEFT[WC,tfinal,tini]];
 

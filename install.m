@@ -25,7 +25,6 @@ InstallDsixTools::version="Warning: `1` has only been tested on Mathematica vers
 ConvertFiles:=Block[{SMEFTLaTeX,LEFTLaTeX,RGEsSMEFT,RGEsSM,RGEsLEFT,SMEFTU,LEFTU},
 
 Print["Converting files: m to mx"];
-Print[Style["Note: ", Bold], "This might take a while due to the size of the two-loop SMEFT \[Beta]-functions."];
 
 (* LaTeX files *)
 
@@ -172,6 +171,8 @@ Quiet@DeleteFile[ULEFTFile];
 QuestionTwoLoop="Do you want to install the two-loop SMEFT \[Beta]-functions? This leads to much longer installation and loading times...";
 twoLoopQ=ChoiceDialog[QuestionTwoLoop,{"Yes"->True,"No"->False},WindowFloating->True,WindowTitle->"Two-loop \[Beta]-functions"];
 If[twoLoopQ,
+(* Note that conversion can take a while due to size of two-loop \[Beta]-funcitons *)
+Print[Style["Note: ", Bold], "Installation and conversion might take a while due to the size of the two-loop SMEFT \[Beta]-functions."];
 (* First delete the one-loop BetaSMEFT.m and RGEsSMEFT.m *)
 Quiet@DeleteFile[packageDir<>"/Package/BetaSMEFT.m"];
 Quiet@DeleteFile[packageDir<>"/Package/RGEsSMEFT.m"];

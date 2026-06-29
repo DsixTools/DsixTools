@@ -100,7 +100,7 @@ DsixTools`BuildAllRGEs;
 ];
 
 
-InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,QuestionOverwrite,tmpFile,unzipDir,zipDir},
+InstallDsixTools:=Block[{packageName,packageDir,MinVersion,DsixToolsLink,QuestionOverwrite,tmpFile,unzipDir,zipDir,QuestionTwoLoop,twoLoopQ},
 
 (* Definitions *)
 
@@ -169,13 +169,21 @@ ExtractArchive[ULEFTFile,packageDir<>"/Package"];
 Quiet@DeleteFile[ULEFTFile];
 
 (* Unzip and delete two-loop SMEFT files *)
+QuestionTwoLoop="Do you want to install the two-loop SMEFT \[Beta]-functions? This leads to much longer installation and loading times...";
+twoLoopQ=ChoiceDialog[QuestionTwoLoop,{"Yes"->True,"No"->False},WindowFloating->True,WindowTitle->"Two-loop \[Beta]-functions"];
+If[twoLoopQ,
+(* First delete the one-loop BetaSMEFT.m and RGEsSMEFT.m *)
+Quiet@DeleteFile[packageDir<>"/Package/BetaSMEFT.m"];
+Quiet@DeleteFile[packageDir<>"/Package/RGEsSMEFT.m"];
+(* Then extract the two-loop BetaSMEFT.m.zip and delete it afterwards *)
 USMEFTRGEFile=packageDir<>"/Package/BetaSMEFT.m.zip";
 ExtractArchive[USMEFTRGEFile,packageDir<>"/Package"];
 Quiet@DeleteFile[USMEFTRGEFile];
-
+(* Lastly extract the two-loop RGEsSMEFT.m.zip and delete it afterwards *)
 USMEFTRGEFile=packageDir<>"/Package/RGEsSMEFT.m.zip";
 ExtractArchive[USMEFTRGEFile,packageDir<>"/Package"];
 Quiet@DeleteFile[USMEFTRGEFile];
+];
 
 (* Activate the documentation *)
 
